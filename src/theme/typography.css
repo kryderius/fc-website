@@ -19,3 +19,10 @@
   src: url('../assets/fonts/Rubik-Regular.ttf') format('truetype');
   font-display: auto;
 }
+@font-face {
+  font-family: Rubik;
+  font-weight: 500;
+  font-style: normal;
+  src: url('../assets/fonts/Rubik-Medium.ttf') format('truetype');
+  font-display: auto;
+}

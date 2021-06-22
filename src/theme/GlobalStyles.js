@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        scroll-behavior: smooth;
   }
   
   body {
@@ -13,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     background-color: ${({ theme }) => theme.white};
     font-family:  ${({ theme }) => theme.fontFamilyText};
+    scroll-behavior: smooth;
   }
 
 
@@ -28,8 +30,28 @@ const GlobalStyles = createGlobalStyle`
   }
 
 
-  [data-aos="title-anim"] {
-  transform: translateY(30px);
+  [data-aos="title-down"] {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition-property: transform, opacity;
+
+  &.aos-animate {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+[data-aos="title-up"] {
+  transform: translateY(100%);
+  opacity: 0;
+  transition-property: transform, opacity;
+
+  &.aos-animate {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+[data-aos="card-up"] {
+  transform: translateY(50px);
   opacity: 0;
   transition-property: transform, opacity;
 

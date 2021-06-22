@@ -7,6 +7,7 @@ export const theme = {
   fontFamilyText: "'Rubik', sans-serif",
   light: '300',
   regular: '400',
+  medium: '500',
   bold: '900',
 
   bodyXS: '14px',
@@ -16,4 +17,5 @@ export const theme = {
   headingM: '36px',
   headingL: '48px',
   headingXL: '72px',
+  headingXXL: '96px',
 };
