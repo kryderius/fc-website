@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Heading from '../../atoms/Heading';
 import Text from '../../atoms/Text';
 import { Link } from 'gatsby';
+import OfferTopLeftSVG from '../../../assets/svg/offer_top_left.svg';
+import DotsTopRightSVG from '../../../assets/svg/dots_black.svg';
+import { gsap } from 'gsap';
 
 const SectionWrapper = styled.section`
   margin: 200px 0 0 0;
@@ -34,6 +37,7 @@ const SectionContainer = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.yellow};
   padding: 100px 0 250px 0;
+  position: relative;
 
   @media (min-width: 768px) {
     max-width: 720px;
@@ -160,20 +164,89 @@ const BlockBtn = styled.button`
   background-color: ${({ theme }) => theme.yellow};
 `;
 
+const BgText = styled.span`
+  font-size: calc(80px + (150 - 40) * ((100vw - 300px) / (1600 - 300)));
+  font-family: ${({ theme }) => theme.fontFamilyHeading};
+  position: absolute;
+  top: -10%;
+  left: 0;
+  color: ${({ theme }) => theme.white};
+  text-shadow: 0 0 32px rgba(0, 0, 0, 0.05);
+  z-index: -2;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  @media (min-width: 1200px) {
+    top: -30%;
+  }
+`;
+
+const OfferTopLeft = styled.div`
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+`;
+const OfferTopRight = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+  width: 116px;
+
+  img {
+    width: 100%;
+  }
+
+  @media (min-width: 1200px) {
+    width: 180px;
+  }
+  @media (min-width: 1400px) {
+    width: 230px;
+  }
+`;
+
 const Offer = () => {
+  useEffect(() => {
+    gsap.to('.offer-bg-text', {
+      x: '10%',
+      scrollTrigger: {
+        trigger: '.offer-bg-text--trigger',
+        scrub: true,
+        start: 'top center',
+        end: 'center 25%',
+      },
+    });
+  }, []);
+
   return (
-    <SectionWrapper>
+    <SectionWrapper id="czego-potrzebujesz" className="offer-bg-text--trigger">
+      <BgText className="offer-bg-text">OFERTA</BgText>
       <SectionContainer>
+        <OfferTopLeft>
+          <img src={OfferTopLeftSVG} alt="" />
+        </OfferTopLeft>
+        <OfferTopRight>
+          <img src={DotsTopRightSVG} alt="" />
+        </OfferTopRight>
         <Title>
           <StyledHeading>
-            <BigHeading>Czego</BigHeading>{' '}
-            <SmallHeading>potrzebujesz?</SmallHeading>
+            <BigHeading data-aos="fade-down">Czego</BigHeading>{' '}
+            <SmallHeading data-aos="fade-down" data-aos-delay="200">
+              potrzebujesz?
+            </SmallHeading>
           </StyledHeading>
         </Title>
       </SectionContainer>
       <SectionContainerBlocks>
-        <Blocks>
-          <Block to="/#block1">
+        <Blocks className="blocks--trigger">
+          <Block
+            to="/#block1"
+            data-aos="card-up"
+            data-aos-anchor=".blocks--trigger"
+          >
             <svg
               width="101"
               height="101"
@@ -245,7 +318,11 @@ const Offer = () => {
               </svg>
             </BlockBtn>
           </Block>
-          <Block>
+          <Block
+            data-aos="card-up"
+            data-aos-anchor=".blocks--trigger"
+            data-aos-delay="200"
+          >
             <svg
               width="101"
               height="101"
@@ -309,7 +386,11 @@ const Offer = () => {
               </svg>
             </BlockBtn>
           </Block>
-          <Block>
+          <Block
+            data-aos="card-up"
+            data-aos-anchor=".blocks--trigger"
+            data-aos-delay="400"
+          >
             <svg
               width="101"
               height="100"
