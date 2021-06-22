@@ -8,6 +8,7 @@ const ButtonWrapper = styled(Link)`
   border-radius: 50px;
   background: transparent;
   width: auto;
+  max-width: 340px;
   height: 69px;
   text-decoration: none;
   display: flex;
@@ -15,6 +16,7 @@ const ButtonWrapper = styled(Link)`
   justify-content: space-between;
   padding: 0 30px;
   transition: all 0.4s cubic-bezier(0.5, 1, 0.89, 1);
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ theme }) => theme.black};
@@ -76,6 +78,12 @@ const ButtonWrapper = styled(Link)`
       }
     }
   }
+
+  &.small {
+    p {
+      font-size: ${({ theme }) => theme.bodyXS};
+    }
+  }
 `;
 
 const Text = styled.p`
@@ -84,9 +92,9 @@ const Text = styled.p`
   font-family: ${({ theme }) => theme.fontFamilyHeading};
 `;
 
-const Button = ({ children, link, color }) => {
+const Button = ({ children, link, color, fontSize }) => {
   return (
-    <ButtonWrapper to={link} className={color}>
+    <ButtonWrapper to={link} className={`${color} ${fontSize}`}>
       <Text>{children}</Text>
       <svg
         width="33"
