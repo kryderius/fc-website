@@ -281,12 +281,12 @@ const Navigation = () => {
               </Link>
             </NavMobileListItem>
             <NavMobileListItem>
-              <Link to="/" onClick={openHamburger}>
+              <Link to="/#oferta" onClick={openHamburger}>
                 Oferta
               </Link>
             </NavMobileListItem>
             <NavMobileListItem>
-              <Link to="/" onClick={openHamburger}>
+              <Link to="/#poznaj-nas" onClick={openHamburger}>
                 Poznaj nas
               </Link>
             </NavMobileListItem>
@@ -308,15 +308,15 @@ const Navigation = () => {
               <Link to="/">Start</Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/">Oferta</Link>
+              <Link to="/#oferta">Oferta</Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/">Poznaj nas</Link>
+              <Link to="/#poznaj-nas">Poznaj nas</Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/">Kim jesteśmy</Link>
+              <Link to="/kim-jestesmy">Kim jesteśmy</Link>
             </NavListItem>
-            <StyledButton link="/#contact" color="yellow">
+            <StyledButton link="/#kontakt" color="yellow">
               Kontakt
             </StyledButton>
           </NavList>
