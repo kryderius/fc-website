@@ -17,6 +17,18 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: `b9401013e6071968420881330465db`,
+        environment: `main`,
+        previewMode: false,
+        disableLiveReload: false,
+        localeFallbacks: {
+          it: ['en'],
+        },
+      },
+    },
     //{
     //  resolve: `gatsby-plugin-manifest`,
     //  options: {
