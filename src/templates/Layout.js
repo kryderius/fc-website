@@ -23,7 +23,7 @@ const Layout = ({ children, title }) => {
         duration: 600,
         easing: 'ease-out-quad',
       });
-    }, 1500);
+    }, 100);
   }, []);
 
   return (
