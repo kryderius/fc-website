@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import WeAreWaitingIMG from '../../../assets/images/we-are-waiting.jpg';
 import LaptopIMG from '../../../assets/images/laptop.png';
 import Heading from '../../atoms/Heading';
 import Button from '../../atoms/Button';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const SectionWrapper = styled.section`
   padding: 0 15px;
@@ -122,6 +122,7 @@ const BgText = styled.span`
 `;
 
 const WeAreWaiting = () => {
+  const data = useStaticQuery(query);
   useEffect(() => {
     setTimeout(() => {
       gsap.to('.laptop-anim', 10, {
@@ -150,9 +151,16 @@ const WeAreWaiting = () => {
       <BgText className="bg-text">FREELANCE</BgText>
       <SectionContainer>
         <SectionLeft className="laptop-anim--trigger">
+          {/*
           <img
             src={WeAreWaitingIMG}
             alt="Czekamy na Ciebie! Skontaktuj się z nami"
+            width="300px"
+            height="888px"
+          />
+          */}
+          <GatsbyImage
+            image={data.weAreWaiting.childImageSharp.gatsbyImageData}
           />
           <StyledLaptop src={LaptopIMG} alt="" className="laptop-anim" />
           <StyledHeading className="anim-trigger-heading">
@@ -194,5 +202,20 @@ const WeAreWaiting = () => {
     </SectionWrapper>
   );
 };
+
+const query = graphql`
+  {
+    weAreWaiting: file(name: { eq: "we-are-waiting" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          quality: 100
+          formats: WEBP
+          placeholder: NONE
+        )
+      }
+    }
+  }
+`;
 
 export default WeAreWaiting;
