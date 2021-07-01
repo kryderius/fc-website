@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "aos": "^2.3.4",
+    "formik": "^2.2.9",
     "gatsby": "^3.6.2",
     "gatsby-plugin-gatsby-cloud": "^2.6.1",
     "gatsby-plugin-image": "^1.6.0",
@@ -14,6 +15,7 @@
     "gatsby-plugin-react-helmet": "^4.6.0",
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-plugin-styled-components": "^4.7.1",
+    "gatsby-source-datocms": "^2.6.16",
     "gatsby-source-filesystem": "^3.6.0",
     "gatsby-transformer-sharp": "^3.6.0",
     "gsap": "^3.7.0",
