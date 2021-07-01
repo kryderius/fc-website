@@ -84,6 +84,47 @@ const ButtonWrapper = styled(Link)`
       font-size: ${({ theme }) => theme.bodyXS};
     }
   }
+  &.btn--small {
+    width: auto;
+    max-width: 190px;
+    height: 35px;
+  }
+  &.btn--offer {
+    width: 165px;
+    height: 45px;
+    padding: 0 15px;
+    margin-top: 30px;
+
+    p {
+      font-size: ${({ theme }) => theme.bodyXS};
+    }
+
+    @media (min-width: 1200px) {
+      width: 257px;
+      height: 69px;
+      padding: 0 20px;
+
+      p {
+        font-size: ${({ theme }) => theme.bodyS};
+      }
+    }
+  }
+  &.btn--portfolio {
+    width: 240px;
+    height: 40px;
+    padding: 0 10px;
+    margin-top: 30px;
+
+    p {
+      font-size: ${({ theme }) => theme.bodyXS};
+    }
+
+    @media (min-width: 1200px) {
+      width: 257px;
+      height: 69px;
+      padding: 0 20px;
+    }
+  }
 `;
 
 const Text = styled.p`
@@ -92,9 +133,9 @@ const Text = styled.p`
   font-family: ${({ theme }) => theme.fontFamilyHeading};
 `;
 
-const Button = ({ children, link, color, fontSize }) => {
+const Button = ({ children, link, color, fontSize, size }) => {
   return (
-    <ButtonWrapper to={link} className={`${color} ${fontSize}`}>
+    <ButtonWrapper to={link} className={`${color} ${fontSize} ${size}`}>
       <Text>{children}</Text>
       <svg
         width="33"
