@@ -11,6 +11,10 @@ import FullOffer from '../components/organisms/FullOffer/FullOffer';
 import JumbotronImg from '../assets/svg/jumbotron_homepage.svg';
 import WeAreWaiting from '../components/organisms/WeAreWaiting/WeAreWaiting';
 import MeetUs from '../components/organisms/MeetUs/MeetUs';
+import YourTurn from '../components/organisms/YourTurn/YourTurn';
+import Contact from '../components/organisms/Contact/Contact';
+import FindUs from '../components/organisms/FindUs/FindUs';
+import Footer from '../components/Footer/Footer';
 
 const StyledHeading = styled(Heading)`
   text-transform: uppercase;
@@ -230,6 +234,10 @@ const IndexPage = () => (
     </ContactJumbotron>
     <WeAreWaiting />
     <MeetUs />
+    <YourTurn />
+    <Contact />
+    <FindUs />
+    <Footer />
   </Layout>
 );
 
