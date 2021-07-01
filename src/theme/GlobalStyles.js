@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        scroll-behavior: smooth;
+        //scroll-behavior: smooth;
   }
   
   body {
@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     background-color: ${({ theme }) => theme.white};
     font-family:  ${({ theme }) => theme.fontFamilyText};
-    scroll-behavior: smooth;
+    //scroll-behavior: smooth;
   }
 
 
@@ -27,6 +27,22 @@ const GlobalStyles = createGlobalStyle`
   
   #___gatsby {
     overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #FEDD5A;
+    border-radius: 0px;
+  }
+  ::-webkit-scrollbar-thumb:hover{
+    background: #ffe88a;
+  }
+  ::-webkit-scrollbar-track{
+    background: #000000;
+    border-radius: 0px;
   }
 
 
