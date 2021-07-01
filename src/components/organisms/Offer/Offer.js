@@ -117,11 +117,7 @@ const Block = styled(Link)`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.yellow};
-
-    p {
-      color: ${({ theme }) => theme.white};
-    }
+    background-color: #ffffff;
 
     .icon {
       transform: scale(130%) translateY(-50%);
@@ -243,7 +239,8 @@ const Offer = () => {
       <SectionContainerBlocks>
         <Blocks className="blocks--trigger">
           <Block
-            to="/#block1"
+            to="/oferta/"
+            state={{ activeFilter: 'mark' }}
             data-aos="card-up"
             data-aos-anchor=".blocks--trigger"
           >
@@ -319,6 +316,8 @@ const Offer = () => {
             </BlockBtn>
           </Block>
           <Block
+            to="/oferta"
+            state={{ activeFilter: 'earning' }}
             data-aos="card-up"
             data-aos-anchor=".blocks--trigger"
             data-aos-delay="200"
@@ -387,6 +386,8 @@ const Offer = () => {
             </BlockBtn>
           </Block>
           <Block
+            to="/oferta"
+            state={{ activeFilter: 'image' }}
             data-aos="card-up"
             data-aos-anchor=".blocks--trigger"
             data-aos-delay="400"

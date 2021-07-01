@@ -338,7 +338,7 @@ const FullOffer = () => {
               pełną ofertę
             </SmallHeading>
           </StyledHeading>
-          <Button link="/#offer" color="">
+          <Button link="/oferta" color="">
             POKAŻ WSZYSTKO
           </Button>
         </Title>
@@ -376,7 +376,10 @@ const FullOffer = () => {
             {offerItems.map((item, index, i) => {
               return (
                 <SwiperSlide key={index}>
-                  <SwiperBox>
+                  <SwiperBox
+                    data-aos="fade-up"
+                    data-aos-delay={`${index * 2}00`}
+                  >
                     <SwiperImageWrapper>
                       <div>
                         <img
