@@ -5,6 +5,8 @@ import Heading from '../../atoms/Heading';
 import { gsap } from 'gsap';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import CircleSVG from '../../../assets/svg/circle_stroke_yellow.svg';
+import CrossSVG from '../../../assets/svg/cross_black_sm.svg';
 
 const SectionWrapper = styled.section`
   padding: 0 15px;
@@ -18,6 +20,7 @@ const SectionContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   padding: 200px 0 100px 0;
+  position: relative;
 
   @media (min-width: 768px) {
     max-width: 720px;
@@ -123,6 +126,32 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
+const CircleTopLeft = styled.img`
+  position: absolute;
+  bottom: 50%;
+  left: 5%;
+  width: 49px;
+  height: 49px;
+  display: none;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+`;
+
+const CrossBottomRight = styled.img`
+  position: absolute;
+  bottom: 20%;
+  left: 30%;
+  width: 32px;
+  height: 32px;
+  display: none;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+`;
+
 const FindUs = () => {
   const data = useStaticQuery(query);
   useEffect(() => {
@@ -188,6 +217,8 @@ const FindUs = () => {
           </StyledHeading>
         </SectionLeft>
         <SectionRight></SectionRight>
+        <CircleTopLeft src={CircleSVG} alt="" />
+        <CrossBottomRight src={CrossSVG} alt="" />
       </SectionContainer>
     </SectionWrapper>
   );

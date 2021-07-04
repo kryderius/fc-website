@@ -9,6 +9,9 @@ import ServicePortfolio from '../components/organisms/ServicePortfolio/ServicePo
 import FullOffer from '../components/organisms/FullOffer/FullOffer';
 import Contact from '../components/organisms/Contact/Contact';
 import Footer from '../components/Footer/Footer';
+import SubPageSVG from '../assets/svg/servicepage_header_shapes.svg';
+import CircleSVG from '../assets/svg/circle_stroke_yellow.svg';
+import CrossSVG from '../assets/svg/cross_black_sm.svg';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
@@ -24,7 +27,13 @@ const MainHeading = styled(Heading)`
   }
 `;
 
-const AboutServiceWrapper = styled.section``;
+const HeaderText = styled(Text)`
+  color: ${({ theme }) => theme.white};
+`;
+
+const AboutServiceWrapper = styled.section`
+  position: relative;
+`;
 
 const AboutServiceContainer = styled.div`
   margin: 0 auto;
@@ -32,7 +41,7 @@ const AboutServiceContainer = styled.div`
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-  padding: 100px 15px;
+  padding: 200px 15px 100px 15px;
   position: relative;
 
   @media (min-width: 768px) {
@@ -40,7 +49,7 @@ const AboutServiceContainer = styled.div`
   }
   @media (min-width: 1200px) {
     max-width: unset;
-    padding: 100px 0;
+    padding: 200px 0 100px 0;
     padding-right: calc((100vw - 1140px) / 2);
     flex-direction: row;
   }
@@ -49,11 +58,11 @@ const AboutServiceContainer = styled.div`
     padding-right: calc((100vw - 1320px) / 2);
   }
   @media (min-width: 1920px) {
-    padding: 100px 0;
+    padding: 200px 0 100px 0;
     padding-right: calc((100vw - 1440px) / 2);
   }
   @media (min-width: 1921px) {
-    padding: 100px 15px;
+    padding: 200px 15px 100px 15px;
     max-width: 1440px;
   }
 `;
@@ -167,6 +176,43 @@ const IncludingList = styled.div`
   }
 `;
 
+const HeaderSvg = styled.img`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  display: block;
+  transform: translateY(-0.5%);
+
+  @media (min-width: 1200px) {
+    width: 800px;
+    right: 10px;
+    transform: translateY(-5.5%);
+  }
+`;
+
+const CircleTopRight = styled.img`
+  position: absolute;
+  bottom: 10%;
+  right: 20%;
+  display: none;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+`;
+
+const CrossBottomLeft = styled.img`
+  position: absolute;
+  bottom: 0%;
+  display: none;
+  right: 50%;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+`;
+
 const Service = ({ data }) => {
   const service = data.datoCmsService;
   const portfolio = data.allDatoCmsPortfolio;
@@ -177,8 +223,12 @@ const Service = ({ data }) => {
         background={require(`../assets/images/${service.image}.jpg`).default}
       >
         <MainHeading data-aos="fade-up">{service.name}</MainHeading>
+        <HeaderText data-aos="fade-up" data-aos-delay="200">
+          {service.headerText}
+        </HeaderText>
       </SubPageHeader>
       <AboutServiceWrapper>
+        <HeaderSvg src={SubPageSVG} alt="" />
         <AboutServiceContainer>
           <ImageWrapper>
             <ImageContainer>
@@ -204,6 +254,8 @@ const Service = ({ data }) => {
             <ServiceBoldText>{service.shortDesc}</ServiceBoldText>
             <ServiceLongText>{service.longDesc}</ServiceLongText>
           </TextWrapper>
+          <CircleTopRight src={CircleSVG} alt="" />
+          <CrossBottomLeft src={CrossSVG} alt="" />
         </AboutServiceContainer>
       </AboutServiceWrapper>
       <ServicePortfolio portfolio={portfolio} />
@@ -219,6 +271,7 @@ export const query = graphql`
     datoCmsService(slug: { eq: $slug }) {
       slug
       name
+      headerText
       image
       shortDesc
       longDesc

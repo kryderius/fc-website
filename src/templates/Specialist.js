@@ -10,8 +10,9 @@ import SpecialistsSlider from '../components/organisms/SpecialistsSlider/Special
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Footer from '../components/Footer/Footer';
 import SpecialistPortfolio from '../components/organisms/SpecialistPortfolio/SpecialistPortfolio';
-import FullOffer from '../components/organisms/FullOffer/FullOffer';
 import Contact from '../components/organisms/Contact/Contact';
+import JumbotronSVG from '../assets/svg/jumbotron_specialist.svg';
+import Button from '../components/atoms/Button';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
@@ -46,6 +47,7 @@ const InfoContainer = styled.div`
   @media (min-width: 768px) {
     max-width: 720px;
   }
+
   @media (min-width: 1200px) {
     max-width: 1140px;
     flex-direction: row;
@@ -123,6 +125,108 @@ const ServiceLongText = styled(Text)`
   font-weight: ${({ theme }) => theme.light};
 `;
 
+const CheckMoreWrapper = styled.section`
+  margin-bottom: 300px;
+`;
+
+const CheckMoreContainer = styled.div`
+  max-width: 540px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  background-color: ${({ theme }) => theme.yellow};
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 60%;
+    height: 130%;
+    top: -10%;
+    right: 5%;
+    background-color: ${({ theme }) => theme.black};
+    z-index: -1;
+
+    @media (min-width: 1200px) {
+      height: 140%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+    flex-direction: row;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+  @media (min-width: 1400px) {
+    max-width: 1320px;
+  }
+  @media (min-width: 1920px) {
+    max-width: 1440px;
+  }
+`;
+
+const CheckMoreText = styled.div`
+  width: 100%;
+  padding: 50px 20px;
+
+  @media (min-width: 768px) {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 1200px) {
+    width: 70%;
+    padding: 50px 50px;
+  }
+`;
+
+const CheckMoreImg = styled.img`
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 40%;
+  }
+  @media (min-width: 1200px) {
+    width: 30%;
+  }
+`;
+
+const StyledHeading = styled(Heading)`
+  text-align: left;
+  font-size: ${({ theme }) => theme.headingM};
+  margin-bottom: 50px;
+
+  span {
+    display: block;
+  }
+
+  .heading--black {
+    font-size: ${({ theme }) => theme.headingS};
+
+    @media (min-width: 1400px) {
+      font-size: ${({ theme }) => theme.headingM};
+    }
+  }
+
+  .heading--white {
+    font-size: ${({ theme }) => theme.headingM};
+    color: ${({ theme }) => theme.white};
+    margin-left: 100px;
+
+    @media (min-width: 1400px) {
+      font-size: ${({ theme }) => theme.headingL};
+    }
+  }
+`;
+
 const Specialist = ({ data }) => {
   const specialist = data.datoCmsSpecialist;
   const allSpecialists = data.allDatoCmsSpecialist;
@@ -153,7 +257,31 @@ const Specialist = ({ data }) => {
         </InfoContainer>
       </InfoWrapper>
       <SpecialistPortfolio portfolio={portfolio} />
-      <FullOffer />
+      <CheckMoreWrapper>
+        <CheckMoreContainer>
+          <CheckMoreText className="jumbotron-specialist--trigger">
+            <StyledHeading>
+              <span
+                className="heading--black"
+                data-aos="fade-down"
+                data-aos-anchor=".jumbotron-specialist--trigger"
+              >
+                Spodobały Ci się nasze prace?
+              </span>
+              <span
+                className="heading--white"
+                data-aos="fade-down"
+                data-aos-delay="200"
+                data-aos-anchor=".jumbotron-specialist--trigger"
+              >
+                Sprawdź co jeszcze robimy
+              </span>
+            </StyledHeading>
+            <Button link="/oferta">OFERTA</Button>
+          </CheckMoreText>
+          <CheckMoreImg src={JumbotronSVG} alt="" />
+        </CheckMoreContainer>
+      </CheckMoreWrapper>
       <Contact />
       <Footer isServicePage="isServicePage" />
     </Layout>
