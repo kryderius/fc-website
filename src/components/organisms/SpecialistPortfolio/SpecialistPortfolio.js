@@ -103,12 +103,15 @@ const ImageHoverInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 `;
 
 const HoverTitle = styled(Text)`
   font-family: ${({ theme }) => theme.fontFamilyHeading};
   font-size: ${({ theme }) => theme.headingS};
 `;
+
+const HoverText = styled(Text)``;
 
 const HoverAuthor = styled(Text)`
   font-weight: ${({ theme }) => theme.medium};
@@ -139,16 +142,7 @@ const SpecialistPortfolio = ({ portfolio }) => {
               <GatsbyImage image={item.node.image.gatsbyImageData} />
               <ImageHoverInfo className="image-hover-info">
                 <HoverTitle>{item.node.title}</HoverTitle>
-                <HoverAuthor>
-                  <span className="author-before">Autor:</span>
-                  {item.node.author}
-                </HoverAuthor>
-                <Button
-                  link={`/specjalisci/${item.node.author.toLowerCase()}`}
-                  size="btn--portfolio"
-                >
-                  ZOBACZ PORTFOLIO
-                </Button>
+                <HoverText>{item.node.shortDesc}</HoverText>
               </ImageHoverInfo>
             </ImageContainer>
           ))}
