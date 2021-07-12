@@ -320,7 +320,7 @@ const OurOffer = ({ location }) => {
           onClick={(e) => handleButtonChange('earning')}
           className={activeButton === 'earning' && 'btn--active'}
         >
-          <ButtonText>Chcę więcej zarabiać</ButtonText>
+          <ButtonText>Chcę więcej sprzedawać</ButtonText>
         </FilterButton>
         <FilterButton
           onClick={(e) => handleButtonChange('image')}
