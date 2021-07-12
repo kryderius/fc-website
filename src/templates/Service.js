@@ -12,6 +12,7 @@ import Footer from '../components/Footer/Footer';
 import SubPageSVG from '../assets/svg/servicepage_header_shapes.svg';
 import CircleSVG from '../assets/svg/circle_stroke_yellow.svg';
 import CrossSVG from '../assets/svg/cross_black_sm.svg';
+import Submenu from '../components/organisms/Submenu/Submenu';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
@@ -218,7 +219,8 @@ const Service = ({ data }) => {
   const portfolio = data.allDatoCmsPortfolio;
 
   return (
-    <Layout>
+    <Layout title={service.name}>
+      <Submenu />
       <SubPageHeader
         background={require(`../assets/images/${service.image}.jpg`).default}
       >

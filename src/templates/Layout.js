@@ -8,6 +8,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { graphql, useStaticQuery } from 'gatsby';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,9 @@ const StyledMain = styled.main`
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 `;
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, title, description }) => {
+  const seo = useStaticQuery(query);
+
   useLayoutEffect(() => {
     setTimeout(() => {
       AOS.init({
@@ -32,7 +35,13 @@ const Layout = ({ children, title }) => {
         <title>
           {title ? `${title} | Freelance Concept` : `Freelance Concept`}
         </title>
-        <meta name="description" content="Agencja WWW" />
+        <meta
+          name="description"
+          content={
+            description ? description : seo.datoCmsMainSeo.metaDescription
+          }
+        />
+        <meta property="og:image" content={seo.datoCmsMainSeo.ogImage.url} />
         <html lang="pl" />
       </Helmet>
       <ThemeProvider theme={theme}>
@@ -43,5 +52,17 @@ const Layout = ({ children, title }) => {
     </>
   );
 };
+
+export const query = graphql`
+  query SEOQuery {
+    datoCmsMainSeo {
+      homepageTitle
+      metaDescription
+      ogImage {
+        url
+      }
+    }
+  }
+`;
 
 export default Layout;

@@ -15,6 +15,7 @@ import YourTurn from '../components/organisms/YourTurn/YourTurn';
 import Contact from '../components/organisms/Contact/Contact';
 import FindUs from '../components/organisms/FindUs/FindUs';
 import Footer from '../components/Footer/Footer';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const StyledHeading = styled(Heading)`
   text-transform: uppercase;
@@ -170,75 +171,86 @@ const JumbotronText = styled(Text)`
   margin: 30px 0 50px 0;
 `;
 
-const IndexPage = () => (
-  <Layout title="Marketing internetowy">
-    <SectionWrapper>
-      <SectionContainer>
-        <StyledHeading>
-          <div className="span-container">
-            <div data-aos="title-down">Wszystkie cyfrowe usługi</div> <br />{' '}
-          </div>
-          <div className="span-container">
-            <div
-              className="yellow-span"
-              data-aos="title-down"
-              data-aos-delay="200"
-            >
-              w jednym miejscu
+const IndexPage = () => {
+  const seo = useStaticQuery(query);
+  return (
+    <Layout title={seo.datoCmsMainSeo.homepageTitle}>
+      <SectionWrapper>
+        <SectionContainer>
+          <StyledHeading>
+            <div className="span-container">
+              <div data-aos="title-down">Wszystkie cyfrowe usługi</div> <br />{' '}
             </div>
-          </div>
-        </StyledHeading>
-        <HeroText
-          className="text--white"
-          data-aos="title-up"
-          data-aos-delay="400"
-        >
-          Poznaj naszych specjalistów z każdej branży!
-        </HeroText>
-        <Button link="/#czego-potrzebujesz" color="white">
-          SPRAWDŹ
-        </Button>
-      </SectionContainer>
-    </SectionWrapper>
-    <Offer />
-    <FullOffer />
-    <ContactJumbotron>
-      <JumbotronWrapper>
-        <JumbotronLeft>
-          <img src={JumbotronImg} alt="" />
-        </JumbotronLeft>
-        <JumbotronRight>
-          <JumbotronTitle as="h3" className="anim-trigger">
-            <span data-aos="title-down" data-aos-anchor=".anim-trigger">
-              Nie znalazłeś tego czego szukałeś?
-            </span>
-            <span
-              className="yellow"
-              data-aos="title-down"
-              data-aos-delay="200"
-              data-aos-anchor=".anim-trigger"
-            >
-              To nic takiego!
-            </span>
-          </JumbotronTitle>
-          <JumbotronText>
-            Nasz zespół lubi wyzwania, a co najważniejsze - nie boi się ich
-            podejmować! Napisz do nas, to nic nie kosztuje, a uzyskasz
-            indywidualną ofertę.
-          </JumbotronText>
-          <Button color="yellow" link="/#kontakt" fontSize="small">
-            BEZPŁATNA WYCENA
+            <div className="span-container">
+              <div
+                className="yellow-span"
+                data-aos="title-down"
+                data-aos-delay="200"
+              >
+                w jednym miejscu
+              </div>
+            </div>
+          </StyledHeading>
+          <HeroText
+            className="text--white"
+            data-aos="title-up"
+            data-aos-delay="400"
+          >
+            Poznaj naszych specjalistów z każdej branży!
+          </HeroText>
+          <Button link="/#czego-potrzebujesz" color="white">
+            SPRAWDŹ
           </Button>
-        </JumbotronRight>
-      </JumbotronWrapper>
-    </ContactJumbotron>
-    <WeAreWaiting />
-    <MeetUs />
-    <YourTurn />
-    <Contact />
-    <FindUs />
-    <Footer />
-  </Layout>
-);
+        </SectionContainer>
+      </SectionWrapper>
+      <Offer />
+      <FullOffer />
+      <ContactJumbotron>
+        <JumbotronWrapper>
+          <JumbotronLeft>
+            <img src={JumbotronImg} alt="" />
+          </JumbotronLeft>
+          <JumbotronRight>
+            <JumbotronTitle as="h3" className="anim-trigger">
+              <span data-aos="title-down" data-aos-anchor=".anim-trigger">
+                Nie znalazłeś tego czego szukałeś?
+              </span>
+              <span
+                className="yellow"
+                data-aos="title-down"
+                data-aos-delay="200"
+                data-aos-anchor=".anim-trigger"
+              >
+                To nic takiego!
+              </span>
+            </JumbotronTitle>
+            <JumbotronText>
+              Nasz zespół lubi wyzwania, a co najważniejsze - nie boi się ich
+              podejmować! Napisz do nas, to nic nie kosztuje, a uzyskasz
+              indywidualną ofertę.
+            </JumbotronText>
+            <Button color="yellow" link="/#kontakt" fontSize="small">
+              BEZPŁATNA WYCENA
+            </Button>
+          </JumbotronRight>
+        </JumbotronWrapper>
+      </ContactJumbotron>
+      <WeAreWaiting />
+      <MeetUs />
+      <YourTurn />
+      <Contact />
+      <FindUs />
+      <Footer />
+    </Layout>
+  );
+};
+
+export const query = graphql`
+  query HomepageSEO {
+    datoCmsMainSeo {
+      homepageTitle
+    }
+  }
+`;
 
 export default IndexPage;

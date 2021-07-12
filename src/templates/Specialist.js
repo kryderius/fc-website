@@ -233,7 +233,7 @@ const Specialist = ({ data }) => {
   const portfolio = data.allDatoCmsPortfolio;
 
   return (
-    <Layout>
+    <Layout title={`${specialist.name} - ${specialist.professionShort}`}>
       <SubPageHeader background={SpecialistHeaderImg}>
         <MainHeading data-aos="fade-up">
           Nasz <span className="heading--yellow">zespół</span>
@@ -294,6 +294,7 @@ export const query = graphql`
       name
       longDesc
       shortDesc
+      professionShort
       image {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
       }
@@ -316,6 +317,7 @@ export const query = graphql`
           title
           slug
           author
+          shortDesc
           image {
             gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
           }
