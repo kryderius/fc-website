@@ -10,7 +10,7 @@ import CircleYellowSVG from '../../../assets/svg/circle_stroke_yellow.svg';
 import CircleGreySVG from '../../../assets/svg/circle_grey_stroke.svg';
 import CrossYellowSVG from '../../../assets/svg/cross_yellow.svg';
 import TriangleDotsWhiteSVG from '../../../assets/svg/triangle_dots_white.svg';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const SectionWrapper = styled.section`
   padding: 0 15px;
@@ -291,9 +291,10 @@ const TriangleDotsWhite = styled.img`
   }
 `;
 
-const MeetUs = () => {
+const MeetUs = ({ data }) => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [canLoop, setCanLoop] = useState(true);
+  const specialist = useStaticQuery(query);
 
   const handleNavRightClick = () => {
     const { activeIndex } = swiperInstance;
@@ -415,6 +416,36 @@ const MeetUs = () => {
             }}
             onSwiper={setSwiperInstance}
           >
+            {specialist.allDatoCmsSpecialist.edges.map((item, index, i) => {
+              return (
+                <SwiperSlide key={index}>
+                  <SwiperBoxTeam
+                    data-aos="fade-up"
+                    data-aos-delay={`${index * 2}00`}
+                  >
+                    <ImageContainer className="image-container">
+                      <ImgNormal src={item.node.image.fluid.src} />
+                      <ImgFunny
+                        className="funny-img"
+                        src={item.node.image.fluid.src}
+                      />
+                    </ImageContainer>
+                    <HoverInfo className="hover-info">
+                      <Name>{item.node.name}</Name>
+                      <Profession>{item.node.professionShort}</Profession>
+                      <Button
+                        fontSize="small"
+                        size="btn--small"
+                        link={`/specjalisci/${item.node.name.toLowerCase()}`}
+                      >
+                        PORTFOLIO
+                      </Button>
+                    </HoverInfo>
+                  </SwiperBoxTeam>
+                </SwiperSlide>
+              );
+            })}
+            {/*
             {meetUsItems.map((item, index, i) => {
               return (
                 <SwiperSlide key={index}>
@@ -452,6 +483,7 @@ const MeetUs = () => {
                 </SwiperSlide>
               );
             })}
+            */}
           </Swiper>
           <TriangleDotsWhite src={TriangleDotsWhiteSVG} alt="" />
         </Slider>
@@ -497,24 +529,24 @@ const MeetUs = () => {
     </SectionWrapper>
   );
 };
-{
-  /*
+
 export const query = graphql`
-  query SpecialistTemplate {
+  query SpecialistSlider {
     allDatoCmsSpecialist {
       edges {
         node {
+          id
           name
           professionShort
           image {
-            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+            fluid {
+              src
+            }
           }
         }
       }
     }
   }
 `;
-*/
-}
 
 export default MeetUs;
