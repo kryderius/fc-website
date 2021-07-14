@@ -200,10 +200,10 @@ const Footer = ({ isServicePage }) => {
               <Link to="/komunikacja">Komunikacja</Link>
             </FooterMenuItem>
             <FooterMenuItem>
-              <Link to="/reklama">Reklama</Link>
+              <Link to="/reklama-w-internecie">Reklama</Link>
             </FooterMenuItem>
             <FooterMenuItem>
-              <Link to="/www">WWW</Link>
+              <Link to="/strony-sklepy-www">WWW</Link>
             </FooterMenuItem>
             <FooterMenuItem>
               <Link to="/seo-i-optymalizacja">SEO</Link>
