@@ -4,13 +4,14 @@ import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Heading from '../../atoms/Heading';
 import Button from '../../atoms/Button';
-import offerItems from './offerItems';
+//import offerItems from './offerItems';
 import Text from '../../atoms/Text';
 import TriangleDotsSVG from '../../../assets/svg/triangle_dots_yellow_black.svg';
 import CrossBlackSVG from '../../../assets/svg/cross_black_sm.svg';
 import CircleYellowSVG from '../../../assets/svg/circle_stroke_yellow.svg';
 import CrossGreySVG from '../../../assets/svg/cross_grey_rotate.svg';
 import FullOfferDotsSVG from '../../../assets/svg/fullOffer_dots.svg';
+import { graphql, useStaticQuery } from 'gatsby';
 
 SwiperCore.use([Navigation]);
 
@@ -287,6 +288,8 @@ const FullOffer = () => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [canLoop, setCanLoop] = useState(true);
 
+  const offerItems = useStaticQuery(query);
+
   const handleNavRightClick = () => {
     const { activeIndex } = swiperInstance;
 
@@ -373,7 +376,41 @@ const FullOffer = () => {
             }}
             onSwiper={setSwiperInstance}
           >
-            {offerItems.map((item, index, i) => {
+            {offerItems.allDatoCmsService.edges.map((item, index, i) => {
+              return (
+                <SwiperSlide key={index}>
+                  <SwiperBox
+                    data-aos="fade-up"
+                    data-aos-delay={`${index * 2}00`}
+                  >
+                    <SwiperImageWrapper>
+                      <div>
+                        <img
+                          src={
+                            require(`../../../assets/images/${item.node.image}.jpg`)
+                              .default
+                          }
+                          alt={item.node.image}
+                        />
+                      </div>
+                    </SwiperImageWrapper>
+                    <SwiperText>
+                      <BoxHeading>{item.node.name}</BoxHeading>
+                      <BoxParagraphBold>{item.node.shortDesc}</BoxParagraphBold>
+                      <BoxParagraph>{item.node.longDesc}</BoxParagraph>
+                      <BoxButton
+                        color="yellow"
+                        link={item.node.slug}
+                        fontSize="small"
+                      >
+                        SPRAWDŹ
+                      </BoxButton>
+                    </SwiperText>
+                  </SwiperBox>
+                </SwiperSlide>
+              );
+            })}
+            {/*offerItems.map((item, index, i) => {
               return (
                 <SwiperSlide key={index}>
                   <SwiperBox
@@ -406,7 +443,7 @@ const FullOffer = () => {
                   </SwiperBox>
                 </SwiperSlide>
               );
-            })}
+            })*/}
           </Swiper>
           <TriangleDots src={TriangleDotsSVG} alt="" />
           <FullOfferDots src={FullOfferDotsSVG} alt="" />
@@ -453,5 +490,23 @@ const FullOffer = () => {
     </SectionWrapper>
   );
 };
+
+export const query = graphql`
+  query FullOffer {
+    allDatoCmsService(sort: { fields: idNumber, order: ASC }) {
+      edges {
+        node {
+          name
+          locale
+          shortDesc
+          longDesc
+          slug
+          image
+          categoryFilter
+        }
+      }
+    }
+  }
+`;
 
 export default FullOffer;

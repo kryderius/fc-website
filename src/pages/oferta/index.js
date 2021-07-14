@@ -4,11 +4,12 @@ import Layout from '../../templates/Layout';
 import Heading from '../../components/atoms/Heading';
 import styled from 'styled-components';
 import Text from '../../components/atoms/Text';
-import offerItems from '../../components/organisms/FullOffer/offerItems';
+//import offerItems from '../../components/organisms/FullOffer/offerItems';
 import Button from '../../components/atoms/Button';
 import DotsYellowSVG from '../../assets/svg/dots_yellow.svg';
 import HeaderImg from '../../assets/images/FullOffer_Header.jpg';
 import Footer from '../../components/Footer/Footer';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
@@ -269,9 +270,11 @@ const BottomTextHeading = styled(Heading)`
   }
 `;
 
-const OurOffer = ({ location }) => {
+const OurOffer = ({ location, data }) => {
   const [isActiveFilter, setActiveFilter] = useState();
   const [activeButton, setActiveButton] = useState();
+
+  //const offerItems = useStaticQuery(query);
 
   const handleButtonChange = (e) => {
     if (isActiveFilter === e) {
@@ -330,7 +333,45 @@ const OurOffer = ({ location }) => {
         </FilterButton>
       </ButtonsContainer>
       <OfferItemsContainer>
-        {offerItems
+        {data.allDatoCmsService.edges
+          .filter((item, index) => {
+            if (!isActiveFilter) {
+              return true;
+            } else if (item.node.categoryFilter.includes(isActiveFilter)) {
+              return true;
+            } else if (isActiveFilter === 'all') {
+              return true;
+            }
+            return false;
+          })
+          .map((item, index) => {
+            return (
+              <OfferBox key={index}>
+                <OfferBoxImageWrapper>
+                  <img
+                    src={
+                      require(`../../assets/images/${item.node.image}.jpg`)
+                        .default
+                    }
+                    alt={item.name}
+                  />
+                </OfferBoxImageWrapper>
+                <OfferBoxText>
+                  <OfferBoxHeading as="h4">{item.node.name}</OfferBoxHeading>
+                  <OfferTextBold>{item.node.shortDesc}</OfferTextBold>
+                  <OfferTextThin>{item.node.longDesc}</OfferTextThin>
+                  <Button
+                    link={`/${item.node.slug}`}
+                    color="yellow"
+                    size="btn--offer"
+                  >
+                    SPRAWDŹ
+                  </Button>
+                </OfferBoxText>
+              </OfferBox>
+            );
+          })}
+        {/*offerItems
           .filter((item, index) => {
             if (!isActiveFilter) {
               return true;
@@ -367,7 +408,7 @@ const OurOffer = ({ location }) => {
                 </OfferBoxText>
               </OfferBox>
             );
-          })}
+          })*/}
         <DotsYellow src={DotsYellowSVG} alt="" />
         <BottomText>
           <BottomTextHeading as="h3">
@@ -388,5 +429,23 @@ const OurOffer = ({ location }) => {
     </Layout>
   );
 };
+
+export const query = graphql`
+  query AllServicesPage {
+    allDatoCmsService(sort: { fields: idNumber, order: ASC }) {
+      edges {
+        node {
+          name
+          locale
+          shortDesc
+          longDesc
+          slug
+          image
+          categoryFilter
+        }
+      }
+    }
+  }
+`;
 
 export default OurOffer;
