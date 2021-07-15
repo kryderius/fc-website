@@ -66,6 +66,10 @@ const NavListItem = styled.li`
     color: ${({ theme }) => theme.black};
     font-family: ${({ theme }) => theme.fontFamilyHeading};
     font-size: ${({ theme }) => theme.bodyS};
+
+    &.active--link {
+      color: ${({ theme }) => theme.yellow};
+    }
   }
 `;
 
@@ -94,25 +98,39 @@ const Submenu = () => {
         <NavListWrapper>
           <NavList className="nav-list">
             <NavListItem>
-              <Link to="/strategia">Strategia</Link>
+              <Link to="/strategia" activeClassName="active--link">
+                Strategia
+              </Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/branding">Branding</Link>
+              <Link to="/branding" activeClassName="active--link">
+                Branding
+              </Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/komunikacja">Komunikacja</Link>
+              <Link to="/komunikacja" activeClassName="active--link">
+                Komunikacja
+              </Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/reklama-w-internecie">Reklama</Link>
+              <Link to="/reklama-w-internecie" activeClassName="active--link">
+                Reklama
+              </Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/strony-sklepy-www">WWW</Link>
+              <Link to="/strony-sklepy-www" activeClassName="active--link">
+                WWW
+              </Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/seo-i-optymalizacja">SEO</Link>
+              <Link to="/seo-i-optymalizacja" activeClassName="active--link">
+                SEO
+              </Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/influencer-marketing">Influencer marketing</Link>
+              <Link to="/influencer-marketing" activeClassName="active--link">
+                Influencer marketing
+              </Link>
             </NavListItem>
           </NavList>
         </NavListWrapper>
