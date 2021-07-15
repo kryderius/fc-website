@@ -400,7 +400,7 @@ const FullOffer = () => {
                       <BoxParagraph>{item.node.longDesc}</BoxParagraph>
                       <BoxButton
                         color="yellow"
-                        link={item.node.slug}
+                        link={`/${item.node.slug}`}
                         fontSize="small"
                       >
                         SPRAWDŹ
