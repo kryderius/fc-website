@@ -9,7 +9,7 @@ import Button from '../../components/atoms/Button';
 import DotsYellowSVG from '../../assets/svg/dots_yellow.svg';
 import HeaderImg from '../../assets/images/FullOffer_Header.jpg';
 import Footer from '../../components/Footer/Footer';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
