@@ -4,7 +4,6 @@ import { gsap } from 'gsap';
 import Heading from '../../atoms/Heading';
 import Text from '../../atoms/Text';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import meetUsItems from './meetUsItems';
 import Button from '../../atoms/Button';
 import CircleYellowSVG from '../../../assets/svg/circle_stroke_yellow.svg';
 import CircleGreySVG from '../../../assets/svg/circle_grey_stroke.svg';
@@ -427,7 +426,11 @@ const MeetUs = ({ data }) => {
                       <ImgNormal src={item.node.image.fluid.src} />
                       <ImgFunny
                         className="funny-img"
-                        src={item.node.image.fluid.src}
+                        src={
+                          item.node.funnyImage === null
+                            ? undefined
+                            : item.node.funnyImage.fluid.src
+                        }
                       />
                     </ImageContainer>
                     <HoverInfo className="hover-info">
@@ -539,6 +542,11 @@ export const query = graphql`
           name
           professionShort
           image {
+            fluid {
+              src
+            }
+          }
+          funnyImage {
             fluid {
               src
             }
