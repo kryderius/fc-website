@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Heading from '../../atoms/Heading';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -154,6 +153,8 @@ const ImageContainer = styled.div`
   }
 `;
 
+{
+  /*
 const ImgNormal = styled.img`
   width: 130%;
   position: absolute;
@@ -171,6 +172,8 @@ const ImgFunny = styled.img`
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 `;
 
+*/
+}
 const Name = styled(Text)`
   font-family: ${({ theme }) => theme.fontFamilyHeading};
   text-transform: uppercase;
