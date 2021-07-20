@@ -17,16 +17,15 @@ const GlobalStyles = createGlobalStyle`
     //scroll-behavior: smooth;
   }
 
-
   ul{
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
 
-  
   #___gatsby {
     overflow: hidden;
+    scroll-behavior: smooth;
   }
 
   ::-webkit-scrollbar {
