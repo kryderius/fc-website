@@ -274,8 +274,6 @@ const OurOffer = ({ location, data }) => {
   const [isActiveFilter, setActiveFilter] = useState();
   const [activeButton, setActiveButton] = useState();
 
-  //const offerItems = useStaticQuery(query);
-
   const handleButtonChange = (e) => {
     if (isActiveFilter === e) {
       setActiveFilter('all');
@@ -297,7 +295,7 @@ const OurOffer = ({ location, data }) => {
       setActiveFilter('image');
       setActiveButton('image');
     }
-  }, []);
+  }, [location.state.activeFilter]);
 
   return (
     <Layout>
@@ -358,8 +356,8 @@ const OurOffer = ({ location, data }) => {
                 </OfferBoxImageWrapper>
                 <OfferBoxText>
                   <OfferBoxHeading as="h4">{item.node.name}</OfferBoxHeading>
-                  <OfferTextBold>{item.node.shortDesc}</OfferTextBold>
-                  <OfferTextThin>{item.node.longDesc}</OfferTextThin>
+                  <OfferTextBold>{item.node.sliderShortDesc}</OfferTextBold>
+                  <OfferTextThin>{item.node.sliderLongDesc}</OfferTextThin>
                   <Button
                     link={`/${item.node.slug}`}
                     color="yellow"
@@ -439,6 +437,8 @@ export const query = graphql`
           locale
           shortDesc
           longDesc
+          sliderShortDesc
+          sliderLongDesc
           slug
           image
           categoryFilter
