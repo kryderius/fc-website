@@ -43,9 +43,14 @@ const CrossBlack = styled.img`
 `;
 
 const CrossGrey = styled.img`
+  display: none;
   position: absolute;
   top: 18%;
   right: 15%;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
 `;
 
 const CircleYellow = styled.img`
@@ -162,7 +167,7 @@ const FullOfferDots = styled.img`
 
 const SwiperBox = styled.div`
   width: 280px;
-  height: 617px;
+  height: 700px;
   background-color: ${({ theme }) => theme.black};
   border-right: 1px solid ${({ theme }) => theme.yellow};
   display: flex;
@@ -171,6 +176,7 @@ const SwiperBox = styled.div`
 
   @media (min-width: 1200px) {
     width: 1080px;
+    height: 617px;
     flex-direction: row;
     border-right: none;
   }
@@ -179,7 +185,7 @@ const SwiperBox = styled.div`
 const SwiperImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 40%;
+  min-height: 40%;
   overflow: hidden;
   @media (min-width: 1200px) {
     width: 50%;
@@ -189,6 +195,7 @@ const SwiperImageWrapper = styled.div`
   div {
     position: absolute;
     width: 100%;
+    min-height: 100%;
     height: 100%;
     top: 50%;
     left: 50%;
@@ -215,6 +222,10 @@ const SwiperText = styled.div`
     width: 50%;
     height: 100%;
     align-items: flex-start;
+  }
+
+  a {
+    justify-self: flex-end;
   }
 `;
 
@@ -396,8 +407,10 @@ const FullOffer = () => {
                     </SwiperImageWrapper>
                     <SwiperText>
                       <BoxHeading>{item.node.name}</BoxHeading>
-                      <BoxParagraphBold>{item.node.shortDesc}</BoxParagraphBold>
-                      <BoxParagraph>{item.node.longDesc}</BoxParagraph>
+                      <BoxParagraphBold>
+                        {item.node.sliderShortDesc}
+                      </BoxParagraphBold>
+                      <BoxParagraph>{item.node.sliderLongDesc}</BoxParagraph>
                       <BoxButton
                         color="yellow"
                         link={`/${item.node.slug}`}
@@ -500,6 +513,8 @@ export const query = graphql`
           locale
           shortDesc
           longDesc
+          sliderLongDesc
+          sliderShortDesc
           slug
           image
           categoryFilter
