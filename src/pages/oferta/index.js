@@ -294,8 +294,11 @@ const OurOffer = ({ location, data }) => {
     } else if (location.state.activeFilter === 'image') {
       setActiveFilter('image');
       setActiveButton('image');
+    } else if (location.state.activeFilter === undefined) {
+      setActiveFilter(null);
+      setActiveButton(null);
     }
-  }, [location.state.activeFilter]);
+  }, []);
 
   return (
     <Layout>
