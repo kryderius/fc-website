@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../theme/theme';
@@ -9,6 +9,7 @@ import 'aos/dist/aos.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { graphql, useStaticQuery } from 'gatsby';
+import Cookies from '../components/organisms/Cookies/Cookies';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +19,7 @@ const StyledMain = styled.main`
 
 const Layout = ({ children, title, description }) => {
   const seo = useStaticQuery(query);
+  const [canBeDisplayedCookie, setCanBeDisplayedCookie] = useState(false);
 
   useLayoutEffect(() => {
     setTimeout(() => {
@@ -48,6 +50,10 @@ const Layout = ({ children, title, description }) => {
         <GlobalStyles />
         <Navigation />
         <StyledMain className="bg-color">{children}</StyledMain>
+        <Cookies
+          canBeDisplayed={canBeDisplayedCookie}
+          setCanBeDisplayed={setCanBeDisplayedCookie}
+        />
       </ThemeProvider>
     </>
   );
