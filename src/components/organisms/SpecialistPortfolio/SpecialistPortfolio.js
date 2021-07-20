@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Heading from '../../atoms/Heading';
 import Text from '../../atoms/Text';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { Link } from 'gatsby';
 import CloseSVG from '../../../assets/svg/cross_black_sm.svg';
 
 const PortfolioWrapper = styled.section``;
@@ -65,7 +64,8 @@ const ImagesWrapper = styled.div`
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: 100%;
+  //height: 100%;
+  height: 320px;
   position: relative;
   cursor: zoom-in;
 
@@ -114,18 +114,6 @@ const HoverTitle = styled(Text)`
 `;
 
 const HoverText = styled(Text)``;
-
-const HoverAuthor = styled(Text)`
-  font-weight: ${({ theme }) => theme.medium};
-  font-size: ${({ theme }) => theme.bodyS};
-  text-transform: uppercase;
-
-  .author-before {
-    font-weight: ${({ theme }) => theme.light};
-    text-transform: none;
-    margin-right: 10px;
-  }
-`;
 
 const Lightbox = styled.div`
   display: none;
@@ -219,10 +207,6 @@ const LightboxInfoAuthor = styled(Text)`
   span {
     font-weight: ${({ theme }) => theme.light};
   }
-`;
-
-const StyledAuthorLink = styled(Link)`
-  color: ${({ theme }) => theme.yellow};
 `;
 
 const SpecialistPortfolio = ({ portfolio }) => {

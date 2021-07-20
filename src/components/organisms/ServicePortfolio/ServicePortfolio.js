@@ -66,7 +66,8 @@ const ImagesWrapper = styled.div`
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: 100%;
+  //height: 100%;
+  height: 320px;
   position: relative;
   cursor: zoom-in;
 
@@ -280,7 +281,7 @@ const ServicePortfolio = ({ portfolio }) => {
             <img src={CloseSVG} alt="" />
           </CloseBtn>
           <LightboxWrapper>
-            <GatsbyImage image={activeImage} alt="" />
+            <GatsbyImage image={activeImage} alt="" quality={100} />
           </LightboxWrapper>
         </Lightbox>
       )}

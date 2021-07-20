@@ -153,8 +153,7 @@ const ImageContainer = styled.div`
   }
 `;
 
-{
-  /*
+/*
 const ImgNormal = styled.img`
   width: 130%;
   position: absolute;
@@ -173,7 +172,6 @@ const ImgFunny = styled.img`
 `;
 
 */
-}
 const Name = styled(Text)`
   font-family: ${({ theme }) => theme.fontFamilyHeading};
   text-transform: uppercase;
