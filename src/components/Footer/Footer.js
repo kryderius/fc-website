@@ -180,7 +180,7 @@ const Footer = ({ isServicePage }) => {
               <Link to="/#poznaj-nas">Poznaj nas</Link>
             </FooterMenuItem>
             <FooterMenuItem>
-              <Link to="/#kim-jestesmy">Kim jesteśmy</Link>
+              <Link to="/kim-jestesmy">Kim jesteśmy</Link>
             </FooterMenuItem>
             <FooterMenuItem>
               <Link to="/#kontakt">Kontakt</Link>
