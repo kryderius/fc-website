@@ -166,6 +166,11 @@ const TopRightSvg = styled.img`
   top: 0;
   right: 0;
   transform: translateY(-50%);
+  width: 60%;
+
+  @media (min-width: 1200px) {
+    width: auto;
+  }
 `;
 
 const Contact = () => {
