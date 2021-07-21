@@ -7,9 +7,12 @@ import FacebookSVG from '../../assets/svg/facebook.svg';
 import YouTubeSVG from '../../assets/svg/youtube.svg';
 import BehanceSVG from '../../assets/svg/behance.svg';
 import TwitterSVG from '../../assets/svg/twitter.svg';
+import Text from '../atoms/Text';
+import HeartSVG from '../../assets/svg/copy_heart.svg';
 
 const FooterWrapper = styled.footer`
   background-color: ${({ theme }) => theme.black};
+  padding: 0 15px;
 
   &.isServicePage {
     margin-top: 300px;
@@ -23,7 +26,7 @@ const FooterContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 100px 15px 100px 15px;
+  padding: 100px 0 50px 0;
   position: relative;
 
   @media (min-width: 768px) {
@@ -160,6 +163,49 @@ const SocialIcon = styled.a`
   }
 `;
 
+const CopyrightsContainer = styled.div`
+  max-width: 540px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 30px 0;
+  border-top: 1px solid ${({ theme }) => theme.white};
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+    justify-content: flex-end;
+  }
+  @media (min-width: 1400px) {
+    max-width: 1320px;
+  }
+  @media (min-width: 1920px) {
+    max-width: 1440px;
+  }
+`;
+
+const CopyrightsContent = styled(Text)`
+  font-size: ${({ theme }) => theme.bodyXS};
+  font-weight: ${({ theme }) => theme.light};
+  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.white};
+  white-space: nowrap;
+  margin: 0;
+
+  .copyrights--bold {
+    font-weight: ${({ theme }) => theme.medium};
+  }
+  .copy_heart {
+    display: inline-block;
+    transform: translateY(25%);
+    margin: 0 5px;
+  }
+`;
+
 const Footer = ({ isServicePage }) => {
   return (
     <FooterWrapper className={isServicePage}>
@@ -269,6 +315,15 @@ const Footer = ({ isServicePage }) => {
           </WrapperFourSocials>
         </WrapperFour>
       </FooterContainer>
+      <CopyrightsContainer>
+        <CopyrightsContent>
+          Stworzone z{' '}
+          <span className="copy_heart">
+            <img src={HeartSVG} alt="" />
+          </span>{' '}
+          przez <span className="copyrights--bold">Freelance Concept</span>
+        </CopyrightsContent>
+      </CopyrightsContainer>
     </FooterWrapper>
   );
 };
