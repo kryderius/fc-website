@@ -123,6 +123,7 @@ const BgText = styled.span`
 
 const WeAreWaiting = () => {
   const data = useStaticQuery(query);
+
   useEffect(() => {
     setTimeout(() => {
       gsap.to('.laptop-anim', 10, {
@@ -134,6 +135,7 @@ const WeAreWaiting = () => {
           end: 'bottom 25%',
         },
       });
+
       gsap.to('.bg-text', 10, {
         x: '-10%',
         scrollTrigger: {

@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
 
   #___gatsby {
     overflow: hidden;
-    //scroll-behavior: smooth;
+    scroll-behavior: smooth;
   }
   /*
   ::-webkit-scrollbar {

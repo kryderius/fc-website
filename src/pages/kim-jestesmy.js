@@ -646,7 +646,7 @@ const KimJestesmy = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout title="Kim jesteśmy i co robimy">
       <SubPageHeader background={HeaderIMG}>
         <MainHeading data-aos="fade-up">
           Kim <span className="mainHeading--yellow">jesteśmy</span>

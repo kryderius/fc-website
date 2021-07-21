@@ -352,7 +352,7 @@ const MeetUs = ({ data }) => {
           end: 'center 25%',
         },
       });
-    }, 1500);
+    }, 2000);
   }, []);
   return (
     <SectionWrapper className="bg--trigger" id="poznaj-nas">

@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 import OfferTopLeftSVG from '../../../assets/svg/offer_top_left.svg';
 import DotsTopRightSVG from '../../../assets/svg/dots_black.svg';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const SectionWrapper = styled.section`
   margin: 200px 0 0 0;

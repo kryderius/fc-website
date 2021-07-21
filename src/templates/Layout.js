@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../theme/theme';
@@ -11,15 +11,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from '../components/organisms/Cookies/Cookies';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const StyledMain = styled.main`
   transition: background-color 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  scroll-behavior: smooth;
 `;
 
 const Layout = ({ children, title, description }) => {
   const seo = useStaticQuery(query);
   const [canBeDisplayedCookie, setCanBeDisplayedCookie] = useState(false);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
 
   useLayoutEffect(() => {
     setTimeout(() => {
