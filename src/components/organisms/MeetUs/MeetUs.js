@@ -10,6 +10,7 @@ import CircleGreySVG from '../../../assets/svg/circle_grey_stroke.svg';
 import CrossYellowSVG from '../../../assets/svg/cross_yellow.svg';
 import TriangleDotsWhiteSVG from '../../../assets/svg/triangle_dots_white.svg';
 import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const SectionWrapper = styled.section`
   padding: 0 15px;
@@ -191,7 +192,7 @@ const ImageContainer = styled.div`
   height: 100%;
   overflow: hidden;
 `;
-
+/*
 const ImgNormal = styled.img`
   width: 130%;
   position: absolute;
@@ -199,7 +200,27 @@ const ImgNormal = styled.img`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+*/
+const ImgNormal = styled(GatsbyImage)`
+  width: 130%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+/*
 const ImgFunny = styled.img`
+  width: 130%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+`;
+*/
+
+const ImgFunny = styled(GatsbyImage)`
   width: 130%;
   opacity: 0;
   position: absolute;
@@ -423,7 +444,21 @@ const MeetUs = ({ data }) => {
                     data-aos-delay={`${index * 2}00`}
                   >
                     <ImageContainer className="image-container">
-                      <ImgNormal src={item.node.image.fluid.src} />
+                      {/*<ImgNormal src={item.node.image.fluid.src} />*/}
+                      <ImgNormal
+                        image={item.node.image.gatsbyImageData}
+                        alt=""
+                      />
+                      <ImgFunny
+                        className="funny-img"
+                        image={
+                          item.node.funnyImage === null
+                            ? undefined
+                            : item.node.funnyImage.gatsbyImageData
+                        }
+                        alt=""
+                      />
+                      {/*
                       <ImgFunny
                         className="funny-img"
                         src={
@@ -432,6 +467,7 @@ const MeetUs = ({ data }) => {
                             : item.node.funnyImage.fluid.src
                         }
                       />
+                      */}
                     </ImageContainer>
                     <HoverInfo className="hover-info">
                       <Name>{item.node.name}</Name>
@@ -545,11 +581,13 @@ export const query = graphql`
             fluid {
               src
             }
+            gatsbyImageData
           }
           funnyImage {
             fluid {
               src
             }
+            gatsbyImageData
           }
         }
       }
