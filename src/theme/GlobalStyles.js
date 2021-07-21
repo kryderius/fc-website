@@ -25,9 +25,9 @@ const GlobalStyles = createGlobalStyle`
 
   #___gatsby {
     overflow: hidden;
-    scroll-behavior: smooth;
+    //scroll-behavior: smooth;
   }
-
+  /*
   ::-webkit-scrollbar {
     width: 15px;
     height: 15px;
@@ -43,7 +43,7 @@ const GlobalStyles = createGlobalStyle`
     background: #000000;
     border-radius: 0px;
   }
-
+  */
 
   [data-aos="title-down"] {
   transform: translateY(-100%);

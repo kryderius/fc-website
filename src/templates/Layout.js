@@ -14,7 +14,7 @@ import Cookies from '../components/organisms/Cookies/Cookies';
 gsap.registerPlugin(ScrollTrigger);
 
 const StyledMain = styled.main`
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: background-color 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 `;
 
 const Layout = ({ children, title, description }) => {
