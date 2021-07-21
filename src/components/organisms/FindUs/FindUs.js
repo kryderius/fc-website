@@ -66,7 +66,7 @@ const SectionRight = styled.div`
   }
 `;
 
-const StyledLaptop = styled.img`
+const StyledGlobe = styled.img`
   position: absolute;
   bottom: -5%;
   left: -26%;
@@ -154,6 +154,7 @@ const CrossBottomRight = styled.img`
 
 const FindUs = () => {
   const data = useStaticQuery(query);
+
   useEffect(() => {
     setTimeout(() => {
       gsap.to('.globe-anim', 10, {
@@ -165,7 +166,7 @@ const FindUs = () => {
           end: 'bottom 25%',
         },
       });
-    }, 1500);
+    }, 2000);
   }, []);
 
   return (
@@ -173,7 +174,7 @@ const FindUs = () => {
       <SectionContainer>
         <SectionLeft className="globe-anim--trigger">
           <GatsbyImage image={data.findUs.childImageSharp.gatsbyImageData} />
-          <StyledLaptop src={GlobeIMG} alt="" className="globe-anim" />
+          <StyledGlobe src={GlobeIMG} alt="" className="globe-anim" />
           <StyledHeading className="findUs-heading--trigger">
             <div className="overflow">
               <div
