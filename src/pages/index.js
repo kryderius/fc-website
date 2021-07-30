@@ -174,7 +174,7 @@ const JumbotronText = styled(Text)`
 const IndexPage = () => {
   const seo = useStaticQuery(query);
   return (
-    <Layout title={seo.datoCmsMainSeo.homepageTitle}>
+    <Layout title={seo.datoCmsMainSeo.homepageTitle} isHomePage="isHomePage">
       <SectionWrapper>
         <SectionContainer>
           <StyledHeading>

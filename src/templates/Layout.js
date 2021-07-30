@@ -13,10 +13,9 @@ import Cookies from '../components/organisms/Cookies/Cookies';
 
 const StyledMain = styled.main`
   transition: background-color 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  scroll-behavior: smooth;
 `;
 
-const Layout = ({ children, title, description }) => {
+const Layout = ({ children, title, description, isHomePage }) => {
   const seo = useStaticQuery(query);
   const [canBeDisplayedCookie, setCanBeDisplayedCookie] = useState(false);
 
@@ -52,7 +51,7 @@ const Layout = ({ children, title, description }) => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Navigation />
-        <StyledMain className="bg-color">{children}</StyledMain>
+        <StyledMain className={`bg-color ${isHomePage}`}>{children}</StyledMain>
         <Cookies
           canBeDisplayed={canBeDisplayedCookie}
           setCanBeDisplayed={setCanBeDisplayedCookie}
