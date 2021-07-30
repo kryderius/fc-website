@@ -12,6 +12,7 @@ import CircleYellowSVG from '../../../assets/svg/circle_stroke_yellow.svg';
 import CrossGreySVG from '../../../assets/svg/cross_grey_rotate.svg';
 import FullOfferDotsSVG from '../../../assets/svg/fullOffer_dots.svg';
 import { graphql, useStaticQuery } from 'gatsby';
+import Tilt from 'react-parallax-tilt';
 
 SwiperCore.use([Navigation]);
 
@@ -200,14 +201,21 @@ const SwiperImageWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    img {
-      position: absolute;
-      width: auto;
+    .tilt-image-wrapper {
+      position: relative;
+      width: 100%;
       height: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+
+      img {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 `;
@@ -396,13 +404,19 @@ const FullOffer = () => {
                   >
                     <SwiperImageWrapper>
                       <div>
-                        <img
-                          src={
-                            require(`../../../assets/images/${item.node.image}.jpg`)
-                              .default
-                          }
-                          alt={item.node.image}
-                        />
+                        <Tilt
+                          className="tilt-image-wrapper"
+                          tiltMaxAngleX={10}
+                          tiltMaxAngleY={10}
+                        >
+                          <img
+                            src={
+                              require(`../../../assets/images/${item.node.image}.jpg`)
+                                .default
+                            }
+                            alt={item.node.image}
+                          />
+                        </Tilt>
                       </div>
                     </SwiperImageWrapper>
                     <SwiperText>

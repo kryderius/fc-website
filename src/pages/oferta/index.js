@@ -10,6 +10,7 @@ import DotsYellowSVG from '../../assets/svg/dots_yellow.svg';
 import HeaderImg from '../../assets/images/FullOffer_Header.jpg';
 import Footer from '../../components/Footer/Footer';
 import { graphql } from 'gatsby';
+import Tilt from 'react-parallax-tilt';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
@@ -196,13 +197,19 @@ const OfferBoxImageWrapper = styled.div`
   width: 100%;
   height: 45%;
 
-  img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120%;
-    height: auto;
-    transform: translate(-50%, -50%);
+  .tilt-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120%;
+      height: auto;
+      transform: translate(-50%, -50%);
+    }
   }
 `;
 
@@ -349,13 +356,19 @@ const OurOffer = ({ location, data }) => {
             return (
               <OfferBox key={index}>
                 <OfferBoxImageWrapper>
-                  <img
-                    src={
-                      require(`../../assets/images/${item.node.image}.jpg`)
-                        .default
-                    }
-                    alt={item.name}
-                  />
+                  <Tilt
+                    className="tilt-image-wrapper"
+                    tiltMaxAngleX={10}
+                    tiltMaxAngleY={10}
+                  >
+                    <img
+                      src={
+                        require(`../../assets/images/${item.node.image}.jpg`)
+                          .default
+                      }
+                      alt={item.name}
+                    />
+                  </Tilt>
                 </OfferBoxImageWrapper>
                 <OfferBoxText>
                   <OfferBoxHeading as="h4">{item.node.name}</OfferBoxHeading>
