@@ -581,13 +581,13 @@ export const query = graphql`
             fluid {
               src
             }
-            gatsbyImageData
+            gatsbyImageData(layout: CONSTRAINED, width: 400)
           }
           funnyImage {
             fluid {
               src
             }
-            gatsbyImageData
+            gatsbyImageData(layout: CONSTRAINED, width: 400)
           }
         }
       }
