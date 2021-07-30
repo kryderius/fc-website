@@ -123,10 +123,19 @@ const ServiceBoldText = styled(Text)`
 const ServiceLongText = styled(Text)`
   text-align: left;
   font-weight: ${({ theme }) => theme.light};
+
+  * {
+    font-weight: ${({ theme }) => theme.light}!important;
+  }
+
+  p:not(:last-child) {
+    margin-bottom: 15px;
+  }
 `;
 
 const CheckMoreWrapper = styled.section`
   margin-bottom: 300px;
+  margin-top: 100px;
 `;
 
 const CheckMoreContainer = styled.div`
@@ -256,7 +265,7 @@ const Specialist = ({ data }) => {
           </ImageWrapper>
         </InfoContainer>
       </InfoWrapper>
-      <SpecialistPortfolio portfolio={portfolio} />
+      {portfolio.edges.length && <SpecialistPortfolio portfolio={portfolio} />}
       <CheckMoreWrapper>
         <CheckMoreContainer>
           <CheckMoreText className="jumbotron-specialist--trigger">
