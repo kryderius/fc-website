@@ -162,7 +162,15 @@ const ServiceBoldText = styled(Text)`
 
 const ServiceLongText = styled(Text)`
   text-align: left;
-  font-weight: ${({ theme }) => theme.light};
+  font-weight: ${({ theme }) => theme.light}!important;
+
+  p {
+    font-weight: ${({ theme }) => theme.light}!important;
+  }
+
+  p:not(:last-child) {
+    margin-bottom: 15px;
+  }
 `;
 
 const IncludingList = styled.div`
@@ -254,7 +262,9 @@ const Service = ({ data }) => {
               <span className="service_title--yellow">{service.name}?</span>
             </ServiceTitle>
             <ServiceBoldText>{service.shortDesc}</ServiceBoldText>
-            <ServiceLongText>{service.longDesc}</ServiceLongText>
+            <ServiceLongText
+              dangerouslySetInnerHTML={{ __html: service.longDesc }}
+            />
           </TextWrapper>
           <CircleTopRight src={CircleSVG} alt="" />
           <CrossBottomLeft src={CrossSVG} alt="" />
