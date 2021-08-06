@@ -225,6 +225,8 @@ const SwiperText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  min-height: 60%;
   @media (min-width: 1200px) {
     padding: 100px 100px;
     width: 50%;
@@ -236,6 +238,8 @@ const SwiperText = styled.div`
     justify-self: flex-end;
   }
 `;
+
+const TopText = styled.div``;
 
 const StyledNavigation = styled.div`
   display: flex;
@@ -420,11 +424,13 @@ const FullOffer = () => {
                       </div>
                     </SwiperImageWrapper>
                     <SwiperText>
-                      <BoxHeading>{item.node.name}</BoxHeading>
-                      <BoxParagraphBold>
-                        {item.node.sliderShortDesc}
-                      </BoxParagraphBold>
-                      <BoxParagraph>{item.node.sliderLongDesc}</BoxParagraph>
+                      <TopText>
+                        <BoxHeading>{item.node.name}</BoxHeading>
+                        <BoxParagraphBold>
+                          {item.node.sliderShortDesc}
+                        </BoxParagraphBold>
+                        <BoxParagraph>{item.node.sliderLongDesc}</BoxParagraph>
+                      </TopText>
                       <BoxButton
                         color="yellow"
                         link={`/${item.node.slug}`}
