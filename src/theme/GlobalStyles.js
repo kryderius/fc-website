@@ -14,6 +14,9 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.white};
     font-family:  ${({ theme }) => theme.fontFamilyText};
   }
+  strong{
+    font-weight:  ${({ theme }) => theme.medium};
+  }
 
   ul{
     list-style-type: none;
