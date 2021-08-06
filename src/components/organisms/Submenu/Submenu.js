@@ -11,6 +11,7 @@ const SubmenuWrapper = styled.div`
   padding: 0 15px;
   z-index: 1090;
   background-color: ${({ theme }) => theme.white};
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.1);
   display: none;
   justify-content: center;
   align-items: center;
