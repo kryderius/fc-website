@@ -298,8 +298,8 @@ const Specialist = ({ data }) => {
 };
 
 export const query = graphql`
-  query SpecialistTemplate($name: String!) {
-    datoCmsSpecialist(name: { eq: $name }) {
+  query SpecialistTemplate($name: String!, $author: String!) {
+    datoCmsSpecialist(slug: { eq: $name }) {
       name
       longDesc
       shortDesc
@@ -312,6 +312,7 @@ export const query = graphql`
       edges {
         node {
           name
+          slug
           professionShort
           image {
             gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
@@ -319,7 +320,7 @@ export const query = graphql`
         }
       }
     }
-    allDatoCmsPortfolio(filter: { author: { eq: $name } }) {
+    allDatoCmsPortfolio(filter: { author: { eq: $author } }) {
       edges {
         node {
           id
