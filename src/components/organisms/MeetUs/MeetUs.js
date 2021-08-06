@@ -401,8 +401,7 @@ const MeetUs = ({ data }) => {
             </span>
           </StyledHeading>
           <StyledText>
-            Oto nasz zespół. Ekipa profesjonalistów, zapaleńców i przede
-            wszystkim pasjonatów.
+            Oto nasz zespół. Młodzi, dynamiczni, profesjonalni - pasjonaci!
           </StyledText>
         </Headline>
         <Slider>
@@ -475,7 +474,7 @@ const MeetUs = ({ data }) => {
                       <Button
                         fontSize="small"
                         size="btn--small"
-                        link={`/specjalisci/${item.node.name.toLowerCase()}`}
+                        link={`/specjalisci/${item.node.slug.toLowerCase()}`}
                       >
                         PORTFOLIO
                       </Button>
@@ -576,6 +575,7 @@ export const query = graphql`
         node {
           id
           name
+          slug
           professionShort
           image {
             fluid {

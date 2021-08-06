@@ -263,7 +263,7 @@ const SpecialistsSlider = ({ allSpecialists }) => {
                     <Button
                       fontSize="small"
                       size="btn--small"
-                      link={`/specjalisci/${item.node.name.toLowerCase()}`}
+                      link={`/specjalisci/${item.node.slug.toLowerCase()}`}
                     >
                       PORTFOLIO
                     </Button>

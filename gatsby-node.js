@@ -52,7 +52,7 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
   });
-
+  /*
   const getSpecialists = makeRequest(
     graphql,
     `
@@ -74,6 +74,35 @@ exports.createPages = ({ actions, graphql }) => {
         component: path.resolve(`src/templates/Specialist.js`),
         context: {
           name: node.name,
+        },
+      });
+    });
+  });
+  */
+
+  const getSpecialists = makeRequest(
+    graphql,
+    `
+    {
+        allDatoCmsSpecialist {
+            edges {
+                node {
+                    slug
+                    name
+                }
+            }
+        }
+    }
+    `
+  ).then((result) => {
+    // Create pages for each article.
+    result.data.allDatoCmsSpecialist.edges.forEach(({ node }) => {
+      createPage({
+        path: `/specjalisci/${node.slug.toLowerCase()}`,
+        component: path.resolve(`src/templates/Specialist.js`),
+        context: {
+          name: node.slug,
+          author: node.name,
         },
       });
     });
