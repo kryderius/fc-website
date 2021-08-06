@@ -169,7 +169,7 @@ const LampText = styled.div`
 
 const LampHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.headingM};
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   span {
     display: block;
@@ -182,6 +182,12 @@ const LampHeading = styled(Heading)`
   .lamp_heading--yellow {
     color: ${({ theme }) => theme.yellow};
   }
+`;
+
+const LampParagraph = styled(Text)`
+  margin-bottom: 100px;
+  width: 100%;
+  max-width: 800px;
 `;
 
 const LampBlocks = styled.div`
@@ -604,29 +610,31 @@ const CoopItems = [
     number: 1,
     name: 'Wywiad',
     desc:
-      'Zebranie informacji o firmie i zakresie potrzeb oraz ustanowienie celów.',
+      'Przeprowadzamy szczegółowy wywiad, by poznać Twoje preferencje oraz ustalić mierzalne cele do zdobycia.',
   },
   {
     number: 2,
     name: 'Oferta',
     desc:
-      'Wstępne określenie zakresu działań, sporządzenie kosztorysu oraz czasu realizacji.',
+      'Na podstawie zebranych informacji i przedstawiamy kompleksową ofertę, odpowiadającą potrzebom klienta.',
   },
   {
     number: 3,
     name: 'Formalności',
-    desc: 'Ustalenie warunków współpracy oraz podpisanie umowy.',
+    desc:
+      'Po procesie akceptacji oferty przychodzi czas na formalności - tutaj szczegółowo omawiamy warunki współpracy oraz podpisujemy umowę.',
   },
   {
     number: 4,
     name: 'Planowanie',
-    desc: 'Opracowanie szczegółowego planu działania.',
+    desc:
+      'To podstawa. Nasi klienci otrzymują pełny harmonogram działań, dzięki czemu wiedzą, w jakim czasie otrzymają poszczególne etapy projektu. Tworzymy dedykowany zespół dla klienta.',
   },
   {
     number: 5,
     name: 'Wdrożenie',
     desc:
-      'Realizacja projektu oraz wdrożenie. Dodatkowo tygodniowe raporty podsumowujące.',
+      'Praca wre! Realizujemy wcześniej określone założenia. W zależności od specyfiki projektu nasi klienci otrzymują zarówno tygodniowe podsumowania działań w ramach projektu, jak i comiesięczne raporty i rekomendacje.',
   },
 ];
 
@@ -684,16 +692,27 @@ const KimJestesmy = () => {
               </span>
             </GoalHeading>
             <GoalText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              ultricies gravida leo, quis blandit est finibus at. Sed posuere
-              elit non nisl suscipit maximus. Cras ultrices felis at aliquet
-              vestibulum. Morbi sodales condimentum mauris quis ullamcorper.
-              Donec mattis tellus nec dui consequat condimentum. Pellentesque
-              iaculis nec magna non sagittis. Nam aliquet at nunc vel egestas.
-              Vestibulum vel tincidunt metus, a gravida quam. Donec finibus
-              dictum accumsan. Aliquam mollis tortor urna, non scelerisque dui
-              euismod eu. Aenean est turpis, lobortis sit amet sem vitae,
-              pretium elementum lectus.
+              Naszym celem jest maksymalizacja Twojego zysku. To znaczy, że
+              freelance concept to efektywne i kompleksowe wsparcie marketingowe
+              Twojego biznesu w Internecie.
+              <br />
+              <br />
+              FREELANCE CONCEPT
+              <br />
+              Jesteśmy grupą freelancerów aktywnie działających w różnych
+              sferach marketingu. Wspólnie pracujemy na Twój sukces. Znajdziesz
+              wśród nas zarówno władców deadline’ów, jak i wirtuozów sztuki
+              wizualnej, miłośników psychologii osobowości czy tych, którzy
+              najlepiej porozumiewają się z… liczbami ;). To wszystko sprawia,
+              że nasza obietnica wartości jest uzasadniona - patrzymy na Twój
+              problem z każdej możliwej perspektywy, by wdrożyć najlepsze
+              rozwiązania w Twojej sytuacji.
+              <br />
+              <br />
+              Cenimy szeroko pojętą równowagę w życiu, dlatego łączymy przyjemne
+              z pożytecznym - współpracujemy ze sobą zdalnie, ponieważ dzięki
+              temu ograniczenia lokalizacyjne dla nas nie istnieją, a co
+              ważniejsze - Internet jest dla nas naturalnym środowiskiem :)
             </GoalText>
           </TextRight>
         </GoalContainer>
@@ -721,6 +740,30 @@ const KimJestesmy = () => {
                 Twoją markę w sieci!
               </span>
             </LampHeading>
+            <LampParagraph>
+              Prężnie działasz w swojej branży, świetnie znasz swoich klientów.
+              Dlatego doskonale zdajesz sobie sprawę, że obecność w Internecie
+              to już nieodłączny element Twojej zawodowej aktywności… ba! Często
+              to podstawa funkcjonowania. Nawet masz własną stronę, cyklicznie
+              publikujesz treści, ale… coś nie działa, nie przynosi to
+              oczekiwanych rezultatów?
+              <br />
+              <br />
+              <b>Jeśli tak - to jesteś we właściwym miejscu!</b>
+              <br />
+              <br />
+              Wiemy, jak komunikować się z Twoimi klientami oraz jak
+              konsekwentnie dotrzeć do tych potencjalnych. Szczegółowo
+              definiujemy Twoich klientów: poznajemy ich specyfikę, potrzeby
+              oraz preferencje. Dzięki temu wiemy, gdzie ich szukać i jak
+              rozmawiać, by Twoja marka osiągnęła założone cele. W zależności od
+              tego, co dokładnie chcesz osiągnąć - opracowujemy strategię
+              marketingową, w ramach której m.in. przeprowadzamy szczegółowy
+              audyt dotychczasowych działań, komunikację Twojej konkurencji,
+              badamy potencjał a przede wszystkim - dostarczamy zestaw narzędzi
+              marketingowych, które pozwolą nam spełnić Twoje oczekiwania
+              biznesowe.
+            </LampParagraph>
             <LampBlocks className="box-anim--trigger">
               <FeatureBox
                 data-aos-anchor=".box-anim--trigger"
@@ -769,12 +812,15 @@ const KimJestesmy = () => {
               <span>Jak</span> działamy?
             </HowWeWorkHeading>
             <HowWeWorkText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              ultricies gravida leo, quis blandit est finibus at. Sed posuere
-              elit non nisl suscipit maximus. Cras ultrices felis at aliquet
-              vestibulum. Morbi sodales condimentum mauris quis ullamcorper.
-              Donec mattis tellus nec dui consequat condimentum. Pellentesque
-              iaculis nec magna non sagittis. Nam aliquet at nunc vel egestas.
+              <b>Szybko - Sprawnie - Efektywnie</b>
+              <br />
+              <br />
+              Na dobry początek poznajemy Twoje potrzeby i oczekiwania, by na
+              tej podstawie dokładnie określić sytuację, w której znajduje się
+              Twoja firma oraz wyznaczyć kamienie milowe - które realnie
+              pomożemy Ci osiągnąć. Każdy nowy projekt jest dla nas fascynującym
+              światem danych, które możemy przetworzyć i przekuć w kolejny
+              sukces.
             </HowWeWorkText>
           </HowWeWorkRight>
         </HowWeWorkContainer>
