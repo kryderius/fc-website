@@ -250,7 +250,7 @@ const Specialist = ({ data }) => {
       </SubPageHeader>
       <SpecialistsSlider allSpecialists={allSpecialists} />
       <InfoWrapper>
-        <InfoContainer>
+        <InfoContainer id="info">
           <TextWrapper>
             <SpecialistName data-aos="fade-up">
               {specialist.name}

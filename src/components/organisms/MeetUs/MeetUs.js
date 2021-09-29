@@ -11,6 +11,7 @@ import CrossYellowSVG from '../../../assets/svg/cross_yellow.svg';
 import TriangleDotsWhiteSVG from '../../../assets/svg/triangle_dots_white.svg';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
 
 const SectionWrapper = styled.section`
   padding: 0 15px;
@@ -102,7 +103,7 @@ const Slider = styled.div`
   }
 `;
 
-const SwiperBoxTeam = styled.div`
+const SwiperBoxTeam = styled(Link)`
   width: 280px;
   height: 420px;
   background-color: ${({ theme }) => theme.white};
@@ -116,7 +117,7 @@ const SwiperBoxTeam = styled.div`
 
   @media (min-width: 1200px) {
     width: 360px;
-    height: 540px;
+    height: 460px;
     flex-direction: row;
     border-right: none;
   }
@@ -441,6 +442,7 @@ const MeetUs = ({ data }) => {
                   <SwiperBoxTeam
                     data-aos="fade-up"
                     data-aos-delay={`${index * 2}00`}
+                    to={`/specjalisci/${item.node.slug.toLowerCase()}#info`}
                   >
                     <ImageContainer className="image-container">
                       {/*<ImgNormal src={item.node.image.fluid.src} />*/}
@@ -474,7 +476,7 @@ const MeetUs = ({ data }) => {
                       <Button
                         fontSize="small"
                         size="btn--small"
-                        link={`/specjalisci/${item.node.slug.toLowerCase()}`}
+                        link={`/specjalisci/${item.node.slug.toLowerCase()}#info`}
                       >
                         PORTFOLIO
                       </Button>

@@ -105,8 +105,10 @@ const StyledHeading = styled(Heading)`
 
   .text-stroke {
     color: ${({ theme }) => theme.black};
-    -webkit-text-stroke: 1px ${({ theme }) => theme.black};
-    -webkit-text-fill-color: transparent;
+    //-webkit-text-stroke: 1px ${({ theme }) => theme.black};
+    //-webkit-text-fill-color: transparent;
+    font-family: ${({ theme }) => theme.fontFamilyHeading};
+    font-weight: ${({ theme }) => theme.medium};
   }
 
   .overflow {

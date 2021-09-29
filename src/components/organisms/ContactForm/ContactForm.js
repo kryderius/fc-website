@@ -15,7 +15,7 @@ const FormWrapper = styled.div`
     outline: none;
     padding: 10px 10px;
     font-family: ${({ theme }) => theme.fontFamilyText};
-    font-size: ${({ theme }) => theme.headingS};
+    font-size: ${({ theme }) => theme.bodyS};
     margin-bottom: 50px;
   }
   input::placeholder,
@@ -112,7 +112,7 @@ const LastLine = styled.div`
     position: relative;
     padding-left: 30px;
     margin-bottom: 50px;
-
+    font-size: ${({ theme }) => theme.bodyXS};
     @media (min-width: 768px) {
       margin-bottom: 0;
     }
@@ -210,6 +210,7 @@ const ContactForm = () => {
   const [openErrorMsg, setOpenErrorMsg] = useState(false);
   const [isFormSubmited, setFormSubmited] = useState(false);
   const [isRecaptchaTrue, setRecaptchaTrue] = useState(false);
+  const [activeNeeds, setActiveNeeds] = useState('');
 
   const isReCAPTCHAVerifed = () => {
     setRecaptchaTrue(true);
@@ -218,6 +219,12 @@ const ContactForm = () => {
   const isReCAPTCHAExpired = () => {
     setRecaptchaTrue(false);
   };
+
+  const handleBlur = (e) => {
+    setActiveNeeds(e);
+  };
+
+  console.log(activeNeeds);
 
   return (
     <FormWrapper>
@@ -240,17 +247,22 @@ const ContactForm = () => {
         </FormSubmitedInfoButton>
       </FormSubmitedInfoReCaptcha>
       <Formik
+        enableReinitialize={true}
         initialValues={{
           firstName: '',
+          lastName: '',
           email: '',
           phone: '',
-          needs: '',
+          needs: { activeNeeds },
           message: '',
+          additionalNeeds: '',
         }}
         onSubmit={(values, actions) => {
           if (!isRecaptchaTrue) {
             setOpenErrorMsg(true);
           } else {
+            alert(JSON.stringify(values, null, 2))
+              /*
             axios.defaults.headers.post['Content-Type'] = 'application/json';
             axios
               .all([
@@ -258,13 +270,19 @@ const ContactForm = () => {
                   'https://formsubmit.co/ajax/5fbd87b9094f144a04faa702eb1e1518',
                   {
                     name: values.firstName,
+                    lastName: values.lastName,
                     email: values.email,
                     phone: values.phone ? values.phone : 'Nie podano',
                     needs: values.needs,
+                    additionalNeeds: values.additionalNeeds
+                      ? values.additionalNeeds
+                      : 'N/A',
                     message: values.message,
                   }
                 ),
+                
 
+                
                 axios.post(
                   'https://formsubmit.co/ajax/m.gorska@freelanceconcept.pl',
                   {
@@ -275,7 +293,9 @@ const ContactForm = () => {
                     message: values.message,
                   }
                 ),
+                
               ])
+              */
               .then((response) => console.log('Wysłano email'))
               .catch((error) => {
                 alert(
@@ -284,6 +304,7 @@ const ContactForm = () => {
                 setFormSubmited(false);
               });
             actions.setSubmitting(false);
+            actions.resetForm();
             setFormSubmited(true);
             setOpenErrorMsg(false);
           }
@@ -319,13 +340,28 @@ const ContactForm = () => {
             id="needs"
             name="needs"
             placeholder="Czego potrzebujesz?*"
+            value={activeNeeds}
+            onChange={(e) => handleBlur(e.target.value)}
             required
           >
-            <option>Czego potrzebujesz?*</option>
-            <option>Chcę zbudować markę</option>
-            <option>Chcę więcej sprzedawać</option>
-            <option>Zadbajcie o moj wizerunek</option>
+            <option value="Czego potrzebujesz?">Czego potrzebujesz?*</option>
+            <option value="Chcę zbudować markę">Chcę zbudować markę</option>
+            <option value="Chcę więcej sprzedawać">
+              Chcę więcej sprzedawać
+            </option>
+            <option value="Zadbajcie o mój wizerunek">
+              Zadbajcie o mój wizerunek
+            </option>
+            <option value="other">Inna (pozwól mi wpisać)</option>
           </Field>
+          {activeNeeds === 'other' && (
+            <Field
+              id="additionalNeeds"
+              name="additionalNeeds"
+              placeholder="Temat"
+              required
+            />
+          )}
           <Field
             as="textarea"
             id="message"

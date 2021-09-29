@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 
 const SubmenuWrapper = styled.div`
   position: fixed;
-  top: 100px;
+  top: 80px;
   left: 0;
   width: 100%;
   height: 75px;
@@ -129,8 +129,8 @@ const Submenu = () => {
               </Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/influencer-marketing" activeClassName="active--link">
-                Influencer marketing
+              <Link to="/grafika" activeClassName="active--link">
+                Grafika
               </Link>
             </NavListItem>
           </NavList>

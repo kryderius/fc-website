@@ -13,6 +13,7 @@ import CrossGreySVG from '../../../assets/svg/cross_grey_rotate.svg';
 import FullOfferDotsSVG from '../../../assets/svg/fullOffer_dots.svg';
 import { graphql, useStaticQuery } from 'gatsby';
 import Tilt from 'react-parallax-tilt';
+import { Link } from 'gatsby';
 
 SwiperCore.use([Navigation]);
 
@@ -75,6 +76,7 @@ const SectionContainer = styled.div`
   }
   @media (min-width: 1200px) {
     max-width: 1140px;
+    margin-bottom: 100px;
   }
   @media (min-width: 1400px) {
     max-width: 1320px;
@@ -112,12 +114,16 @@ const BigHeading = styled.span`
   font-size: ${({ theme }) => theme.headingM};
   color: ${({ theme }) => theme.yellow};
   @media (min-width: 1200px) {
-    font-size: ${({ theme }) => theme.headingXL};
+    font-size: ${({ theme }) => theme.headingL};
   }
 `;
 
 const SmallHeading = styled.span`
   margin-left: 20%;
+  font-size: ${({ theme }) => theme.headingS};
+  @media (min-width: 1200px) {
+    font-size: ${({ theme }) => theme.headingM};
+  }
 `;
 
 const Slider = styled.div`
@@ -166,18 +172,19 @@ const FullOfferDots = styled.img`
   transform: translateY(-50%);
 `;
 
-const SwiperBox = styled.div`
+const SwiperBox = styled(Link)`
   width: 280px;
-  height: 700px;
+  height: 600px;
   background-color: ${({ theme }) => theme.black};
   border-right: 1px solid ${({ theme }) => theme.yellow};
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
 
   @media (min-width: 1200px) {
     width: 1080px;
-    height: 617px;
+    height: 500px;
     flex-direction: row;
     border-right: none;
   }
@@ -364,7 +371,7 @@ const FullOffer = () => {
               pełną ofertę
             </SmallHeading>
           </StyledHeading>
-          <Button link="/oferta" color="">
+          <Button link="/oferta" color="" fontSize="small">
             POKAŻ WSZYSTKO
           </Button>
         </Title>
@@ -405,6 +412,7 @@ const FullOffer = () => {
                   <SwiperBox
                     data-aos="fade-up"
                     data-aos-delay={`${index * 2}00`}
+                    to={`/${item.node.slug}`}
                   >
                     <SwiperImageWrapper>
                       <div>

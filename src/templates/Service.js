@@ -55,7 +55,7 @@ const AboutServiceContainer = styled.div`
     flex-direction: row;
   }
   @media (min-width: 1400px) {
-    padding: 100px 0;
+    padding: 200px 0 100px 0;
     padding-right: calc((100vw - 1320px) / 2);
   }
   @media (min-width: 1920px) {
@@ -194,9 +194,9 @@ const HeaderSvg = styled.img`
   transform: translateY(-0.5%);
 
   @media (min-width: 1200px) {
-    width: 800px;
+    width: 500px;
     right: 10px;
-    transform: translateY(-5.5%);
+    transform: translateY(-8.5%);
   }
 `;
 
@@ -205,6 +205,7 @@ const CircleTopRight = styled.img`
   bottom: 10%;
   right: 20%;
   display: none;
+  z-index: -1;
 
   @media (min-width: 1200px) {
     display: block;
@@ -216,6 +217,7 @@ const CrossBottomLeft = styled.img`
   bottom: 0%;
   display: none;
   right: 50%;
+  z-index: -1;
 
   @media (min-width: 1200px) {
     display: block;

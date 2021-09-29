@@ -59,7 +59,7 @@ const WrapperOne = styled.div`
 const FooterLogo = styled.img`
   width: 30%;
   @media (min-width: 1200px) {
-    width: 50%;
+    width: 30%;
   }
 `;
 
@@ -75,8 +75,8 @@ const WrapperTwo = styled.div`
 
 const FooterHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
-  font-size: ${({ theme }) => theme.headingS};
-  margin-bottom: 30px;
+  font-size: ${({ theme }) => theme.bodyS};
+  margin-bottom: 20px;
   text-align: left;
   position: relative;
   z-index: 1020;
@@ -86,8 +86,8 @@ const FooterHeading = styled(Heading)`
     content: '';
     bottom: 0;
     left: -2px;
-    width: 31px;
-    height: 14px;
+    width: 25px;
+    height: 10px;
     background-color: ${({ theme }) => theme.yellow};
     z-index: -1;
   }
@@ -97,13 +97,19 @@ const FooterMenu = styled.ul``;
 
 const FooterMenuItem = styled.li`
   &:not(:last-child) {
-    margin-bottom: 15px;
+    margin-bottom: 7px;
   }
   a {
     color: ${({ theme }) => theme.white};
     text-decoration: none;
     font-weight: ${({ theme }) => theme.light};
-    font-size: ${({ theme }) => theme.bodyS};
+    font-size: ${({ theme }) => theme.bodyXS};
+  }
+  span {
+    color: ${({ theme }) => theme.white};
+    text-decoration: none;
+    font-weight: ${({ theme }) => theme.light};
+    font-size: ${({ theme }) => theme.bodyXS};
   }
 `;
 
@@ -144,7 +150,7 @@ const ContactBoxItem = styled.a`
     margin-left: 15px;
     font-family: ${({ theme }) => theme.fontFamilyText};
     font-weight: ${({ theme }) => theme.light};
-    font-size: ${({ theme }) => theme.bodyS};
+    font-size: ${({ theme }) => theme.bodyXS};
     color: ${({ theme }) => theme.white};
   }
 
@@ -213,6 +219,25 @@ const Footer = ({ isServicePage }) => {
         <WrapperOne>
           <FooterLogo src={LogoPNG} alt="Logo" />
         </WrapperOne>
+
+        <WrapperTwo>
+          <FooterHeading>O firmie</FooterHeading>
+          <FooterMenu>
+            <FooterMenuItem>
+              <span>NO Project</span>
+            </FooterMenuItem>
+            <FooterMenuItem>
+              <span>ul. Kochanowskiego 4</span>
+            </FooterMenuItem>
+            <FooterMenuItem>
+              <span>09-300 Żuromin</span>
+            </FooterMenuItem>
+            <FooterMenuItem>
+              <span>NIP: 511 028 42 19</span>
+            </FooterMenuItem>
+          </FooterMenu>
+        </WrapperTwo>
+
         <WrapperTwo>
           <FooterHeading>Menu</FooterHeading>
           <FooterMenu>
@@ -233,6 +258,7 @@ const Footer = ({ isServicePage }) => {
             </FooterMenuItem>
           </FooterMenu>
         </WrapperTwo>
+
         <WrapperThree>
           <FooterHeading>Oferta</FooterHeading>
           <FooterMenu>
@@ -265,8 +291,8 @@ const Footer = ({ isServicePage }) => {
             <ContactBoxWrapper>
               <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
                 <svg
-                  width="25"
-                  height="20"
+                  width="20"
+                  height="15"
                   viewBox="0 0 41 33"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -280,8 +306,8 @@ const Footer = ({ isServicePage }) => {
               </ContactBoxItem>
               <ContactBoxItem href="tel:513625502">
                 <svg
-                  width="25"
-                  height="25"
+                  width="20"
+                  height="20"
                   viewBox="0 0 41 41"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"

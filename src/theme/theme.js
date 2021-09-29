@@ -11,6 +11,7 @@ export const theme = {
   bold: '900',
 
   bodyXS: '14px',
+  bodyAlt: '16px',
   bodyS: '18px',
 
   headingS: '24px',

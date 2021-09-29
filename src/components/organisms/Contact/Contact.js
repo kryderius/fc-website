@@ -42,7 +42,7 @@ const SectionLeft = styled.div`
   position: relative;
 
   @media (min-width: 1200px) {
-    width: 45%;
+    width: 55%;
   }
 `;
 const SectionRight = styled.div`
@@ -51,7 +51,7 @@ const SectionRight = styled.div`
   flex-direction: column;
 
   @media (min-width: 1200px) {
-    width: 55%;
+    width: 45%;
   }
 `;
 const StyledHeading = styled(Heading)`
@@ -169,7 +169,7 @@ const TopRightSvg = styled.img`
   width: 60%;
 
   @media (min-width: 1200px) {
-    width: auto;
+    width: 30%;
   }
 `;
 
@@ -204,14 +204,16 @@ const Contact = () => {
             </span>
           </StyledHeading>
           <MobileText>
-            Wypełnij formularz (uzyskaj bezpłatną wycenę) lub skontaktuj się z
-            nami telefonicznie
+            Masz pytania? Wypełnij formularz i daj nam 24h na odpowiedź! Lub po
+            prostu skontaktuj się z nami telefonicznie - porozmawiajmy o Twoich
+            potrzebach.
           </MobileText>
           <ContactBox>
             <ContactBoxWrapper>
               <ContactBoxText>
-                Wypełnij formularz (uzyskaj bezpłatną wycenę) lub skontaktuj się
-                z nami telefonicznie
+                Masz pytania? Wypełnij formularz i daj nam 24h na odpowiedź! Lub
+                po prostu skontaktuj się z nami telefonicznie - porozmawiajmy o
+                Twoich potrzebach.
               </ContactBoxText>
               <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
                 <svg

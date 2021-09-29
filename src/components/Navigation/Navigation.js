@@ -17,7 +17,7 @@ const NavWrapper = styled.div`
   &.nav--fixed {
     background-color: ${({ theme }) => theme.white};
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    height: 100px;
+    height: 80px;
     display: flex;
     justify-content: center;
 
@@ -88,6 +88,9 @@ const LogoWrapper = styled(Link)`
 
 const NavListWrapper = styled.div`
   display: none;
+  * {
+    text-decoration: none;
+  }
   @media (min-width: 1200px) {
     display: flex;
   }
@@ -295,6 +298,11 @@ const Navigation = () => {
                 Kim jesteśmy
               </Link>
             </NavMobileListItem>
+            <NavMobileListItem>
+              <Link to="/blog" onClick={openHamburger}>
+                Baza wiedzy
+              </Link>
+            </NavMobileListItem>
             <NavMobileListItem onClick={openHamburger}>
               <StyledButton link="/#kontakt" color="">
                 Kontakt
@@ -315,6 +323,9 @@ const Navigation = () => {
             </NavListItem>
             <NavListItem>
               <Link to="/kim-jestesmy">Kim jesteśmy</Link>
+            </NavListItem>
+            <NavListItem>
+              <Link to="/blog">Baza wiedzy</Link>
             </NavListItem>
             <StyledButton link="/#kontakt" color="yellow">
               Kontakt

@@ -9,7 +9,7 @@ const ButtonWrapper = styled(Link)`
   background: transparent;
   width: auto;
   max-width: 340px;
-  height: 69px;
+  height: 60px;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -129,7 +129,7 @@ const ButtonWrapper = styled(Link)`
 
 const Text = styled.p`
   color: white;
-  font-size: ${({ theme }) => theme.bodyS};
+  font-size: ${({ theme }) => theme.bodyXS};
   font-family: ${({ theme }) => theme.fontFamilyHeading};
 `;
 
@@ -138,8 +138,8 @@ const Button = ({ children, link, color, fontSize, size }) => {
     <ButtonWrapper to={link} className={`${color} ${fontSize} ${size}`}>
       <Text>{children}</Text>
       <svg
-        width="33"
-        height="21"
+        width="30"
+        height="18"
         viewBox="0 0 33 21"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

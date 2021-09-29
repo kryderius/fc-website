@@ -77,12 +77,16 @@ const BigHeading = styled.span`
   font-size: ${({ theme }) => theme.headingM};
   color: ${({ theme }) => theme.white};
   @media (min-width: 1200px) {
-    font-size: ${({ theme }) => theme.headingXL};
+    font-size: ${({ theme }) => theme.headingL};
   }
 `;
 
 const SmallHeading = styled.span`
   margin-left: 12%;
+  font-size: ${({ theme }) => theme.headingS};
+  @media (min-width: 1200px) {
+    font-size: ${({ theme }) => theme.headingM};
+  }
 `;
 
 const Blocks = styled.div`
@@ -96,8 +100,8 @@ const Blocks = styled.div`
 
 const Block = styled(Link)`
   position: relative;
-  width: 280px;
-  height: 325px;
+  width: 220px;
+  height: 300px;
   background-color: ${({ theme }) => theme.white};
   border-radius: 40px 0 40px 0;
   box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.1),
@@ -197,10 +201,10 @@ const OfferTopRight = styled.div`
   }
 
   @media (min-width: 1200px) {
-    width: 180px;
+    width: 120px;
   }
   @media (min-width: 1400px) {
-    width: 230px;
+    width: 180px;
   }
 `;
 
@@ -245,8 +249,8 @@ const Offer = () => {
             data-aos-anchor=".blocks--trigger"
           >
             <svg
-              width="101"
-              height="101"
+              width="60"
+              height="60"
               viewBox="0 0 101 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -323,8 +327,8 @@ const Offer = () => {
             data-aos-delay="200"
           >
             <svg
-              width="101"
-              height="101"
+              width="60"
+              height="60"
               viewBox="0 0 101 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -393,8 +397,8 @@ const Offer = () => {
             data-aos-delay="400"
           >
             <svg
-              width="101"
-              height="100"
+              width="60"
+              height="60"
               viewBox="0 0 101 100"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

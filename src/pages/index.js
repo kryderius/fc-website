@@ -16,6 +16,7 @@ import Contact from '../components/organisms/Contact/Contact';
 import FindUs from '../components/organisms/FindUs/FindUs';
 import Footer from '../components/Footer/Footer';
 import { graphql, useStaticQuery } from 'gatsby';
+import HeroSlider from '../components/organisms/HeroSlider/HeroSlider';
 
 const StyledHeading = styled(Heading)`
   text-transform: uppercase;
@@ -175,7 +176,8 @@ const IndexPage = () => {
   const seo = useStaticQuery(query);
   return (
     <Layout title={seo.datoCmsMainSeo.homepageTitle} isHomePage="isHomePage">
-      <SectionWrapper>
+      {/*
+<SectionWrapper>
         <SectionContainer>
           <StyledHeading>
             <div className="span-container">
@@ -203,6 +205,10 @@ const IndexPage = () => {
           </Button>
         </SectionContainer>
       </SectionWrapper>
+      */}
+
+      <HeroSlider />
+
       <Offer />
       <FullOffer />
       <ContactJumbotron>
