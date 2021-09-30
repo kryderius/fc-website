@@ -350,31 +350,27 @@ const MeetUs = ({ data }) => {
       gsap.to('.bg-color', {
         backgroundColor: '#000000',
         scrollTrigger: {
-          /*
           trigger: '.bg--trigger',
           scrub: true,
           start: 'top 75%',
           end: 'top 25%',
-          markers: true,
-          */
+          /*
           trigger: '.bg--trigger',
           start: 'top 50%',
           end: 'bottom 50%',
           onEnter: () => gsap.to('.bg-color', { backgroundColor: '#000000' }),
+          */
         },
       });
-      /*
       gsap.to('.bg-color', {
         backgroundColor: '#ffffff',
         scrollTrigger: {
           trigger: '.bg--trigger',
           start: 'bottom 75%',
           end: '+=50',
-          markers: true,
-          //toggleActions: 'play none none reset',
+          toggleActions: 'play none none reset',
         },
       });
-      */
       gsap.to('.bgtext-meetus', {
         x: '10%',
         scrollTrigger: {
