@@ -126,7 +126,7 @@ const JumbotronWrapper = styled.div`
 const JumbotronLeft = styled.div`
   width: 100%;
   @media (min-width: 1200px) {
-    width: 35%;
+    width: 25%;
   }
   img {
     display: block;
@@ -144,7 +144,7 @@ const JumbotronRight = styled.div`
   }
   @media (min-width: 1200px) {
     padding: 20px 15px 20px 150px;
-    width: 50%;
+    width: 75%;
   }
 `;
 
@@ -162,7 +162,7 @@ const JumbotronTitle = styled(Heading)`
   }
 
   @media (min-width: 1200px) {
-    font-size: ${({ theme }) => theme.headingM};
+    font-size: ${({ theme }) => theme.headingS};
   }
 `;
 
@@ -170,6 +170,7 @@ const JumbotronText = styled(Text)`
   color: ${({ theme }) => theme.white};
   text-align: left;
   margin: 30px 0 50px 0;
+  font-size: ${({ theme }) => theme.bodyAlt};
 `;
 
 const IndexPage = () => {

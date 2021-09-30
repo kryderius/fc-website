@@ -20,9 +20,10 @@ const SectionContainer = styled.div`
 
 const ImageWrapper = styled.div`
   width: 100%;
+  position: relative;
 
   @media (min-width: 1200px) {
-    width: 70%;
+    width: 50%;
   }
 
   img {
@@ -35,18 +36,21 @@ const StyledHeading = styled(Heading)`
   text-align: left;
   z-index: 1010;
   position: absolute;
-  top: -11%;
+  top: -35px;
   right: 5%;
   line-height: 130%;
+  white-space: nowrap;
 
   @media (min-width: 768px) {
     font-size: ${({ theme }) => theme.headingM};
   }
   @media (min-width: 1200px) {
-    font-size: ${({ theme }) => theme.headingXXL};
-    top: 15%;
-    right: unset;
-    left: 8%;
+    font-size: ${({ theme }) => theme.headingL};
+    top: 100px;
+    right: calc(35vw - 15px);
+  }
+  @media (min-width: 1500px) {
+    font-size: ${({ theme }) => theme.headingXL};
   }
 
   .yourturn_text--yellow {
@@ -57,7 +61,10 @@ const StyledHeading = styled(Heading)`
       font-size: ${({ theme }) => theme.headingM};
     }
     @media (min-width: 1200px) {
-      font-size: ${({ theme }) => theme.headingXXL};
+      font-size: ${({ theme }) => theme.headingL};
+    }
+    @media (min-width: 1500px) {
+      font-size: ${({ theme }) => theme.headingXL};
     }
   }
 
@@ -68,7 +75,10 @@ const StyledHeading = styled(Heading)`
       font-size: ${({ theme }) => theme.headingM};
     }
     @media (min-width: 1200px) {
-      font-size: 64px;
+      font-size: ${({ theme }) => theme.headingL};
+    }
+    @media (min-width: 1500px) {
+      font-size: ${({ theme }) => theme.headingXL};
     }
   }
 
@@ -87,28 +97,28 @@ const YourTurn = () => {
       <SectionContainer>
         <ImageWrapper>
           <GatsbyImage image={data.yourTurn.childImageSharp.gatsbyImageData} />
+          <StyledHeading className="yourturn_anim_trigger">
+            <div className="yourturn_heading_wrapper">
+              <div
+                className="yourturn_text--yellow"
+                data-aos="title-down"
+                data-aos-anchor=".yourturn_anim_trigger"
+              >
+                Teraz Twoja kolej!
+              </div>
+            </div>
+            <div className="yourturn_heading_wrapper">
+              <div
+                className="yourturn_text"
+                data-aos="title-down"
+                data-aos-delay="200"
+                data-aos-anchor=".yourturn_anim_trigger"
+              >
+                Opowiedz nam coś o sobie
+              </div>
+            </div>
+          </StyledHeading>
         </ImageWrapper>
-        <StyledHeading className="yourturn_anim_trigger">
-          <div className="yourturn_heading_wrapper">
-            <div
-              className="yourturn_text--yellow"
-              data-aos="title-down"
-              data-aos-anchor=".yourturn_anim_trigger"
-            >
-              Teraz Twoja kolej!
-            </div>
-          </div>
-          <div className="yourturn_heading_wrapper">
-            <div
-              className="yourturn_text"
-              data-aos="title-down"
-              data-aos-delay="200"
-              data-aos-anchor=".yourturn_anim_trigger"
-            >
-              Opowiedz nam coś o sobie
-            </div>
-          </div>
-        </StyledHeading>
       </SectionContainer>
     </SectionWrapper>
   );

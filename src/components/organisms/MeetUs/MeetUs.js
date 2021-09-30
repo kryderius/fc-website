@@ -104,8 +104,8 @@ const Slider = styled.div`
 `;
 
 const SwiperBoxTeam = styled(Link)`
-  width: 280px;
-  height: 420px;
+  width: 230px;
+  height: 330px;
   background-color: ${({ theme }) => theme.white};
   border-right: 1px solid ${({ theme }) => theme.black};
   display: flex;
@@ -116,8 +116,8 @@ const SwiperBoxTeam = styled(Link)`
   transition: box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   @media (min-width: 1200px) {
-    width: 360px;
-    height: 460px;
+    width: 300px;
+    height: 400px;
     flex-direction: row;
     border-right: none;
   }
@@ -161,9 +161,9 @@ const StyledNavigation = styled.div`
   display: flex;
   align-self: flex-end;
   justify-content: flex-end;
-  margin-top: 100px;
+  margin-top: 30px;
   @media (min-width: 1200px) {
-    margin-top: 120px;
+    margin-top: 50px;
   }
 `;
 
@@ -350,21 +350,31 @@ const MeetUs = ({ data }) => {
       gsap.to('.bg-color', {
         backgroundColor: '#000000',
         scrollTrigger: {
+          /*
           trigger: '.bg--trigger',
           scrub: true,
           start: 'top 75%',
           end: 'top 25%',
+          markers: true,
+          */
+          trigger: '.bg--trigger',
+          start: 'top 50%',
+          end: 'bottom 50%',
+          onEnter: () => gsap.to('.bg-color', { backgroundColor: '#000000' }),
         },
       });
+      /*
       gsap.to('.bg-color', {
         backgroundColor: '#ffffff',
         scrollTrigger: {
           trigger: '.bg--trigger',
           start: 'bottom 75%',
           end: '+=50',
-          toggleActions: 'play none none reset',
+          markers: true,
+          //toggleActions: 'play none none reset',
         },
       });
+      */
       gsap.to('.bgtext-meetus', {
         x: '10%',
         scrollTrigger: {

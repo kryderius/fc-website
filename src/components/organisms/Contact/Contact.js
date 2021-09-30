@@ -4,6 +4,8 @@ import Heading from '../../atoms/Heading';
 import Text from '../../atoms/Text';
 import ContactForm from '../ContactForm/ContactForm';
 import ZigzagSVG from '../../../assets/svg/zigzag.svg';
+import { Link, graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const SectionWrapper = styled.section`
   padding: 0 15px;
@@ -18,7 +20,7 @@ const SectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 100px 0 100px 0;
+  padding: 50px 0 50px 0;
   position: relative;
 
   @media (min-width: 768px) {
@@ -88,25 +90,28 @@ const StyledHeading = styled(Heading)`
 const MobileText = styled(Text)`
   text-align: left;
   margin-bottom: 50px;
+  font-size: ${({ theme }) => theme.bodyAlt};
   @media (min-width: 1200px) {
     display: none;
   }
 `;
 
 const ContactBox = styled.div`
+  /*
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 10%;
+  */
+  padding: 30px;
   background-color: ${({ theme }) => theme.black};
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
-  height: 467px;
-  transform: translateY(100%);
-  margin-bottom: -100px;
+  width: 60%;
+  height: 450px;
+  //transform: translateY(100%);
+  margin-bottom: -200px;
   @media (min-width: 1200px) {
     display: flex;
   }
@@ -134,9 +139,10 @@ const ContactBoxMobile = styled.div`
 `;
 
 const ContactBoxWrapper = styled.div`
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 const ContactBoxItem = styled.a`
@@ -152,13 +158,29 @@ const ContactBoxItem = styled.a`
   }
 
   &:nth-of-type(1) {
-    margin: 50px 0;
+    margin: 25px 0;
+  }
+`;
+
+const LightboxAuthorImg = styled.div`
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  justify-self: center;
+
+  .img {
+    position: abolute;
+    top: 0;
+    left: 0;
   }
 `;
 
 const ContactBoxText = styled(Text)`
   color: ${({ theme }) => theme.white};
-  text-align: left;
+  text-align: center;
+  font-size: ${({ theme }) => theme.bodyAlt};
 `;
 
 const TopRightSvg = styled.img`
@@ -169,11 +191,12 @@ const TopRightSvg = styled.img`
   width: 60%;
 
   @media (min-width: 1200px) {
-    width: 30%;
+    width: 20%;
   }
 `;
 
 const Contact = () => {
+  const imageQuery = useStaticQuery(query);
   return (
     <SectionWrapper id="kontakt">
       <SectionContainer>
@@ -215,10 +238,18 @@ const Contact = () => {
                 po prostu skontaktuj się z nami telefonicznie - porozmawiajmy o
                 Twoich potrzebach.
               </ContactBoxText>
+              <LightboxAuthorImg>
+                <Link to="/specjalisci/milena">
+                  <GatsbyImage
+                    image={imageQuery.milenaImg.childImageSharp.gatsbyImageData}
+                    alt=""
+                  />
+                </Link>
+              </LightboxAuthorImg>
               <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
                 <svg
-                  width="41"
-                  height="33"
+                  width="33"
+                  height="25"
                   viewBox="0 0 41 33"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -232,8 +263,8 @@ const Contact = () => {
               </ContactBoxItem>
               <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
                 <svg
-                  width="41"
-                  height="41"
+                  width="33"
+                  height="33"
                   viewBox="0 0 41 41"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -253,6 +284,14 @@ const Contact = () => {
           <ContactForm />
           <ContactBoxMobile>
             <ContactBoxWrapper>
+              <LightboxAuthorImg>
+                <Link to="/specjalisci/milena">
+                  <GatsbyImage
+                    image={imageQuery.milenaImg.childImageSharp.gatsbyImageData}
+                    alt=""
+                  />
+                </Link>
+              </LightboxAuthorImg>
               <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
                 <svg
                   width="41"
@@ -292,5 +331,20 @@ const Contact = () => {
     </SectionWrapper>
   );
 };
+
+const query = graphql`
+  {
+    milenaImg: file(name: { eq: "milenaImg" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          quality: 100
+          formats: WEBP
+          placeholder: NONE
+        )
+      }
+    }
+  }
+`;
 
 export default Contact;

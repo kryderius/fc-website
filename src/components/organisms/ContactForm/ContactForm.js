@@ -15,8 +15,8 @@ const FormWrapper = styled.div`
     outline: none;
     padding: 10px 10px;
     font-family: ${({ theme }) => theme.fontFamilyText};
-    font-size: ${({ theme }) => theme.bodyS};
-    margin-bottom: 50px;
+    font-size: ${({ theme }) => theme.bodyAlt};
+    margin-bottom: 30px;
   }
   input::placeholder,
   textarea::placeholder {
@@ -127,11 +127,11 @@ const LastLine = styled.div`
 
 const RequiredInfo = styled.div`
   position: absolute;
-  top: -10%;
+  top: -5%;
   right: 0;
 
   @media (min-width: 1200px) {
-    top: -20%;
+    top: -15%;
   }
 `;
 
@@ -204,7 +204,11 @@ const FormSubmitedInfoButton = styled.button`
   font-family: ${({ theme }) => theme.fontFamilyHeading};
 `;
 
-const LastLineReCaptcha = styled.div``;
+const LastLineReCaptcha = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const ContactForm = () => {
   const [openErrorMsg, setOpenErrorMsg] = useState(false);

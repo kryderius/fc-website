@@ -30,12 +30,14 @@ const SectionContainer = styled.div`
     padding: 300px 0 100px 0;
     flex-direction: row-reverse;
   }
+  /*
   @media (min-width: 1400px) {
     max-width: 1320px;
   }
   @media (min-width: 1920px) {
     max-width: 1440px;
   }
+  */
 `;
 
 const SectionLeft = styled.div`
@@ -100,7 +102,7 @@ const StyledHeading = styled(Heading)`
   @media (min-width: 1400px) {
     top: -5%;
     left: -70%;
-    font-size: ${({ theme }) => theme.headingXL};
+    font-size: ${({ theme }) => theme.headingL};
   }
 
   .text-stroke {

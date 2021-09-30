@@ -183,8 +183,8 @@ const SwiperBox = styled(Link)`
   text-decoration: none;
 
   @media (min-width: 1200px) {
-    width: 1080px;
-    height: 500px;
+    width: 860px;
+    height: 400px;
     flex-direction: row;
     border-right: none;
   }
@@ -235,7 +235,7 @@ const SwiperText = styled.div`
   justify-content: space-between;
   min-height: 60%;
   @media (min-width: 1200px) {
-    padding: 100px 100px;
+    padding: 50px 30px;
     width: 50%;
     height: 100%;
     align-items: flex-start;
@@ -283,7 +283,7 @@ const BoxHeading = styled(Heading)`
   width: 100%;
 
   @media (min-width: 1200px) {
-    font-size: ${({ theme }) => theme.headingM};
+    font-size: ${({ theme }) => theme.headingS};
     text-align: left;
   }
 `;
@@ -292,7 +292,7 @@ const BoxParagraphBold = styled(Text)`
   font-weight: ${({ theme }) => theme.medium};
   color: ${({ theme }) => theme.white};
   margin-top: 30px;
-  font-size: ${({ theme }) => theme.bodyS};
+  font-size: ${({ theme }) => theme.bodyAlt};
   @media (min-width: 1200px) {
     text-align: left;
   }
@@ -303,7 +303,7 @@ const BoxParagraph = styled(Text)`
   font-size: ${({ theme }) => theme.bodyXS};
   margin: 15px 0 50px 0;
   @media (min-width: 1200px) {
-    font-size: ${({ theme }) => theme.bodyS};
+    font-size: ${({ theme }) => theme.bodyAlt};
     text-align: left;
   }
 `;

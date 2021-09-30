@@ -80,6 +80,7 @@ const ButtonWrapper = styled(Link)`
   }
 
   &.small {
+    padding: 0 20px;
     p {
       font-size: ${({ theme }) => theme.bodyXS};
     }
