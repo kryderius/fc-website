@@ -270,7 +270,7 @@ const ServicePortfolio = ({ portfolio }) => {
               <LightboxInfoAuthor>
                 <span>Autor:</span>{' '}
                 <StyledAuthorLink
-                  to={`/specjalisci/${activeAuthorName.toLowerCase()}`}
+                  to={`/specjalisci/${activeAuthorName.toLowerCase()}#info`}
                 >
                   {activeAuthorName}
                 </StyledAuthorLink>
@@ -333,7 +333,7 @@ const ServicePortfolio = ({ portfolio }) => {
                   {item.node.author}
                 </HoverAuthor>
                 <Button
-                  link={`/specjalisci/${item.node.author.toLowerCase()}`}
+                  link={`/specjalisci/${item.node.author.toLowerCase()}#info`}
                   size="btn--portfolio"
                 >
                   ZOBACZ PORTFOLIO
