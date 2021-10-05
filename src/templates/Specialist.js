@@ -13,6 +13,7 @@ import SpecialistPortfolio from '../components/organisms/SpecialistPortfolio/Spe
 import Contact from '../components/organisms/Contact/Contact';
 import JumbotronSVG from '../assets/svg/jumbotron_specialist.svg';
 import Button from '../components/atoms/Button';
+import VideoSection from '../components/organisms/VideoSection/VideoSection';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
@@ -123,6 +124,7 @@ const ServiceBoldText = styled(Text)`
 const ServiceLongText = styled(Text)`
   text-align: left;
   font-weight: ${({ theme }) => theme.light};
+  line-height: 1.3;
 
   * {
     font-weight: ${({ theme }) => theme.light}!important;
@@ -265,6 +267,7 @@ const Specialist = ({ data }) => {
           </ImageWrapper>
         </InfoContainer>
       </InfoWrapper>
+      {specialist.name === 'Milena' && <VideoSection />}
       {portfolio.edges.length && <SpecialistPortfolio portfolio={portfolio} />}
       <CheckMoreWrapper>
         <CheckMoreContainer>
