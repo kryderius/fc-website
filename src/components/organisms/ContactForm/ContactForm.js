@@ -6,6 +6,12 @@ import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const FormWrapper = styled.div`
+  margin-bottom: 50px;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 0;
+  }
+
   input,
   select,
   textarea {
@@ -94,6 +100,7 @@ const LastLine = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row;
+    align-items: flex-start;
   }
   label,
   button {
@@ -113,6 +120,8 @@ const LastLine = styled.div`
     padding-left: 30px;
     margin-bottom: 50px;
     font-size: ${({ theme }) => theme.bodyXS};
+    font-weight: ${({ theme }) => theme.light};
+    color: #757575;
     @media (min-width: 768px) {
       margin-bottom: 0;
     }
@@ -356,7 +365,7 @@ const ContactForm = () => {
             <option value="Zadbajcie o mój wizerunek">
               Zadbajcie o mój wizerunek
             </option>
-            <option value="other">Inna (pozwól mi wpisać)</option>
+            <option value="other">Inna</option>
           </Field>
           {activeNeeds === 'other' && (
             <Field

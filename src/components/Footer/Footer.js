@@ -289,7 +289,7 @@ const Footer = ({ isServicePage }) => {
           <WrapperFourContact>
             <FooterHeading>Kontakt</FooterHeading>
             <ContactBoxWrapper>
-              <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
+              <ContactBoxItem href="mailto:m.gorska@freelanceconcept.pl">
                 <svg
                   width="20"
                   height="15"
@@ -302,7 +302,7 @@ const Footer = ({ isServicePage }) => {
                     fill="white"
                   />
                 </svg>
-                <span>m.gorska@onet.com.pl</span>
+                <span>m.gorska@freelanceconcept.pl</span>
               </ContactBoxItem>
               <ContactBoxItem href="tel:513625502">
                 <svg

@@ -61,7 +61,7 @@ const StyledHeading = styled(Heading)`
   flex-direction: column;
   text-align: left;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   @media (min-width: 1200px) {
     font-size: ${({ theme }) => theme.headingL};
   }
@@ -112,6 +112,7 @@ const ContactBox = styled.div`
   height: 450px;
   //transform: translateY(100%);
   margin-bottom: -200px;
+  position: relative;
   @media (min-width: 1200px) {
     display: flex;
   }
@@ -130,6 +131,8 @@ const ContactBoxMobile = styled.div`
   //transform: translateY(50%);
   margin-bottom: -200px;
   margin-top: 100px;
+  position: relative;
+
   @media (min-width: 1200px) {
     display: none;
   }
@@ -163,17 +166,29 @@ const ContactBoxItem = styled.a`
 `;
 
 const LightboxAuthorImg = styled.div`
-  width: 130px;
-  height: 130px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
   justify-self: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  .img {
-    position: abolute;
-    top: 0;
-    left: 0;
+  a > .gatsby-image-wrapper > img {
+    position: absolute;
+    top: -8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110%;
+    height: auto;
+  }
+
+  @media (min-width: 1200px) {
+    width: 130px;
+    height: 130px;
   }
 `;
 
@@ -227,16 +242,18 @@ const Contact = () => {
             </span>
           </StyledHeading>
           <MobileText>
-            Masz pytania? Wypełnij formularz i daj nam 24h na odpowiedź! Lub po
-            prostu skontaktuj się z nami telefonicznie - porozmawiajmy o Twoich
-            potrzebach.
+            Masz pytania? Wypełnij formularz i daj nam 24h na odpowiedź!
+            <br />
+            Ewentualnie skontaktuj się z nami telefonicznie - porozmawiajmy o
+            Twoich potrzebach
           </MobileText>
           <ContactBox>
             <ContactBoxWrapper>
               <ContactBoxText>
-                Masz pytania? Wypełnij formularz i daj nam 24h na odpowiedź! Lub
-                po prostu skontaktuj się z nami telefonicznie - porozmawiajmy o
-                Twoich potrzebach.
+                Masz pytania? Wypełnij formularz i daj nam 24h na odpowiedź!
+                <br />
+                Ewentualnie skontaktuj się z nami telefonicznie - porozmawiajmy
+                o Twoich potrzebach
               </ContactBoxText>
               <LightboxAuthorImg>
                 <Link to="/specjalisci/milena">
@@ -292,7 +309,7 @@ const Contact = () => {
                   />
                 </Link>
               </LightboxAuthorImg>
-              <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
+              <ContactBoxItem href="mailto:m.gorska@freelanceconcept.pl">
                 <svg
                   width="41"
                   height="33"
@@ -305,7 +322,7 @@ const Contact = () => {
                     fill="white"
                   />
                 </svg>
-                <span>m.gorska@onet.com.pl</span>
+                <span>m.gorska@freelanceconcept.pl</span>
               </ContactBoxItem>
               <ContactBoxItem href="tel:513625502">
                 <svg
