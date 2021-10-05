@@ -298,11 +298,13 @@ const Navigation = () => {
                 Kim jesteśmy
               </Link>
             </NavMobileListItem>
+            {/*
             <NavMobileListItem>
               <Link to="/blog" onClick={openHamburger}>
                 Baza wiedzy
               </Link>
             </NavMobileListItem>
+            */}
             <NavMobileListItem onClick={openHamburger}>
               <StyledButton link="/#kontakt" color="">
                 Kontakt
@@ -324,9 +326,11 @@ const Navigation = () => {
             <NavListItem>
               <Link to="/kim-jestesmy">Kim jesteśmy</Link>
             </NavListItem>
+            {/*
             <NavListItem>
               <Link to="/blog">Baza wiedzy</Link>
             </NavListItem>
+            */}
             <StyledButton link="/#kontakt" color="yellow">
               Kontakt
             </StyledButton>
