@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Button from '../atoms/Button';
+import scrollTo from '../../utils/scrollTo';
+import scrollToAlt from '../../utils/scrollToAlt';
 
 const NavWrapper = styled.div`
   background-color: transparent;
@@ -243,6 +245,22 @@ const Navigation = () => {
     setHamburgerOpen(!isHamburgerOpen);
   };
 
+  const scrollToSection = (e, target, page) => {
+    if (window.location.pathname === '/oferta') {
+      scrollTo(e, target, '/');
+    } else {
+      scrollTo(e, target, page);
+    }
+  };
+
+  const scrollToMeetUs = (e, target, page) => {
+    if (window.location.pathname !== '/') {
+      scrollTo(e, target, '/');
+    } else {
+      scrollTo(e, target, page);
+    }
+  };
+
   return (
     <NavWrapper className={!isVisible && 'nav--fixed'}>
       <NavContainer>
@@ -318,20 +336,32 @@ const Navigation = () => {
               <Link to="/">Start</Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/#oferta">Oferta</Link>
+              <Link to="/#oferta" onClick={(e) => scrollToAlt(e, 'oferta')}>
+                Oferta
+              </Link>
             </NavListItem>
             <NavListItem>
-              <Link to="/#poznaj-nas">Poznaj nas</Link>
+              <Link
+                to="/#poznaj-nas"
+                onClick={(e) => scrollToAlt(e, 'poznaj-nas')}
+              >
+                Poznaj nas
+              </Link>
             </NavListItem>
             <NavListItem>
               <Link to="/kim-jestesmy">Kim jesteśmy</Link>
             </NavListItem>
+
             {/*
             <NavListItem>
               <Link to="/blog">Baza wiedzy</Link>
             </NavListItem>
             */}
-            <StyledButton link="/#kontakt" color="yellow">
+            <StyledButton
+              link="/#kontakt"
+              color="yellow"
+              onClick={(e) => scrollToAlt(e, 'kontakt')}
+            >
               Kontakt
             </StyledButton>
           </NavList>
