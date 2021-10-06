@@ -134,9 +134,13 @@ const Text = styled.p`
   font-family: ${({ theme }) => theme.fontFamilyHeading};
 `;
 
-const Button = ({ children, link, color, fontSize, size }) => {
+const Button = ({ children, link, color, fontSize, size, onClick }) => {
   return (
-    <ButtonWrapper to={link} className={`${color} ${fontSize} ${size}`}>
+    <ButtonWrapper
+      to={link}
+      className={`${color} ${fontSize} ${size}`}
+      onClick={onClick}
+    >
       <Text>{children}</Text>
       <svg
         width="30"
