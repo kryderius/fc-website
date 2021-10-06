@@ -17,6 +17,7 @@ import FindUs from '../components/organisms/FindUs/FindUs';
 import Footer from '../components/Footer/Footer';
 import { graphql, useStaticQuery } from 'gatsby';
 import HeroSlider from '../components/organisms/HeroSlider/HeroSlider';
+import HomePortfolio from '../components/organisms/HomePortfolio/HomePortfolio';
 
 const StyledHeading = styled(Heading)`
   text-transform: uppercase;
@@ -212,6 +213,7 @@ const IndexPage = () => {
 
       <Offer />
       <FullOffer />
+      <HomePortfolio />
       <ContactJumbotron>
         <JumbotronWrapper>
           <JumbotronLeft>
