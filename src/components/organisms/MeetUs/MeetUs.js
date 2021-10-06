@@ -12,6 +12,7 @@ import TriangleDotsWhiteSVG from '../../../assets/svg/triangle_dots_white.svg';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
+import scrollTo from '../../../utils/scrollTo';
 
 const SectionWrapper = styled.section`
   padding: 0 15px;
@@ -449,6 +450,13 @@ const MeetUs = ({ data }) => {
                     data-aos="fade-up"
                     data-aos-delay={`${index * 2}00`}
                     to={`/specjalisci/${item.node.slug.toLowerCase()}#info`}
+                    onClick={(e) =>
+                      scrollTo(
+                        e,
+                        'info',
+                        `/specjalisci/${item.node.slug.toLowerCase()}`
+                      )
+                    }
                   >
                     <ImageContainer className="image-container">
                       {/*<ImgNormal src={item.node.image.fluid.src} />*/}
