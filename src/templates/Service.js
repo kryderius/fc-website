@@ -298,6 +298,7 @@ export const query = graphql`
           title
           slug
           author
+          authorSlug
           image {
             gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
           }
