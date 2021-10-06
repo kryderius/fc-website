@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Button from '../../atoms/Button';
 import Text from '../../atoms/Text';
+import scrollTo from '../../../utils/scrollTo';
+import { Link } from 'gatsby';
 
 const SliderContainer = styled.div`
   max-width: 540px;
@@ -85,7 +87,7 @@ const StyledNavButton = styled.button`
   }
 `;
 
-const SwiperBoxTeam = styled.div`
+const SwiperBoxTeam = styled(Link)`
   width: 280px;
   height: 420px;
   background-color: ${({ theme }) => theme.white};
@@ -253,6 +255,14 @@ const SpecialistsSlider = ({ allSpecialists }) => {
                 <SwiperBoxTeam
                   data-aos="fade-up"
                   data-aos-delay={`${index * 2}00`}
+                  to={`/specjalisci/${item.node.slug.toLowerCase()}`}
+                  onClick={(e) =>
+                    scrollTo(
+                      e,
+                      'info',
+                      `/specjalisci/${item.node.slug.toLowerCase()}`
+                    )
+                  }
                 >
                   <ImageContainer className="image-container">
                     <GatsbyImage image={item.node.image.gatsbyImageData} />
@@ -264,6 +274,13 @@ const SpecialistsSlider = ({ allSpecialists }) => {
                       fontSize="small"
                       size="btn--small"
                       link={`/specjalisci/${item.node.slug.toLowerCase()}`}
+                      onClick={(e) =>
+                        scrollTo(
+                          e,
+                          'info',
+                          `/specjalisci/${item.node.slug.toLowerCase()}`
+                        )
+                      }
                     >
                       PORTFOLIO
                     </Button>

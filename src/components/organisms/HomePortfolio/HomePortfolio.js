@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import Heading from '../../atoms/Heading';
-import Text from '../../atoms/Text';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Button from '../../atoms/Button';
+import Text from '../../atoms/Text';
 import CloseSVG from '../../../assets/svg/cross_black_sm.svg';
-import { Link } from 'gatsby';
 import scrollTo from '../../../utils/scrollTo';
 
-const PortfolioWrapper = styled.section``;
+const Wrapper = styled.section`
+  padding: 0 15px;
+`;
 
-const PortfolioContainer = styled.div`
+const Container = styled.div`
   max-width: 540px;
   margin: 0 auto;
   display: flex;
@@ -243,7 +245,8 @@ const StyledAuthorLink = styled(Link)`
   color: ${({ theme }) => theme.yellow};
 `;
 
-const ServicePortfolio = ({ portfolio }) => {
+const HomePortfolio = () => {
+  const portfolio = useStaticQuery(query);
   const [openImage, setOpenImage] = useState(false);
   const [activeImage, setActiveImage] = useState('');
   const [activeAuthorImg, setActiveAuthorImg] = useState('');
@@ -259,9 +262,8 @@ const ServicePortfolio = ({ portfolio }) => {
     setActiveAuthorName(name);
     setActiveAuthorSlug(activeSlug);
   };
-
   return (
-    <PortfolioWrapper>
+    <Wrapper>
       {openImage && (
         <Lightbox>
           <LightboxInfo>
@@ -295,7 +297,7 @@ const ServicePortfolio = ({ portfolio }) => {
           </LightboxWrapper>
         </Lightbox>
       )}
-      <PortfolioContainer>
+      <Container>
         <HeadingWrapper className="service-heading--trigger">
           <StyledHeading as="h3">
             <span
@@ -303,7 +305,7 @@ const ServicePortfolio = ({ portfolio }) => {
               data-aos="fade-down"
               data-aos-anchor=".service-heading--trigger"
             >
-              Nasze
+              Wybrane
             </span>
             <span
               className="heading--yellow"
@@ -316,7 +318,7 @@ const ServicePortfolio = ({ portfolio }) => {
           </StyledHeading>
         </HeadingWrapper>
         <ImagesWrapper data-aos="fade-up">
-          {portfolio.edges.map((item, index) => (
+          {portfolio.allDatoCmsPortfolio.edges.map((item, index) => (
             <ImageContainer
               key={index}
               onClick={(e) =>
@@ -360,9 +362,35 @@ const ServicePortfolio = ({ portfolio }) => {
             </ImageContainer>
           ))}
         </ImagesWrapper>
-      </PortfolioContainer>
-    </PortfolioWrapper>
+      </Container>
+    </Wrapper>
   );
 };
 
-export default ServicePortfolio;
+const query = graphql`
+  query AllPortfolioQuery {
+    allDatoCmsPortfolio(
+      filter: {
+        originalId: {
+          regex: "/63029050|63028808|50986942|50987431|50987483|50988548/"
+        }
+      }
+    ) {
+      edges {
+        node {
+          author
+          authorSlug
+          authorImage {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          }
+          title
+          image {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+`;
+
+export default HomePortfolio;
