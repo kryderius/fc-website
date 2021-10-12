@@ -6,6 +6,7 @@ import ContactForm from '../ContactForm/ContactForm';
 import ZigzagSVG from '../../../assets/svg/zigzag.svg';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import scrollTo from '../../../utils/scrollTo';
 
 const SectionWrapper = styled.section`
   padding: 0 15px;
@@ -109,7 +110,7 @@ const ContactBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 60%;
-  height: 450px;
+  height: 350px;
   //transform: translateY(100%);
   margin-bottom: -200px;
   position: relative;
@@ -154,7 +155,6 @@ const ContactBoxItem = styled.a`
   align-items: center;
 
   span {
-    margin-left: 30px;
     font-family: ${({ theme }) => theme.fontFamilyHeading};
     font-size: ${({ theme }) => theme.bodyS};
     color: ${({ theme }) => theme.white};
@@ -264,34 +264,9 @@ const Contact = () => {
                 </Link>
               </LightboxAuthorImg>
               <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
-                <svg
-                  width="33"
-                  height="25"
-                  viewBox="0 0 41 33"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M36.3125 0.264648H4.3125C2.1125 0.264648 0.3325 2.06465 0.3325 4.26465L0.3125 28.2646C0.3125 30.4646 2.1125 32.2646 4.3125 32.2646H36.3125C38.5125 32.2646 40.3125 30.4646 40.3125 28.2646V4.26465C40.3125 2.06465 38.5125 0.264648 36.3125 0.264648ZM36.3125 8.26465L20.3125 18.2646L4.3125 8.26465V4.26465L20.3125 14.2646L36.3125 4.26465V8.26465Z"
-                    fill="white"
-                  />
-                </svg>
                 <span>m.gorska@onet.com.pl</span>
               </ContactBoxItem>
               <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
-                <svg
-                  width="33"
-                  height="33"
-                  viewBox="0 0 41 41"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M38.1125 27.8705C35.3792 27.8705 32.7347 27.426 30.2681 26.626C29.4903 26.3594 28.6236 26.5594 28.0236 27.1594L24.5347 31.5372C18.2458 28.5372 12.3569 22.8705 9.22361 16.3594L13.5569 12.6705C14.1569 12.0483 14.3347 11.1816 14.0903 10.4038C13.2681 7.93715 12.8458 5.29271 12.8458 2.55938C12.8458 1.35938 11.8458 0.359375 10.6458 0.359375H2.95694C1.75694 0.359375 0.3125 0.892708 0.3125 2.55938C0.3125 23.2038 17.4903 40.3594 38.1125 40.3594C39.6903 40.3594 40.3125 38.9594 40.3125 37.7372V30.0705C40.3125 28.8705 39.3125 27.8705 38.1125 27.8705Z"
-                    fill="white"
-                  />
-                </svg>
-
                 <span>513 625 502</span>
               </ContactBoxItem>
             </ContactBoxWrapper>
@@ -302,7 +277,10 @@ const Contact = () => {
           <ContactBoxMobile>
             <ContactBoxWrapper>
               <LightboxAuthorImg>
-                <Link to="/specjalisci/milena">
+                <Link
+                  to="/specjalisci/milena"
+                  onClick={(e) => scrollTo(e, 'info', '/specjalisci/milena')}
+                >
                   <GatsbyImage
                     image={imageQuery.milenaImg.childImageSharp.gatsbyImageData}
                     alt=""
@@ -310,34 +288,9 @@ const Contact = () => {
                 </Link>
               </LightboxAuthorImg>
               <ContactBoxItem href="mailto:m.gorska@freelanceconcept.pl">
-                <svg
-                  width="41"
-                  height="33"
-                  viewBox="0 0 41 33"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M36.3125 0.264648H4.3125C2.1125 0.264648 0.3325 2.06465 0.3325 4.26465L0.3125 28.2646C0.3125 30.4646 2.1125 32.2646 4.3125 32.2646H36.3125C38.5125 32.2646 40.3125 30.4646 40.3125 28.2646V4.26465C40.3125 2.06465 38.5125 0.264648 36.3125 0.264648ZM36.3125 8.26465L20.3125 18.2646L4.3125 8.26465V4.26465L20.3125 14.2646L36.3125 4.26465V8.26465Z"
-                    fill="white"
-                  />
-                </svg>
                 <span>m.gorska@freelanceconcept.pl</span>
               </ContactBoxItem>
               <ContactBoxItem href="tel:513625502">
-                <svg
-                  width="41"
-                  height="41"
-                  viewBox="0 0 41 41"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M38.1125 27.8705C35.3792 27.8705 32.7347 27.426 30.2681 26.626C29.4903 26.3594 28.6236 26.5594 28.0236 27.1594L24.5347 31.5372C18.2458 28.5372 12.3569 22.8705 9.22361 16.3594L13.5569 12.6705C14.1569 12.0483 14.3347 11.1816 14.0903 10.4038C13.2681 7.93715 12.8458 5.29271 12.8458 2.55938C12.8458 1.35938 11.8458 0.359375 10.6458 0.359375H2.95694C1.75694 0.359375 0.3125 0.892708 0.3125 2.55938C0.3125 23.2038 17.4903 40.3594 38.1125 40.3594C39.6903 40.3594 40.3125 38.9594 40.3125 37.7372V30.0705C40.3125 28.8705 39.3125 27.8705 38.1125 27.8705Z"
-                    fill="white"
-                  />
-                </svg>
-
                 <span>513 625 502</span>
               </ContactBoxItem>
             </ContactBoxWrapper>
@@ -354,7 +307,7 @@ const query = graphql`
     milenaImg: file(name: { eq: "milenaImg" }) {
       childImageSharp {
         gatsbyImageData(
-          layout: FULL_WIDTH
+          layout: CONSTRAINED
           quality: 100
           formats: WEBP
           placeholder: NONE

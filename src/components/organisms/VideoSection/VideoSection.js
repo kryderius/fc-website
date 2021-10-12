@@ -2,6 +2,7 @@ import React from 'react';
 import Videomp4 from '../../../assets/Video/muppetsVideo.mp4';
 import styled from 'styled-components';
 import Text from '../../atoms/Text';
+import Phone from '../../../assets/images/mobile_img.png';
 
 const Wrapper = styled.section`
   padding: 0 15px;
@@ -34,18 +35,26 @@ const Container = styled.div`
 const Left = styled.div`
   text-align: center;
   margin-bottom: 50px;
+  position: relative;
   @media (min-width: 1200px) {
     width: 30%;
     margin-bottom: 0;
   }
 
   video {
-    width: 80%;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 9.5%;
+    left: 14.1%;
+    width: 72%;
+    //box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 
     @media (min-width: 1200px) {
-      width: 100%;
+      top: 9.5%;
+      left: 14.2%;
     }
+  }
+  img {
+    width: 100%;
   }
 `;
 
@@ -70,6 +79,7 @@ const VideoSection = () => {
     <Wrapper>
       <Container>
         <Left>
+          <img src={Phone} alt="" />
           <video width="auto" height="auto" controls>
             <source src={Videomp4} type="video/mp4" />
             Przepraszamy, ale najwidoczniej Twoja przeglądarka nie obsługuje

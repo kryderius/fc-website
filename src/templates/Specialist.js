@@ -130,6 +130,10 @@ const ServiceLongText = styled(Text)`
     font-weight: ${({ theme }) => theme.light}!important;
   }
 
+  strong {
+    font-weight: ${({ theme }) => theme.medium}!important;
+  }
+
   p:not(:last-child) {
     margin-bottom: 15px;
   }

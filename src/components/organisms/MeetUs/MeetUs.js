@@ -20,6 +20,16 @@ const SectionWrapper = styled.section`
   position: relative;
 `;
 
+const BackgroundLayer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background-color: #ffffff;
+`;
+
 const SectionContainer = styled.div`
   max-width: 540px;
   margin: 0 auto;
@@ -348,30 +358,35 @@ const MeetUs = ({ data }) => {
   };
   useEffect(() => {
     setTimeout(() => {
-      gsap.to('.bg-color', {
+      /*
+      gsap.to('.bg--change', {
         backgroundColor: '#000000',
         scrollTrigger: {
           trigger: '.bg--trigger',
-          scrub: true,
           start: 'top 75%',
-          end: 'top 25%',
-          /*
-          trigger: '.bg--trigger',
-          start: 'top 50%',
-          end: 'bottom 50%',
-          onEnter: () => gsap.to('.bg-color', { backgroundColor: '#000000' }),
-          */
+          markers: true,
         },
       });
-      gsap.to('.bg-color', {
+      
+      gsap.to('.bg--change', {
         backgroundColor: '#ffffff',
         scrollTrigger: {
           trigger: '.bg--trigger',
-          start: 'bottom 75%',
-          end: '+=50',
+          start: 'bottom center',
           toggleActions: 'play none none reset',
         },
       });
+      */
+      gsap.to('.bg--change', {
+        backgroundColor: '#000000',
+        scrollTrigger: {
+          trigger: '.bg--trigger',
+          start: 'top 75%',
+          end: 'bottom 50%',
+          toggleActions: 'restart reverse restart reset',
+        },
+      });
+
       gsap.to('.bgtext-meetus', {
         x: '10%',
         scrollTrigger: {
@@ -385,6 +400,7 @@ const MeetUs = ({ data }) => {
   }, []);
   return (
     <SectionWrapper className="bg--trigger" id="poznaj-nas">
+      <BackgroundLayer className="bg--change"></BackgroundLayer>
       <CircleYellow src={CircleYellowSVG} alt="" />
       <CircleGrey src={CircleGreySVG} alt="" />
       <CrossYellow src={CrossYellowSVG} alt="" />

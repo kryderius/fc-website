@@ -18,6 +18,7 @@ import Footer from '../components/Footer/Footer';
 import { graphql, useStaticQuery } from 'gatsby';
 import HeroSlider from '../components/organisms/HeroSlider/HeroSlider';
 import HomePortfolio from '../components/organisms/HomePortfolio/HomePortfolio';
+import scrollToAlt from '../utils/scrollToAlt';
 
 const StyledHeading = styled(Heading)`
   text-transform: uppercase;
@@ -238,7 +239,12 @@ const IndexPage = () => {
               podejmować! Napisz do nas, to nic nie kosztuje, a uzyskasz
               indywidualną ofertę.
             </JumbotronText>
-            <Button color="yellow" link="/#kontakt" fontSize="small">
+            <Button
+              color="yellow"
+              link="/#kontakt"
+              onClick={(e) => scrollToAlt(e, 'kontakt')}
+              fontSize="small"
+            >
               BEZPŁATNA WYCENA
             </Button>
           </JumbotronRight>

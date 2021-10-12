@@ -6,6 +6,7 @@ import Button from '../../atoms/Button';
 import { gsap } from 'gsap';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import scrollToAlt from '../../../utils/scrollToAlt';
 
 const SectionWrapper = styled.section`
   padding: 0 15px;
@@ -202,7 +203,9 @@ const WeAreWaiting = () => {
           </StyledHeading>
         </SectionLeft>
         <SectionRight>
-          <Button link="/#kontakt">KONTAKT</Button>
+          <Button link="/#kontakt" onClick={(e) => scrollToAlt(e, 'kontakt')}>
+            KONTAKT
+          </Button>
         </SectionRight>
       </SectionContainer>
     </SectionWrapper>

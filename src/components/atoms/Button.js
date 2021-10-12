@@ -134,10 +134,11 @@ const Text = styled.p`
   font-family: ${({ theme }) => theme.fontFamilyHeading};
 `;
 
-const Button = ({ children, link, color, fontSize, size, onClick }) => {
+const Button = ({ children, link, color, fontSize, size, onClick, state }) => {
   return (
     <ButtonWrapper
       to={link}
+      state={state}
       className={`${color} ${fontSize} ${size}`}
       onClick={onClick}
     >

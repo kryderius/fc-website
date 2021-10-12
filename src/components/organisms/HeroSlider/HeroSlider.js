@@ -212,7 +212,11 @@ const HeroSlider = () => {
             >
               strategia - komunikacja - wizerunek marki - reklama
             </HeroText>
-            <Button link="/#czego-potrzebujesz" color="white">
+            <Button
+              link="/oferta"
+              state={{ activeFilter: 'mark' }}
+              color="white"
+            >
               SPRAWDŹ
             </Button>
           </SectionContainer>
@@ -241,7 +245,11 @@ const HeroSlider = () => {
             >
               logo - branding - identyfikacja wizualna - WWW - aplikacje
             </HeroText>
-            <Button link="/#czego-potrzebujesz" color="white">
+            <Button
+              link="/oferta"
+              state={{ activeFilter: 'earning' }}
+              color="white"
+            >
               SPRAWDŹ
             </Button>
           </SectionContainer>
@@ -270,7 +278,11 @@ const HeroSlider = () => {
             >
               WWW - sklep internetowy - aplikacje - reklama - SEO
             </HeroText>
-            <Button link="/#czego-potrzebujesz" color="white">
+            <Button
+              link="/oferta"
+              state={{ activeFilter: 'earning' }}
+              color="white"
+            >
               SPRAWDŹ
             </Button>
           </SectionContainer>
@@ -299,7 +311,11 @@ const HeroSlider = () => {
             >
               promocja - reklama - SEO - influencer marketing
             </HeroText>
-            <Button link="/#czego-potrzebujesz" color="white">
+            <Button
+              link="/oferta"
+              state={{ activeFilter: 'earning' }}
+              color="white"
+            >
               SPRAWDŹ
             </Button>
           </SectionContainer>

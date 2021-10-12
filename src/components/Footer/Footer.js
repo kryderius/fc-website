@@ -9,6 +9,7 @@ import BehanceSVG from '../../assets/svg/behance.svg';
 import TwitterSVG from '../../assets/svg/twitter.svg';
 import Text from '../atoms/Text';
 import HeartSVG from '../../assets/svg/copy_heart.svg';
+import scrollToAlt from '../../utils/scrollToAlt';
 
 const FooterWrapper = styled.footer`
   background-color: ${({ theme }) => theme.black};
@@ -245,16 +246,25 @@ const Footer = ({ isServicePage }) => {
               <Link to="/">Start</Link>
             </FooterMenuItem>
             <FooterMenuItem>
-              <Link to="/#oferta">Oferta</Link>
+              <Link to="/#oferta" onClick={(e) => scrollToAlt(e, 'oferta')}>
+                Oferta
+              </Link>
             </FooterMenuItem>
             <FooterMenuItem>
-              <Link to="/#poznaj-nas">Poznaj nas</Link>
+              <Link
+                to="/#poznaj-nas"
+                onClick={(e) => scrollToAlt(e, 'poznaj-nas')}
+              >
+                Poznaj nas
+              </Link>
             </FooterMenuItem>
             <FooterMenuItem>
               <Link to="/kim-jestesmy">Kim jesteśmy</Link>
             </FooterMenuItem>
             <FooterMenuItem>
-              <Link to="/#kontakt">Kontakt</Link>
+              <Link to="/#kontakt" onClick={(e) => scrollToAlt(e, 'kontakt')}>
+                Kontakt
+              </Link>
             </FooterMenuItem>
           </FooterMenu>
         </WrapperTwo>
@@ -281,7 +291,7 @@ const Footer = ({ isServicePage }) => {
               <Link to="/seo-i-optymalizacja">SEO</Link>
             </FooterMenuItem>
             <FooterMenuItem>
-              <Link to="/influencer-marketing">Influencer marketing</Link>
+              <Link to="/grafika">Grafika</Link>
             </FooterMenuItem>
           </FooterMenu>
         </WrapperThree>

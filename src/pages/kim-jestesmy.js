@@ -864,17 +864,17 @@ export const query = graphql`
   query MyQuery {
     aboutUsPhone: file(name: { eq: "about_us_phone" }) {
       childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, placeholder: NONE, quality: 100)
+        gatsbyImageData(layout: FIXED, placeholder: NONE, quality: 100)
       }
     }
     aboutUsLamp: file(name: { eq: "about_us_lamp" }) {
       childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, placeholder: NONE, quality: 100)
+        gatsbyImageData(layout: FIXED, placeholder: NONE, quality: 100)
       }
     }
     aboutUsWhatWeDo: file(name: { eq: "about_us_whatwedo" }) {
       childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, placeholder: NONE, quality: 100)
+        gatsbyImageData(layout: FIXED, placeholder: NONE, quality: 100)
       }
     }
   }

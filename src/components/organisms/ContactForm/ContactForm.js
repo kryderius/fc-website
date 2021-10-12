@@ -94,12 +94,13 @@ const LastLine = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: relative;
 
   @media (min-width: 768px) {
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
   }
   label,
@@ -110,14 +111,11 @@ const LastLine = styled.div`
     }
   }
   button {
-    margin-top: 30px;
-    @media (min-width: 768px) {
-      margin-right: 10%;
-    }
+    margin: 30px 0 0 0;
   }
   label {
     position: relative;
-    padding-left: 30px;
+    padding-left: 20px;
     margin-bottom: 50px;
     font-size: ${({ theme }) => theme.bodyXS};
     font-weight: ${({ theme }) => theme.light};
@@ -140,7 +138,7 @@ const RequiredInfo = styled.div`
   right: 0;
 
   @media (min-width: 1200px) {
-    top: -15%;
+    top: -20px;
   }
 `;
 
@@ -217,6 +215,14 @@ const LastLineReCaptcha = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
 `;
 
 const ContactForm = () => {
@@ -384,42 +390,41 @@ const ContactForm = () => {
           ></Field>
 
           <LastLine>
-            <label htmlFor="agreement">
-              <Field
-                type="checkbox"
-                as="input"
-                id="agreement"
-                name="agreement"
-                required
-              />
-              Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z
-              ustawą o ochronie danych osobowych w związku z wysłaniem zapytania
-              przez formularz kontaktowy. Podanie danych jest dobrowolne, ale
-              niezbędne do przetworzenia zapytania
-            </label>
             <LastLineReCaptcha>
+              <label htmlFor="agreement">
+                <Field
+                  type="checkbox"
+                  as="input"
+                  id="agreement"
+                  name="agreement"
+                  required
+                />
+                Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z
+                ustawą o ochronie danych osobowych w związku z wysłaniem
+                zapytania przez formularz kontaktowy.
+              </label>
               <ReCAPTCHA
                 sitekey="6Lek2OIbAAAAAMrhaauHps7dhu_6CCOSz6HkD0hz"
                 onChange={isReCAPTCHAVerifed}
                 onExpired={isReCAPTCHAExpired}
                 render="onload"
               />
-              <button type="submit">
-                Wyślij{' '}
-                <svg
-                  width="33"
-                  height="21"
-                  viewBox="0 0 33 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19.5919 2.90812L25.1006 8.4375H0V12.5625H25.1006L19.6838 18L22.5919 20.9081L33 10.5L22.5 0L19.5919 2.90812Z"
-                    fill="#FEDD5A"
-                  />
-                </svg>
-              </button>
             </LastLineReCaptcha>
+            <button type="submit">
+              Wyślij{' '}
+              <svg
+                width="33"
+                height="21"
+                viewBox="0 0 33 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.5919 2.90812L25.1006 8.4375H0V12.5625H25.1006L19.6838 18L22.5919 20.9081L33 10.5L22.5 0L19.5919 2.90812Z"
+                  fill="#FEDD5A"
+                />
+              </svg>
+            </button>
             <RequiredInfo>
               <RequiredText>Pola oznaczone * są obowiązkowe</RequiredText>
             </RequiredInfo>

@@ -138,6 +138,15 @@ const LightboxWrapper = styled.div`
   padding: 100px;
   overflow-y: scroll;
   position: relative;
+
+  .gatsby-image-wrapper {
+    width: auto;
+    height: 100%;
+
+    img {
+      object-fit: contain !important;
+    }
+  }
 `;
 
 const CloseBtn = styled.div`
