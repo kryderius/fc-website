@@ -100,7 +100,6 @@ const PostBoxContentTitle = styled(Text)`
 
 const BlogPage = () => {
   const blog = useStaticQuery(blogQuery);
-  const blogPost = blog.allDatoCmsBlog.edges;
   return (
     <Layout title="Baza wiedzy">
       <SubPageHeader background="">

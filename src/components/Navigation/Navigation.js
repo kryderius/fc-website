@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Button from '../atoms/Button';
-import scrollTo from '../../utils/scrollTo';
 import scrollToAlt from '../../utils/scrollToAlt';
 
 const NavWrapper = styled.div`
@@ -211,7 +210,11 @@ const NavMobileListItem = styled.li`
     text-decoration: none;
     color: ${({ theme }) => theme.black};
     font-family: ${({ theme }) => theme.fontFamilyHeading};
-    font-size: ${({ theme }) => theme.headingS};
+    font-size: ${({ theme }) => theme.bodyS};
+
+    p {
+      font-size: ${({ theme }) => theme.bodyS};
+    }
   }
 `;
 
@@ -245,20 +248,9 @@ const Navigation = () => {
     setHamburgerOpen(!isHamburgerOpen);
   };
 
-  const scrollToSection = (e, target, page) => {
-    if (window.location.pathname === '/oferta') {
-      scrollTo(e, target, '/');
-    } else {
-      scrollTo(e, target, page);
-    }
-  };
-
-  const scrollToMeetUs = (e, target, page) => {
-    if (window.location.pathname !== '/') {
-      scrollTo(e, target, '/');
-    } else {
-      scrollTo(e, target, page);
-    }
+  const scrollToMobile = (e, target) => {
+    openHamburger();
+    scrollToAlt(e, target);
   };
 
   return (
@@ -302,12 +294,15 @@ const Navigation = () => {
               </Link>
             </NavMobileListItem>
             <NavMobileListItem>
-              <Link to="/#oferta" onClick={openHamburger}>
+              <Link to="/#oferta" onClick={(e) => scrollToMobile(e, 'oferta')}>
                 Oferta
               </Link>
             </NavMobileListItem>
             <NavMobileListItem>
-              <Link to="/#poznaj-nas" onClick={openHamburger}>
+              <Link
+                to="/#poznaj-nas"
+                onClick={(e) => scrollToMobile(e, 'poznaj-nas')}
+              >
                 Poznaj nas
               </Link>
             </NavMobileListItem>
@@ -323,8 +318,12 @@ const Navigation = () => {
               </Link>
             </NavMobileListItem>
             */}
-            <NavMobileListItem onClick={openHamburger}>
-              <StyledButton link="/#kontakt" color="">
+            <NavMobileListItem>
+              <StyledButton
+                link="/#kontakt"
+                onClick={(e) => scrollToMobile(e, 'kontakt')}
+                color=""
+              >
                 Kontakt
               </StyledButton>
             </NavMobileListItem>

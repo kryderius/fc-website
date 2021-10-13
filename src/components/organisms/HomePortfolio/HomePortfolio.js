@@ -74,6 +74,9 @@ const ImageContainer = styled.div`
   position: relative;
   cursor: zoom-in;
 
+  @media (min-width: 768px) {
+    width: 50%;
+  }
   @media (min-width: 1200px) {
     width: 33.33%;
     height: 380px;
@@ -170,6 +173,15 @@ const LightboxWrapper = styled.div`
   padding: 100px;
   overflow-y: scroll;
   position: relative;
+
+  .gatsby-image-wrapper {
+    width: auto;
+    height: 100%;
+
+    img {
+      object-fit: contain !important;
+    }
+  }
 `;
 
 const CloseBtn = styled.div`
