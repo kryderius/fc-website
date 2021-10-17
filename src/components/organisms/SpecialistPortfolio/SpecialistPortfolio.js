@@ -135,10 +135,11 @@ const Lightbox = styled.div`
 const LightboxWrapper = styled.div`
   width: 100%;
   height: 100%;
-  padding: 100px;
+  padding: 100px 15%;
   overflow-y: scroll;
   position: relative;
 
+  /*
   .gatsby-image-wrapper {
     width: auto;
     height: 100%;
@@ -147,6 +148,7 @@ const LightboxWrapper = styled.div`
       object-fit: contain !important;
     }
   }
+  */
 `;
 
 const CloseBtn = styled.div`
@@ -164,6 +166,11 @@ const CloseBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.4s ease-out;
+
+  &:hover {
+    transform: rotate(180deg);
+  }
 
   img {
     width: 40%;
@@ -173,7 +180,7 @@ const CloseBtn = styled.div`
 const LightboxInfo = styled.div`
   position: absolute;
   top: 15px;
-  left: 100px;
+  left: 15%;
   z-index: 2010;
   display: flex;
 `;
@@ -224,13 +231,19 @@ const SpecialistPortfolio = ({ portfolio }) => {
   const [activeAuthorImg, setActiveAuthorImg] = useState('');
   const [activeAuthorName, setActiveAuthorName] = useState('');
   const [activeTitle, setActiveTitle] = useState('');
+  const [activeMainImage, setActiveMainImage] = useState('');
 
-  const handleImageWrapper = (e, authorImg, title, name) => {
+  const handleImageWrapper = (e, authorImg, title, name, image) => {
     setOpenImage(!openImage);
     setActiveImage(e);
     setActiveAuthorImg(authorImg);
     setActiveTitle(title);
     setActiveAuthorName(name);
+    if (image != null) {
+      setActiveMainImage(image);
+    } else {
+      setActiveMainImage(null);
+    }
   };
   return (
     <PortfolioWrapper>
@@ -251,7 +264,14 @@ const SpecialistPortfolio = ({ portfolio }) => {
             <img src={CloseSVG} alt="" />
           </CloseBtn>
           <LightboxWrapper>
-            <GatsbyImage image={activeImage} alt="" />
+            <GatsbyImage
+              image={
+                activeMainImage != null
+                  ? activeMainImage.gatsbyImageData
+                  : activeImage
+              }
+              alt=""
+            />
           </LightboxWrapper>
         </Lightbox>
       )}
@@ -272,7 +292,8 @@ const SpecialistPortfolio = ({ portfolio }) => {
                   item.node.image.gatsbyImageData,
                   item.node.authorImage.gatsbyImageData,
                   item.node.title,
-                  item.node.author
+                  item.node.author,
+                  item.node.mainImage
                 )
               }
             >

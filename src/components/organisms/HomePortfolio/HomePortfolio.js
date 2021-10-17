@@ -170,18 +170,9 @@ const Lightbox = styled.div`
 const LightboxWrapper = styled.div`
   width: 100%;
   height: 100%;
-  padding: 100px;
+  padding: 100px 15%;
   overflow-y: scroll;
   position: relative;
-
-  .gatsby-image-wrapper {
-    width: auto;
-    height: 100%;
-
-    img {
-      object-fit: contain !important;
-    }
-  }
 `;
 
 const CloseBtn = styled.div`
@@ -208,7 +199,7 @@ const CloseBtn = styled.div`
 const LightboxInfo = styled.div`
   position: absolute;
   top: 15px;
-  left: 100px;
+  left: 15%;
   z-index: 2010;
   display: flex;
 `;
@@ -265,14 +256,20 @@ const HomePortfolio = () => {
   const [activeAuthorName, setActiveAuthorName] = useState('');
   const [activeAuthorSlug, setActiveAuthorSlug] = useState('');
   const [activeTitle, setActiveTitle] = useState('');
+  const [activeMainImage, setActiveMainImage] = useState('');
 
-  const handleImageWrapper = (e, authorImg, title, name, activeSlug) => {
+  const handleImageWrapper = (e, authorImg, title, name, activeSlug, image) => {
     setOpenImage(!openImage);
     setActiveImage(e);
     setActiveAuthorImg(authorImg);
     setActiveTitle(title);
     setActiveAuthorName(name);
     setActiveAuthorSlug(activeSlug);
+    if (image != null) {
+      setActiveMainImage(image);
+    } else {
+      setActiveMainImage(null);
+    }
   };
   return (
     <Wrapper>
@@ -305,7 +302,14 @@ const HomePortfolio = () => {
             <img src={CloseSVG} alt="" />
           </CloseBtn>
           <LightboxWrapper>
-            <GatsbyImage image={activeImage} alt="" quality={100} />
+            <GatsbyImage
+              image={
+                activeMainImage != null
+                  ? activeMainImage.gatsbyImageData
+                  : activeImage
+              }
+              alt=""
+            />
           </LightboxWrapper>
         </Lightbox>
       )}
@@ -339,7 +343,8 @@ const HomePortfolio = () => {
                   item.node.authorImage.gatsbyImageData,
                   item.node.title,
                   item.node.author,
-                  item.node.authorSlug
+                  item.node.authorSlug,
+                  item.node.mainImage
                 )
               }
             >
@@ -384,7 +389,7 @@ const query = graphql`
     allDatoCmsPortfolio(
       filter: {
         originalId: {
-          regex: "/63029050|63028808|50986942|50987431|50987483|50988548/"
+          regex: "/63029069|50986942|50987431|65025263|50988548|65023921|65026745|50990581/"
         }
       }
     ) {
@@ -397,6 +402,9 @@ const query = graphql`
           }
           title
           image {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          }
+          mainImage {
             gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
           }
         }

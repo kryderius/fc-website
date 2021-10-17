@@ -338,6 +338,9 @@ export const query = graphql`
           image {
             gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
           }
+          mainImage {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          }
           authorImage {
             gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
           }
