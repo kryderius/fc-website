@@ -62,7 +62,7 @@ const StyledHeading = styled(Heading)`
   flex-direction: column;
   text-align: left;
   width: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 140px;
   @media (min-width: 1200px) {
     font-size: ${({ theme }) => theme.headingL};
   }
@@ -103,14 +103,14 @@ const ContactBox = styled.div`
   bottom: 0;
   left: 0;
   */
-  padding: 30px;
+  padding: 100px 30px 30px 30px;
   background-color: ${({ theme }) => theme.black};
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 60%;
-  height: 350px;
+  height: 390px;
   //transform: translateY(100%);
   margin-bottom: -200px;
   position: relative;
@@ -187,8 +187,8 @@ const LightboxAuthorImg = styled.div`
   }
 
   @media (min-width: 1200px) {
-    width: 130px;
-    height: 130px;
+    width: 220px;
+    height: 220px;
   }
 `;
 
@@ -242,7 +242,9 @@ const Contact = () => {
             </span>
           </StyledHeading>
           <MobileText>
-            Masz pytania? Wypełnij formularz i daj nam 24h na odpowiedź!
+            Masz pytania?
+            <br />
+            Wypełnij formularz i daj nam 24h na odpowiedź!
             <br />
             Ewentualnie skontaktuj się z nami telefonicznie - porozmawiajmy o
             Twoich potrzebach
@@ -250,7 +252,9 @@ const Contact = () => {
           <ContactBox>
             <ContactBoxWrapper>
               <ContactBoxText>
-                Masz pytania? Wypełnij formularz i daj nam 24h na odpowiedź!
+                Masz pytania?
+                <br />
+                Wypełnij formularz i daj nam 24h na odpowiedź!
                 <br />
                 Ewentualnie skontaktuj się z nami telefonicznie - porozmawiajmy
                 o Twoich potrzebach
@@ -264,7 +268,7 @@ const Contact = () => {
                 </Link>
               </LightboxAuthorImg>
               <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
-                <span>m.gorska@onet.com.pl</span>
+                <span>m.gorska@freelanceconcept.pl</span>
               </ContactBoxItem>
               <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
                 <span>513 625 502</span>
