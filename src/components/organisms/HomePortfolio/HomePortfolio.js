@@ -387,11 +387,8 @@ const HomePortfolio = () => {
 const query = graphql`
   query AllPortfolioQuery {
     allDatoCmsPortfolio(
-      filter: {
-        originalId: {
-          regex: "/63029069|50986942|50987431|65025263|50988548|65023921|65026745|50990581/"
-        }
-      }
+      filter: { portfolioOrder: { lt: 10 } }
+      sort: { fields: portfolioOrder, order: ASC }
     ) {
       edges {
         node {
