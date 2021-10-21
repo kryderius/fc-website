@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react';
+import React, { useLayoutEffect, useState, useEffect, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../theme/theme';
@@ -10,6 +10,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from '../components/organisms/Cookies/Cookies';
+
+//const { gsap } = React.lazy(() => import('gsap'));
 
 const StyledMain = styled.main`
   transition: background-color 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);

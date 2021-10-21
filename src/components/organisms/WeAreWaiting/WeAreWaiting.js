@@ -218,7 +218,7 @@ const query = graphql`
       childImageSharp {
         gatsbyImageData(
           layout: FULL_WIDTH
-          quality: 100
+          quality: 70
           formats: WEBP
           placeholder: NONE
         )

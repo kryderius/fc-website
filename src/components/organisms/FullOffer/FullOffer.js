@@ -4,7 +4,6 @@ import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Heading from '../../atoms/Heading';
 import Button from '../../atoms/Button';
-//import offerItems from './offerItems';
 import Text from '../../atoms/Text';
 import TriangleDotsSVG from '../../../assets/svg/triangle_dots_yellow_black.svg';
 import CrossBlackSVG from '../../../assets/svg/cross_black_sm.svg';
@@ -547,6 +546,16 @@ export const query = graphql`
           image
           categoryFilter
         }
+      }
+    }
+    communication: file(name: { eq: "communication" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          quality: 60
+          formats: WEBP
+          placeholder: BLURRED
+        )
       }
     }
   }
