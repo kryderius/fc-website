@@ -338,6 +338,7 @@ const Footer = ({ isServicePage }) => {
               <SocialIcon href="fb.com">
                 <img src={FacebookSVG} alt="" />
               </SocialIcon>
+              {/*
               <SocialIcon href="yt.com">
                 <img src={YouTubeSVG} alt="" />
               </SocialIcon>
@@ -347,6 +348,7 @@ const Footer = ({ isServicePage }) => {
               <SocialIcon href="twitter.com">
                 <img src={TwitterSVG} alt="" />
               </SocialIcon>
+              */}
             </SocialsWrapper>
           </WrapperFourSocials>
         </WrapperFour>
