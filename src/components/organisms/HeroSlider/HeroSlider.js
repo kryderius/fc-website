@@ -1,6 +1,8 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import Heading from '../../atoms/Heading';
 import Slide1 from '../../../assets/images/hero_1.jpg';
@@ -131,6 +133,23 @@ const SectionContainer = styled.div`
   & > * {
     z-index: 10;
   }
+`;
+
+const HeroText = styled(Text)`
+  font-size: ${({ theme }) => theme.bodyS};
+  margin: 30px 0;
+
+  @media (min-width: 1200px) {
+    font-size: ${({ theme }) => theme.headingS};
+  }
+`;
+
+const SlideImage = styled(GatsbyImage)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
   &::before {
     content: '';
@@ -144,16 +163,9 @@ const SectionContainer = styled.div`
   }
 `;
 
-const HeroText = styled(Text)`
-  font-size: ${({ theme }) => theme.bodyS};
-  margin: 30px 0;
-
-  @media (min-width: 1200px) {
-    font-size: ${({ theme }) => theme.headingS};
-  }
-`;
-
 const HeroSlider = () => {
+  const sliderImg = useStaticQuery(query);
+
   return (
     <Slider>
       <Swiper
@@ -190,7 +202,11 @@ const HeroSlider = () => {
         }}
       >
         <SwiperSlide>
-          <SectionContainer background={Slide1}>
+          <SectionContainer>
+            <SlideImage
+              image={sliderImg.firstSlide.childImageSharp.gatsbyImageData}
+              alt="Hero image"
+            />
             <StyledHeading>
               <div className="span-container">
                 <div data-aos="title-down">Wiemy gdzie znajdują się</div> <br />{' '}
@@ -223,7 +239,11 @@ const HeroSlider = () => {
         </SwiperSlide>
         {/* Next slide */}
         <SwiperSlide>
-          <SectionContainer background={Slide2}>
+          <SectionContainer>
+            <SlideImage
+              image={sliderImg.secondSlide.childImageSharp.gatsbyImageData}
+              alt="Hero image"
+            />
             <StyledHeading>
               <div className="span-container">
                 <div data-aos="title-down">Projektujemy według</div> <br />{' '}
@@ -256,7 +276,11 @@ const HeroSlider = () => {
         </SwiperSlide>
         {/* Next slide */}
         <SwiperSlide>
-          <SectionContainer background={Slide3}>
+          <SectionContainer>
+            <SlideImage
+              image={sliderImg.thirdSlide.childImageSharp.gatsbyImageData}
+              alt="Hero image"
+            />
             <StyledHeading>
               <div className="span-container">
                 <div data-aos="title-down">Przenieś swój biznes</div> <br />{' '}
@@ -289,7 +313,11 @@ const HeroSlider = () => {
         </SwiperSlide>
         {/* Next slide */}
         <SwiperSlide>
-          <SectionContainer background={Slide4}>
+          <SectionContainer>
+            <SlideImage
+              image={sliderImg.fourthSlide.childImageSharp.gatsbyImageData}
+              alt="Hero image"
+            />
             <StyledHeading>
               <div className="span-container">
                 <div data-aos="title-down">Zwiększamy wolumen </div> <br />{' '}
@@ -324,5 +352,50 @@ const HeroSlider = () => {
     </Slider>
   );
 };
+
+const query = graphql`
+  {
+    firstSlide: file(name: { eq: "hero_1" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          quality: 60
+          formats: WEBP
+          placeholder: BLURRED
+        )
+      }
+    }
+    secondSlide: file(name: { eq: "hero_2" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          quality: 60
+          formats: WEBP
+          placeholder: BLURRED
+        )
+      }
+    }
+    thirdSlide: file(name: { eq: "hero_3" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          quality: 60
+          formats: WEBP
+          placeholder: BLURRED
+        )
+      }
+    }
+    fourthSlide: file(name: { eq: "hero_4" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          quality: 60
+          formats: WEBP
+          placeholder: BLURRED
+        )
+      }
+    }
+  }
+`;
 
 export default HeroSlider;
