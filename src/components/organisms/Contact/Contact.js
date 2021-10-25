@@ -260,17 +260,20 @@ const Contact = () => {
                 o Twoich potrzebach
               </ContactBoxText>
               <LightboxAuthorImg>
-                <Link to="/specjalisci/milena">
+                <Link
+                  to="/specjalisci/milena"
+                  onClick={(e) => scrollTo(e, 'info', '/specjalisci/milena')}
+                >
                   <GatsbyImage
                     image={imageQuery.milenaImg.childImageSharp.gatsbyImageData}
                     alt=""
                   />
                 </Link>
               </LightboxAuthorImg>
-              <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
+              <ContactBoxItem href="mailto:m.gorska@freelanceconcept.pl">
                 <span>m.gorska@freelanceconcept.pl</span>
               </ContactBoxItem>
-              <ContactBoxItem href="mailto:m.gorska@onet.com.pl">
+              <ContactBoxItem href="tel:513625502">
                 <span>513 625 502</span>
               </ContactBoxItem>
             </ContactBoxWrapper>
@@ -311,10 +314,10 @@ const query = graphql`
     milenaImg: file(name: { eq: "milenaImg" }) {
       childImageSharp {
         gatsbyImageData(
-          layout: CONSTRAINED
-          quality: 100
-          formats: WEBP
-          placeholder: NONE
+          layout: FULL_WIDTH
+          quality: 80
+          formats: [WEBP, JPG]
+          placeholder: BLURRED
         )
       }
     }
