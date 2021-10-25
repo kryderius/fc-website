@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useEffect, Suspense } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../theme/theme';
@@ -6,8 +6,8 @@ import GlobalStyles from '../theme/GlobalStyles';
 import Navigation from '../components/Navigation/Navigation';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+//import { gsap } from 'gsap';
+//import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from '../components/organisms/Cookies/Cookies';
 
@@ -21,9 +21,11 @@ const Layout = ({ children, title, description, isHomePage }) => {
   const seo = useStaticQuery(query);
   const [canBeDisplayedCookie, setCanBeDisplayedCookie] = useState(false);
 
-  useEffect(() => {
+  /*
+ useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
   }, []);
+ */
 
   useLayoutEffect(() => {
     setTimeout(() => {

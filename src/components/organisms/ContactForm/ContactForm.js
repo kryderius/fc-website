@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Formik, Field, Form } from 'formik';
 import Text from '../../atoms/Text';
@@ -230,6 +230,13 @@ const ContactForm = () => {
   const [isFormSubmited, setFormSubmited] = useState(false);
   const [isRecaptchaTrue, setRecaptchaTrue] = useState(false);
   const [activeNeeds, setActiveNeeds] = useState('');
+  const [delayReCAPTCHA, setDelayReCAPTCHA] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDelayReCAPTCHA(!delayReCAPTCHA);
+    }, 3000);
+  }, []);
 
   const isReCAPTCHAVerifed = () => {
     setRecaptchaTrue(true);
@@ -403,12 +410,14 @@ const ContactForm = () => {
                 ustawą o ochronie danych osobowych w związku z wysłaniem
                 zapytania przez formularz kontaktowy.
               </label>
-              <ReCAPTCHA
-                sitekey="6Lek2OIbAAAAAMrhaauHps7dhu_6CCOSz6HkD0hz"
-                onChange={isReCAPTCHAVerifed}
-                onExpired={isReCAPTCHAExpired}
-                render="onload"
-              />
+              {delayReCAPTCHA && (
+                <ReCAPTCHA
+                  sitekey="6Lek2OIbAAAAAMrhaauHps7dhu_6CCOSz6HkD0hz"
+                  onChange={isReCAPTCHAVerifed}
+                  onExpired={isReCAPTCHAExpired}
+                  render="onload"
+                />
+              )}
             </LastLineReCaptcha>
             <button type="submit">
               Wyślij{' '}

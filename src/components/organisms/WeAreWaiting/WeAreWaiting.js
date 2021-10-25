@@ -28,14 +28,6 @@ const SectionContainer = styled.div`
     padding: 300px 0 100px 0;
     flex-direction: row;
   }
-  /*
-  @media (min-width: 1400px) {
-    max-width: 1320px;
-  }
-  @media (min-width: 1920px) {
-    max-width: 1440px;
-  }
-  */
 `;
 
 const SectionLeft = styled.div`
@@ -158,14 +150,6 @@ const WeAreWaiting = () => {
       <BgText className="bg-text">FREELANCE</BgText>
       <SectionContainer>
         <SectionLeft className="laptop-anim--trigger">
-          {/*
-          <img
-            src={WeAreWaitingIMG}
-            alt="Czekamy na Ciebie! Skontaktuj się z nami"
-            width="300px"
-            height="888px"
-          />
-          */}
           <GatsbyImage
             image={data.weAreWaiting.childImageSharp.gatsbyImageData}
           />

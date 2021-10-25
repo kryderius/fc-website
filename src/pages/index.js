@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Layout from '../templates/Layout';
@@ -104,39 +104,7 @@ const IndexPage = () => {
   const seo = useStaticQuery(query);
   return (
     <Layout title={seo.datoCmsMainSeo.homepageTitle} isHomePage="isHomePage">
-      {/*
-<SectionWrapper>
-        <SectionContainer>
-          <StyledHeading>
-            <div className="span-container">
-              <div data-aos="title-down">Wszystkie cyfrowe usługi</div> <br />{' '}
-            </div>
-            <div className="span-container">
-              <div
-                className="yellow-span"
-                data-aos="title-down"
-                data-aos-delay="200"
-              >
-                w jednym miejscu
-              </div>
-            </div>
-          </StyledHeading>
-          <HeroText
-            className="text--white"
-            data-aos="title-up"
-            data-aos-delay="400"
-          >
-            Poznaj naszych specjalistów z każdej branży!
-          </HeroText>
-          <Button link="/#czego-potrzebujesz" color="white">
-            SPRAWDŹ
-          </Button>
-        </SectionContainer>
-      </SectionWrapper>
-      */}
-
       <HeroSlider />
-
       <Offer />
       <FullOffer />
       <HomePortfolio />

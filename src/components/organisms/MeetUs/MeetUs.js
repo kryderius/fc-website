@@ -204,15 +204,6 @@ const ImageContainer = styled.div`
   height: 100%;
   overflow: hidden;
 `;
-/*
-const ImgNormal = styled.img`
-  width: 130%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-*/
 const ImgNormal = styled(GatsbyImage)`
   width: 130%;
   position: absolute;
@@ -220,17 +211,6 @@ const ImgNormal = styled(GatsbyImage)`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
-/*
-const ImgFunny = styled.img`
-  width: 130%;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-`;
-*/
 
 const ImgFunny = styled(GatsbyImage)`
   width: 130%;
@@ -358,25 +338,6 @@ const MeetUs = ({ data }) => {
   };
   useEffect(() => {
     setTimeout(() => {
-      /*
-      gsap.to('.bg--change', {
-        backgroundColor: '#000000',
-        scrollTrigger: {
-          trigger: '.bg--trigger',
-          start: 'top 75%',
-          markers: true,
-        },
-      });
-      
-      gsap.to('.bg--change', {
-        backgroundColor: '#ffffff',
-        scrollTrigger: {
-          trigger: '.bg--trigger',
-          start: 'bottom center',
-          toggleActions: 'play none none reset',
-        },
-      });
-      */
       gsap.to('.bg--change', {
         backgroundColor: '#000000',
         scrollTrigger: {
@@ -489,16 +450,6 @@ const MeetUs = ({ data }) => {
                         }
                         alt=""
                       />
-                      {/*
-                      <ImgFunny
-                        className="funny-img"
-                        src={
-                          item.node.funnyImage === null
-                            ? undefined
-                            : item.node.funnyImage.fluid.src
-                        }
-                      />
-                      */}
                     </ImageContainer>
                     <HoverInfo className="hover-info">
                       <Name>{item.node.name}</Name>
@@ -515,45 +466,6 @@ const MeetUs = ({ data }) => {
                 </SwiperSlide>
               );
             })}
-            {/*
-            {meetUsItems.map((item, index, i) => {
-              return (
-                <SwiperSlide key={index}>
-                  <SwiperBoxTeam
-                    data-aos="fade-up"
-                    data-aos-delay={`${index * 2}00`}
-                  >
-                    <ImageContainer className="image-container">
-                      <ImgNormal
-                        src={
-                          require(`../../../assets/images/${item.imageNormal}.jpg`)
-                            .default
-                        }
-                      />
-                      <ImgFunny
-                        className="funny-img"
-                        src={
-                          require(`../../../assets/images/${item.imageFunny}.jpg`)
-                            .default
-                        }
-                      />
-                    </ImageContainer>
-                    <HoverInfo className="hover-info">
-                      <Name>{item.name}</Name>
-                      <Profession>{item.profession}</Profession>
-                      <Button
-                        fontSize="small"
-                        size="btn--small"
-                        link={`/specjalisci/${item.slug}`}
-                      >
-                        PORTFOLIO
-                      </Button>
-                    </HoverInfo>
-                  </SwiperBoxTeam>
-                </SwiperSlide>
-              );
-            })}
-            */}
           </Swiper>
           <TriangleDotsWhite src={TriangleDotsWhiteSVG} alt="" />
         </Slider>

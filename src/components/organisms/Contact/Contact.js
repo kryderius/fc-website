@@ -98,11 +98,6 @@ const MobileText = styled(Text)`
 `;
 
 const ContactBox = styled.div`
-  /*
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  */
   padding: 100px 30px 30px 30px;
   background-color: ${({ theme }) => theme.black};
   display: none;
@@ -111,7 +106,6 @@ const ContactBox = styled.div`
   align-items: center;
   width: 60%;
   height: 390px;
-  //transform: translateY(100%);
   margin-bottom: -200px;
   position: relative;
   @media (min-width: 1200px) {

@@ -450,40 +450,6 @@ const FullOffer = () => {
                 </SwiperSlide>
               );
             })}
-            {/*offerItems.map((item, index, i) => {
-              return (
-                <SwiperSlide key={index}>
-                  <SwiperBox
-                    data-aos="fade-up"
-                    data-aos-delay={`${index * 2}00`}
-                  >
-                    <SwiperImageWrapper>
-                      <div>
-                        <img
-                          src={
-                            require(`../../../assets/images/${item.image}.jpg`)
-                              .default
-                          }
-                          alt={item.image}
-                        />
-                      </div>
-                    </SwiperImageWrapper>
-                    <SwiperText>
-                      <BoxHeading>{item.offerName}</BoxHeading>
-                      <BoxParagraphBold>{item.shortDesc}</BoxParagraphBold>
-                      <BoxParagraph>{item.longDesc}</BoxParagraph>
-                      <BoxButton
-                        color="yellow"
-                        link={item.link}
-                        fontSize="small"
-                      >
-                        SPRAWDŹ
-                      </BoxButton>
-                    </SwiperText>
-                  </SwiperBox>
-                </SwiperSlide>
-              );
-            })*/}
           </Swiper>
           <TriangleDots src={TriangleDotsSVG} alt="" />
           <FullOfferDots src={FullOfferDotsSVG} alt="" />

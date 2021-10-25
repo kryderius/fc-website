@@ -44,13 +44,6 @@ const StyledHeading = styled(Heading)`
     color: ${({ theme }) => theme.yellow};
   }
 `;
-/*
-const SectionWrapper = styled.section`
-  height: 100vh;
-  display: flex;
-  position: relative;
-`;
-*/
 
 const Slider = styled.div`
   height: 100vh;
@@ -96,7 +89,6 @@ const Slider = styled.div`
 
       .swiper-slide {
         margin: auto;
-        //width: 100vw !important;
         height: 100%;
 
         @media (min-width: 1200px) {
