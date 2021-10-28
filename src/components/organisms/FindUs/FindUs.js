@@ -60,7 +60,18 @@ const SectionRight = styled.div`
   }
 `;
 
+/*
 const StyledGlobe = styled.img`
+  position: absolute;
+  bottom: -5%;
+  left: -26%;
+  width: 60% !important;
+  will-change: transform;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+`;
+*/
+
+const StyledGlobe = styled(GatsbyImage)`
   position: absolute;
   bottom: -5%;
   left: -26%;
@@ -170,7 +181,11 @@ const FindUs = () => {
       <SectionContainer>
         <SectionLeft className="globe-anim--trigger">
           <GatsbyImage image={data.findUs.childImageSharp.gatsbyImageData} />
-          <StyledGlobe src={GlobeIMG} alt="" className="globe-anim" />
+          <StyledGlobe
+            image={data.findUsGlobe.childImageSharp.gatsbyImageData}
+            alt=""
+            className="globe-anim"
+          />
           <StyledHeading className="findUs-heading--trigger">
             <div className="overflow">
               <div
@@ -227,7 +242,17 @@ const query = graphql`
       childImageSharp {
         gatsbyImageData(
           layout: FULL_WIDTH
-          quality: 100
+          quality: 70
+          formats: WEBP
+          placeholder: NONE
+        )
+      }
+    }
+    findUsGlobe: file(name: { eq: "find-us-globe" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          quality: 70
           formats: WEBP
           placeholder: NONE
         )

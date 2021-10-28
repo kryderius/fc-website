@@ -395,14 +395,26 @@ const query = graphql`
           author
           authorSlug
           authorImage {
-            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+            gatsbyImageData(
+              placeholder: BLURRED
+              layout: FULL_WIDTH
+              imgixParams: { fm: "webp", q: 70 }
+            )
           }
           title
           image {
-            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+            gatsbyImageData(
+              placeholder: BLURRED
+              layout: FULL_WIDTH
+              imgixParams: { fm: "webp", q: 70 }
+            )
           }
           mainImage {
-            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+            gatsbyImageData(
+              placeholder: BLURRED
+              layout: FULL_WIDTH
+              imgixParams: { fm: "webp", q: 70 }
+            )
           }
         }
       }

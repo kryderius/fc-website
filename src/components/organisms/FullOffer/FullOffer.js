@@ -13,6 +13,7 @@ import FullOfferDotsSVG from '../../../assets/svg/fullOffer_dots.svg';
 import { graphql, useStaticQuery } from 'gatsby';
 import Tilt from 'react-parallax-tilt';
 import { Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 SwiperCore.use([Navigation]);
 
@@ -420,12 +421,18 @@ const FullOffer = () => {
                           tiltMaxAngleX={10}
                           tiltMaxAngleY={10}
                         >
+                          {/*
                           <img
                             src={
                               require(`../../../assets/images/${item.node.image}.jpg`)
                                 .default
                             }
                             alt={item.node.image}
+                          />
+                          */}
+                          <GatsbyImage
+                            image={item.node.mainImage.gatsbyImageData}
+                            alt={item.node.name}
                           />
                         </Tilt>
                       </div>
@@ -511,17 +518,10 @@ export const query = graphql`
           slug
           image
           categoryFilter
+          mainImage {
+            gatsbyImageData(imgixParams: { fm: "webp", q: 70 })
+          }
         }
-      }
-    }
-    communication: file(name: { eq: "communication" }) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: FULL_WIDTH
-          quality: 60
-          formats: WEBP
-          placeholder: BLURRED
-        )
       }
     }
   }

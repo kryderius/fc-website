@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../theme/theme';
@@ -6,12 +6,10 @@ import GlobalStyles from '../theme/GlobalStyles';
 import Navigation from '../components/Navigation/Navigation';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-//import { gsap } from 'gsap';
-//import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from '../components/organisms/Cookies/Cookies';
-
-//const { gsap } = React.lazy(() => import('gsap'));
 
 const StyledMain = styled.main`
   transition: background-color 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -21,11 +19,9 @@ const Layout = ({ children, title, description, isHomePage }) => {
   const seo = useStaticQuery(query);
   const [canBeDisplayedCookie, setCanBeDisplayedCookie] = useState(false);
 
-  /*
- useEffect(() => {
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
   }, []);
- */
 
   useLayoutEffect(() => {
     setTimeout(() => {
@@ -34,7 +30,7 @@ const Layout = ({ children, title, description, isHomePage }) => {
         duration: 600,
         easing: 'ease-out-quad',
       });
-    }, 100);
+    }, 500);
   }, []);
 
   return (

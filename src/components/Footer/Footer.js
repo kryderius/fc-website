@@ -335,7 +335,7 @@ const Footer = ({ isServicePage }) => {
           <WrapperFourSocials>
             <FooterHeading>Znajdź nas</FooterHeading>
             <SocialsWrapper>
-              <SocialIcon href="fb.com">
+              <SocialIcon href="https://www.facebook.com/freelanceconcept/">
                 <img src={FacebookSVG} alt="" />
               </SocialIcon>
               {/*

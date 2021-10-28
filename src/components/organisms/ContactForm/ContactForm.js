@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import { Formik, Field, Form } from 'formik';
 import Text from '../../atoms/Text';
 import axios from 'axios';
-import ReCAPTCHA from 'react-google-recaptcha';
+//import ReCAPTCHA from 'react-google-recaptcha';
+import loadable from '@loadable/component';
+
+const ReCAPTCHA = loadable(() => import('react-google-recaptcha'));
 
 const FormWrapper = styled.div`
   margin-bottom: 50px;
@@ -410,14 +413,12 @@ const ContactForm = () => {
                 ustawą o ochronie danych osobowych w związku z wysłaniem
                 zapytania przez formularz kontaktowy.
               </label>
-              {delayReCAPTCHA && (
-                <ReCAPTCHA
-                  sitekey="6Lek2OIbAAAAAMrhaauHps7dhu_6CCOSz6HkD0hz"
-                  onChange={isReCAPTCHAVerifed}
-                  onExpired={isReCAPTCHAExpired}
-                  render="onload"
-                />
-              )}
+              <ReCAPTCHA
+                sitekey="6Lek2OIbAAAAAMrhaauHps7dhu_6CCOSz6HkD0hz"
+                onChange={isReCAPTCHAVerifed}
+                onExpired={isReCAPTCHAExpired}
+                render="onload"
+              />
             </LastLineReCaptcha>
             <button type="submit">
               Wyślij{' '}

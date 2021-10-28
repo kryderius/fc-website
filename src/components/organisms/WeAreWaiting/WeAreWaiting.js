@@ -58,7 +58,18 @@ const SectionRight = styled.div`
   }
 `;
 
+/*
 const StyledLaptop = styled.img`
+  position: absolute;
+  bottom: -5%;
+  right: -26%;
+  width: 70% !important;
+  will-change: transform;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+`;
+*/
+
+const StyledLaptop = styled(GatsbyImage)`
   position: absolute;
   bottom: -5%;
   right: -26%;
@@ -153,7 +164,14 @@ const WeAreWaiting = () => {
           <GatsbyImage
             image={data.weAreWaiting.childImageSharp.gatsbyImageData}
           />
+          {/*
           <StyledLaptop src={LaptopIMG} alt="" className="laptop-anim" />
+         */}
+          <StyledLaptop
+            image={data.laptop.childImageSharp.gatsbyImageData}
+            alt=""
+            className="laptop-anim"
+          />
           <StyledHeading className="anim-trigger-heading">
             <div className="overflow">
               <div
@@ -199,6 +217,16 @@ const WeAreWaiting = () => {
 const query = graphql`
   {
     weAreWaiting: file(name: { eq: "we-are-waiting" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          quality: 70
+          formats: WEBP
+          placeholder: NONE
+        )
+      }
+    }
+    laptop: file(name: { eq: "laptop" }) {
       childImageSharp {
         gatsbyImageData(
           layout: FULL_WIDTH
