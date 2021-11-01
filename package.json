@@ -8,6 +8,7 @@
     "@loadable/component": "^5.15.0",
     "aos": "^2.3.4",
     "axios": "^0.21.1",
+    "basic-ftp": "^4.6.6",
     "formik": "^2.2.9",
     "ftp": "^0.3.10",
     "ftp-deploy": "^2.4.1",
