@@ -6,6 +6,14 @@ jobs:
     steps:
       - checkout
       # Download and cache dependencies.
+      - run:
+          name: Notify DatoCMS about the status of the job
+          command: 'curl -X POST --data-binary "{\"payload\": { \"branch\": \"$CIRCLE_BRANCH\", \"status\": \"failed\" } }" https://webhooks.datocms.com/00cd712a09/deploy-results'
+          when: on_fail
+      - run:
+          name: Notify DatoCMS about the status of the job
+          command: 'curl -X POST --data-binary "{\"payload\": { \"branch\": \"$CIRCLE_BRANCH\", \"status\": \"success\" } }" https://webhooks.datocms.com/00cd712a09/deploy-results'
+          when: on_success   
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
@@ -20,12 +28,3 @@ jobs:
       - run: npm run generate
       # Run the FTP deployment script.
       - run: npm run ftp-deploy
-- run:
-      name: Notify DatoCMS about the status of the job
-      command: 'curl -X POST --data-binary "{\"payload\": { \"branch\": \"$CIRCLE_BRANCH\", \"status\": \"failed\" } }" https://webhooks.datocms.com/00cd712a09/deploy-results'
-      when: on_fail
-
-    - run:
-      name: Notify DatoCMS about the status of the job
-      command: 'curl -X POST --data-binary "{\"payload\": { \"branch\": \"$CIRCLE_BRANCH\", \"status\": \"success\" } }" https://webhooks.datocms.com/00cd712a09/deploy-results'
-      when: on_success   
