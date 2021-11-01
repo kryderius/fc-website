@@ -1,11 +1,9 @@
-# Freelance Concept Website
+# Freelance Concept
 
-### Author: **Damian Markiewicz**
+**Freelance Concept** is an idea to bring together **professionals** from all areas of digital marketing.
 
-### Project started: **15.06.2021**
+## About this repo
 
-## Technologies
+This repo contains a website made with React + Gatsby + DatoCMS.
 
-- ReactJS
-- GatsbyJS
-- Styled Components
+_All copyrights belong to Freelance Concept and it is forbidden to use the code for commercial use_
