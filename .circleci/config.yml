@@ -27,4 +27,6 @@ jobs:
       # Build the application.
       - run: npm run build
       # Run the FTP deployment script.
-      - run: npm run ftp-deploy
+      - run:
+          name: Deploying
+          command: node ./deploy.js $FTP_ADDRESS $FTP_USER $FTP_PASSWORD
