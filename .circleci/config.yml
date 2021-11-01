@@ -2,30 +2,31 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10
+      - image: circleci/node:12
     steps:
       - checkout
       # Download and cache dependencies.
+      - run:
+          name: Notify DatoCMS about the status of the job
+          command: 'curl -k -X POST --data-binary "{\"payload\": { \"branch\": \"$CIRCLE_BRANCH\", \"status\": \"failed\" } }" https://webhooks.datocms.com/00cd712a09/deploy-results'
+          when: on_fail
+      - run:
+          name: Notify DatoCMS about the status of the job
+          command: 'curl -k -X POST --data-binary "{\"payload\": { \"branch\": \"$CIRCLE_BRANCH\", \"status\": \"success\" } }" https://webhooks.datocms.com/00cd712a09/deploy-results'
+          when: on_success
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # Fallback to using the latest cache if no exact match is found.
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            # Fallback to using the latest cache if no exact match is found.
+            - v1-dependencies-
       - run: npm install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       # Build the application.
-      - run: npm run generate
+      - run: npm run build
       # Run the FTP deployment script.
-      - run: npm run ftp-deploy
-- run:
-      name: Notify DatoCMS about the status of the job
-      command: 'curl -X POST --data-binary "{\"payload\": { \"branch\": \"$CIRCLE_BRANCH\", \"status\": \"failed\" } }" https://webhooks.datocms.com/00cd712a09/deploy-results'
-      when: on_fail
-
-    - run:
-      name: Notify DatoCMS about the status of the job
-      command: 'curl -X POST --data-binary "{\"payload\": { \"branch\": \"$CIRCLE_BRANCH\", \"status\": \"success\" } }" https://webhooks.datocms.com/00cd712a09/deploy-results'
-      when: on_success   
+      - run:
+          name: Deploying
+          command: node ./deploy.js $FTP_ADDRESS $FTP_USER $FTP_PASSWORD
