@@ -290,8 +290,8 @@ const ContactForm = () => {
           if (!isRecaptchaTrue) {
             setOpenErrorMsg(true);
           } else {
-            alert(JSON.stringify(values, null, 2))
-              /*
+            alert(JSON.stringify(values, null, 2));
+
             axios.defaults.headers.post['Content-Type'] = 'application/json';
             axios
               .all([
@@ -309,22 +309,23 @@ const ContactForm = () => {
                     message: values.message,
                   }
                 ),
-                
 
-                
                 axios.post(
                   'https://formsubmit.co/ajax/m.gorska@freelanceconcept.pl',
                   {
                     name: values.firstName,
+                    lastName: values.lastName,
                     email: values.email,
                     phone: values.phone ? values.phone : 'Nie podano',
                     needs: values.needs,
+                    additionalNeeds: values.additionalNeeds
+                      ? values.additionalNeeds
+                      : 'N/A',
                     message: values.message,
                   }
                 ),
-                
               ])
-              */
+
               .then((response) => console.log('Wysłano email'))
               .catch((error) => {
                 alert(
