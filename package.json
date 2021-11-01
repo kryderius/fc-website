@@ -9,6 +9,7 @@
     "aos": "^2.3.4",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
+    "ftp": "^0.3.10",
     "gatsby": "^3.6.2",
     "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-gatsby-cloud": "^2.6.1",
@@ -51,6 +52,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "ftp-deploy": "node deploy.js",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
