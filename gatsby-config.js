@@ -11,6 +11,22 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-anchor-links`,
     {
+      resolve: 'gatsby-plugin-htaccess',
+      options: {
+        RewriteBase: '/custom/',
+        https: true,
+        www: false,
+        SymLinksIfOwnerMatch: true,
+        host: 'freelanceconcept.com',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: ['G-DWPDV4R7SZ'],
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
