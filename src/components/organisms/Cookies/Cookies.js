@@ -116,7 +116,7 @@ const Cookies = ({ canBeDisplayed, setCanBeDisplayed }) => {
 
   useEffect(() => {
     setTimeout(() => setCanBeDisplayed(true), 1000);
-  }, []);
+  }, [setCanBeDisplayed]);
 
   return (
     <CookieBanner $isActive={!cookie && canBeDisplayed}>
