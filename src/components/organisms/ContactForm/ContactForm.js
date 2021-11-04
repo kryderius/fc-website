@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Formik, Field, Form } from 'formik';
 import Text from '../../atoms/Text';
@@ -235,11 +235,9 @@ const ContactForm = () => {
   const [activeNeeds, setActiveNeeds] = useState('');
   const [delayReCAPTCHA, setDelayReCAPTCHA] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setDelayReCAPTCHA(!delayReCAPTCHA);
-    }, 3000);
-  }, []);
+  setTimeout(() => {
+    setDelayReCAPTCHA(!delayReCAPTCHA);
+  }, 5000);
 
   const isReCAPTCHAVerifed = () => {
     setRecaptchaTrue(true);
