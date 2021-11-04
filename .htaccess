@@ -9,7 +9,3 @@ RewriteRule ^(.\*)$ http://freelanceconcept.pl/$1 [r=301,nc]
 RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.\*)$ https://freelanceconcept.pl
-#Cache po stronie przegladarki
-<FilesMatch ".(jpg|jpeg|png|gif|svg|css|js)$">
-Header set Cache-Control "max-age=2592000"
-</FilesMatch>
