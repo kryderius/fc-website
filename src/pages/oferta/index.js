@@ -280,6 +280,7 @@ const BottomTextHeading = styled(Heading)`
 const OurOffer = ({ location, data }) => {
   const [isActiveFilter, setActiveFilter] = useState();
   const [activeButton, setActiveButton] = useState();
+  const state = location.state || { activeFilter: '' };
 
   const handleButtonChange = (e) => {
     if (isActiveFilter === e) {
@@ -292,18 +293,19 @@ const OurOffer = ({ location, data }) => {
   };
 
   useEffect(() => {
-    if (location.state.activeFilter === 'mark') {
+    if (typeof state.activeFilter === null) {
+      setActiveFilter('');
+      setActiveButton('');
+      return false;
+    } else if (state.activeFilter === 'mark') {
       setActiveFilter('mark');
       setActiveButton('mark');
-    } else if (location.state.activeFilter === 'earning') {
+    } else if (state.activeFilter === 'earning') {
       setActiveFilter('earning');
       setActiveButton('earning');
-    } else if (location.state.activeFilter === 'image') {
+    } else if (state.activeFilter === 'image') {
       setActiveFilter('image');
       setActiveButton('image');
-    } else if (location.state.activeFilter === undefined) {
-      setActiveFilter(null);
-      setActiveButton(null);
     }
   }, []);
 
@@ -385,44 +387,6 @@ const OurOffer = ({ location, data }) => {
               </OfferBox>
             );
           })}
-        {/*offerItems
-          .filter((item, index) => {
-            if (!isActiveFilter) {
-              return true;
-            } else if (item.categoryFilter.includes(isActiveFilter)) {
-              return true;
-            } else if (isActiveFilter === 'all') {
-              return true;
-            }
-            return false;
-          })
-          .map((item, index) => {
-            return (
-              <OfferBox key={index}>
-                <OfferBoxImageWrapper>
-                  <img
-                    src={
-                      require(`../../assets/images/${item.image}.jpg`).default
-                    }
-                    alt={item.offerName}
-                  />
-                </OfferBoxImageWrapper>
-                <OfferBoxText>
-                  <OfferBoxHeading as="h4">{item.offerName}</OfferBoxHeading>
-                  <OfferTextBold>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </OfferTextBold>
-                  <OfferTextThin>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    vel interdum lacus. Praesent congue eget eros non aliquam.
-                  </OfferTextThin>
-                  <Button link={item.link} color="yellow" size="btn--offer">
-                    SPRAWDŹ
-                  </Button>
-                </OfferBoxText>
-              </OfferBox>
-            );
-          })*/}
         <DotsYellow src={DotsYellowSVG} alt="" />
         <BottomText>
           <BottomTextHeading as="h3">
