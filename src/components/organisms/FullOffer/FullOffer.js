@@ -13,7 +13,6 @@ import FullOfferDotsSVG from '../../../assets/svg/fullOffer_dots.svg';
 import { graphql, useStaticQuery } from 'gatsby';
 import Tilt from 'react-parallax-tilt';
 import { Link } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
 
 SwiperCore.use([Navigation]);
 
@@ -200,7 +199,7 @@ const SwiperImageWrapper = styled.div`
     height: 100%;
   }
 
-  div {
+  .tilt--wrapper {
     position: absolute;
     width: 100%;
     min-height: 100%;
@@ -415,24 +414,15 @@ const FullOffer = () => {
                     to={`/${item.node.slug}`}
                   >
                     <SwiperImageWrapper>
-                      <div>
+                      <div className="tilt--wrapper">
                         <Tilt
                           className="tilt-image-wrapper"
                           tiltMaxAngleX={10}
                           tiltMaxAngleY={10}
                         >
-                          {/*
                           <img
-                            src={
-                              require(`../../../assets/images/${item.node.image}.jpg`)
-                                .default
-                            }
+                            src={item.node.mainImage.fixed.src}
                             alt={item.node.image}
-                          />
-                          */}
-                          <GatsbyImage
-                            image={item.node.mainImage.gatsbyImageData}
-                            alt={item.node.name}
                           />
                         </Tilt>
                       </div>
@@ -519,7 +509,15 @@ export const query = graphql`
           image
           categoryFilter
           mainImage {
-            gatsbyImageData(imgixParams: { fm: "webp", q: 70 })
+            fixed(width: 500, imgixParams: { fm: "webp" }) {
+              srcSet
+              src
+            }
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: NONE
+              imgixParams: { fm: "webp", q: 70 }
+            )
           }
         }
       }
