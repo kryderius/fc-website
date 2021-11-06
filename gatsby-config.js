@@ -17,7 +17,7 @@ module.exports = {
         https: true,
         www: false,
         SymLinksIfOwnerMatch: true,
-        host: 'freelanceconcept.com',
+        host: 'freelanceconcept.pl',
       },
     },
     {
