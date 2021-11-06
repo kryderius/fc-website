@@ -251,8 +251,6 @@ const ContactForm = () => {
     setActiveNeeds(e);
   };
 
-  console.log(activeNeeds);
-
   return (
     <FormWrapper>
       <FormSubmitedInfo
@@ -274,13 +272,13 @@ const ContactForm = () => {
         </FormSubmitedInfoButton>
       </FormSubmitedInfoReCaptcha>
       <Formik
-        enableReinitialize={true}
+        enableReinitialize={false}
         initialValues={{
           firstName: '',
           lastName: '',
           email: '',
           phone: '',
-          needs: { activeNeeds },
+          needs: '',
           message: '',
           additionalNeeds: '',
         }}
@@ -289,12 +287,13 @@ const ContactForm = () => {
             setOpenErrorMsg(true);
           } else {
             alert(JSON.stringify(values, null, 2));
+            console.log(activeNeeds);
 
             axios.defaults.headers.post['Content-Type'] = 'application/json';
             axios
               .all([
                 axios.post(
-                  'https://formsubmit.co/ajax/5fbd87b9094f144a04faa702eb1e1518',
+                  'https://formsubmit.co/ajax/markiewicz1029@gmail.com',
                   {
                     name: values.firstName,
                     lastName: values.lastName,
@@ -338,107 +337,118 @@ const ContactForm = () => {
           }
         }}
       >
-        <Form>
-          <Line>
-            <Field
-              id="firstName"
-              name="firstName"
-              placeholder="Imię*"
-              required
-            />
-            <Field
-              id="lastName"
-              name="lastName"
-              placeholder="Nazwisko*"
-              required
-            />
-          </Line>
-          <Line>
-            <Field
-              id="email"
-              name="email"
-              placeholder="E-mail*"
-              type="email"
-              required
-            />
-            <Field id="phone" name="phone" placeholder="Telefon" />
-          </Line>
-          <Field
-            component="select"
-            id="needs"
-            name="needs"
-            placeholder="Czego potrzebujesz?*"
-            value={activeNeeds}
-            onChange={(e) => handleBlur(e.target.value)}
-            required
-          >
-            <option value="Czego potrzebujesz?">Czego potrzebujesz?*</option>
-            <option value="Chcę zbudować markę">Chcę zbudować markę</option>
-            <option value="Chcę więcej sprzedawać">
-              Chcę więcej sprzedawać
-            </option>
-            <option value="Zadbajcie o mój wizerunek">
-              Zadbajcie o mój wizerunek
-            </option>
-            <option value="other">Inna</option>
-          </Field>
-          {activeNeeds === 'other' && (
-            <Field
-              id="additionalNeeds"
-              name="additionalNeeds"
-              placeholder="Temat"
-              required
-            />
-          )}
-          <Field
-            as="textarea"
-            id="message"
-            name="message"
-            placeholder="Twoja wiadomość*"
-            required
-          ></Field>
-
-          <LastLine>
-            <LastLineReCaptcha>
-              <label htmlFor="agreement">
-                <Field
-                  type="checkbox"
-                  as="input"
-                  id="agreement"
-                  name="agreement"
-                  required
-                />
-                Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z
-                ustawą o ochronie danych osobowych w związku z wysłaniem
-                zapytania przez formularz kontaktowy.
-              </label>
-              <ReCAPTCHA
-                sitekey="6Lek2OIbAAAAAMrhaauHps7dhu_6CCOSz6HkD0hz"
-                onChange={isReCAPTCHAVerifed}
-                onExpired={isReCAPTCHAExpired}
-                render="onload"
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+        }) => (
+          <Form>
+            <Line>
+              <Field
+                id="firstName"
+                name="firstName"
+                placeholder="Imię*"
+                required
               />
-            </LastLineReCaptcha>
-            <button type="submit">
-              Wyślij{' '}
-              <svg
-                width="33"
-                height="21"
-                viewBox="0 0 33 21"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M19.5919 2.90812L25.1006 8.4375H0V12.5625H25.1006L19.6838 18L22.5919 20.9081L33 10.5L22.5 0L19.5919 2.90812Z"
-                  fill="#FEDD5A"
+              <Field
+                id="lastName"
+                name="lastName"
+                placeholder="Nazwisko*"
+                required
+              />
+            </Line>
+            <Line>
+              <Field
+                id="email"
+                name="email"
+                placeholder="E-mail*"
+                type="email"
+                required
+              />
+              <Field id="phone" name="phone" placeholder="Telefon" />
+            </Line>
+            <Field
+              as="select"
+              id="needs"
+              name="needs"
+              placeholder="Czego potrzebujesz?*"
+              onChange={handleChange}
+              required
+            >
+              <option value="Czego potrzebujesz?">Czego potrzebujesz?*</option>
+              <option value="Chcę zbudować markę">Chcę zbudować markę</option>
+              <option value="Chcę więcej sprzedawać">
+                Chcę więcej sprzedawać
+              </option>
+              <option value="Zadbajcie o mój wizerunek">
+                Zadbajcie o mój wizerunek
+              </option>
+              <option value="other">Inna</option>
+            </Field>
+            {values.needs === 'other' && (
+              <Field
+                id="additionalNeeds"
+                name="additionalNeeds"
+                placeholder="Temat"
+                className={
+                  activeNeeds === 'other' ? 'other-needs--open' : 'other-needs'
+                }
+              />
+            )}
+            <Field
+              as="textarea"
+              id="message"
+              name="message"
+              placeholder="Twoja wiadomość*"
+              required
+            ></Field>
+
+            <LastLine>
+              <LastLineReCaptcha>
+                <label htmlFor="agreement">
+                  <Field
+                    type="checkbox"
+                    as="input"
+                    id="agreement"
+                    name="agreement"
+                    required
+                  />
+                  Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie
+                  z ustawą o ochronie danych osobowych w związku z wysłaniem
+                  zapytania przez formularz kontaktowy.
+                </label>
+                <ReCAPTCHA
+                  sitekey="6Lek2OIbAAAAAMrhaauHps7dhu_6CCOSz6HkD0hz"
+                  onChange={isReCAPTCHAVerifed}
+                  onExpired={isReCAPTCHAExpired}
+                  render="onload"
                 />
-              </svg>
-            </button>
-            <RequiredInfo>
-              <RequiredText>Pola oznaczone * są obowiązkowe</RequiredText>
-            </RequiredInfo>
-          </LastLine>
-        </Form>
+              </LastLineReCaptcha>
+              <button type="submit">
+                Wyślij{' '}
+                <svg
+                  width="33"
+                  height="21"
+                  viewBox="0 0 33 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.5919 2.90812L25.1006 8.4375H0V12.5625H25.1006L19.6838 18L22.5919 20.9081L33 10.5L22.5 0L19.5919 2.90812Z"
+                    fill="#FEDD5A"
+                  />
+                </svg>
+              </button>
+              <RequiredInfo>
+                <RequiredText>Pola oznaczone * są obowiązkowe</RequiredText>
+              </RequiredInfo>
+            </LastLine>
+          </Form>
+        )}
       </Formik>
     </FormWrapper>
   );

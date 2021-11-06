@@ -13,7 +13,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-htaccess',
       options: {
-        RewriteBase: '/custom/',
+        RewriteBase: true,
         https: true,
         www: false,
         SymLinksIfOwnerMatch: true,
