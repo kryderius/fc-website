@@ -5,10 +5,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
 import Heading from '../../atoms/Heading';
-import Slide1 from '../../../assets/images/hero_1.jpg';
-import Slide2 from '../../../assets/images/hero_2.jpg';
-import Slide3 from '../../../assets/images/hero_3.jpg';
-import Slide4 from '../../../assets/images/hero_4.jpg';
 import Button from '../../atoms/Button';
 import Text from '../../atoms/Text';
 

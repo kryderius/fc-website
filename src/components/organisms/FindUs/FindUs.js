@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import GlobeIMG from '../../../assets/images/find-us-globe.png';
 import Heading from '../../atoms/Heading';
 import { gsap } from 'gsap';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -59,17 +58,6 @@ const SectionRight = styled.div`
     align-self: flex-end;
   }
 `;
-
-/*
-const StyledGlobe = styled.img`
-  position: absolute;
-  bottom: -5%;
-  left: -26%;
-  width: 60% !important;
-  will-change: transform;
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-`;
-*/
 
 const StyledGlobe = styled(GatsbyImage)`
   position: absolute;

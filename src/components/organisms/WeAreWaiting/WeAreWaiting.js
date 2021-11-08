@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import LaptopIMG from '../../../assets/images/laptop.png';
 import Heading from '../../atoms/Heading';
 import Button from '../../atoms/Button';
 import { gsap } from 'gsap';
@@ -57,17 +56,6 @@ const SectionRight = styled.div`
     align-self: flex-start;
   }
 `;
-
-/*
-const StyledLaptop = styled.img`
-  position: absolute;
-  bottom: -5%;
-  right: -26%;
-  width: 70% !important;
-  will-change: transform;
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-`;
-*/
 
 const StyledLaptop = styled(GatsbyImage)`
   position: absolute;
