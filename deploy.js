@@ -35,7 +35,7 @@ function uploadBuildDirectory() {
     password,
     localRoot: `./${LOCAL_BUILD_DIRECTORY}`,
     remoteRoot: `./${DEPLOY_DIRECTORY_NAME}`,
-    include: ['*', '**/*'],
+    include: ['*', '**/*', '.htaccess'],
   };
 
   const ftpDeploy = new FtpDeploy();
