@@ -97,6 +97,7 @@ const ImageContainer = styled.div`
 
   &:hover .image-hover-info {
     opacity: 1;
+    visibility: visible;
   }
 `;
 
@@ -108,11 +109,16 @@ const ImageHoverInfo = styled.div`
   height: 100%;
   background-color: rgba(254, 221, 90, 0.8);
   opacity: 0;
+  visibility: hidden;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 1200px) {
+    display: flex;
+  }
 `;
 
 const HoverTitle = styled(Text)`
@@ -151,7 +157,7 @@ const HoverImg = styled.div`
 `;
 
 const Lightbox = styled.div`
-  display: none;
+  display: block;
   //padding: 100px;
   position: fixed;
   top: 50%;
@@ -170,9 +176,13 @@ const Lightbox = styled.div`
 const LightboxWrapper = styled.div`
   width: 100%;
   height: 100%;
-  padding: 100px 15%;
+  padding: 170px 15px;
   overflow-y: scroll;
   position: relative;
+
+  @media (min-width: 1200px) {
+    padding: 100px 15%;
+  }
 `;
 
 const CloseBtn = styled.div`
@@ -199,9 +209,15 @@ const CloseBtn = styled.div`
 const LightboxInfo = styled.div`
   position: absolute;
   top: 15px;
-  left: 15%;
+  left: 15px;
   z-index: 2010;
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1200px) {
+    left: 15%;
+    flex-direction: row;
+  }
 `;
 
 const LightboxAuthorImg = styled.div`
@@ -222,15 +238,24 @@ const LightboxInfoText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 30px;
+  margin-top: 15px;
+
+  @media (min-width: 1200px) {
+    margin-left: 30px;
+    margin-top: 0;
+  }
 `;
 
 const LightboxInfoTitle = styled(Text)`
   font-family: ${({ theme }) => theme.fontFamilyHeading};
-  font-size: ${({ theme }) => theme.headingS};
+  font-size: ${({ theme }) => theme.bodyS};
   color: ${({ theme }) => theme.white};
   margin: 0 0 10px 0;
   text-align: left;
+
+  @media (min-width: 1200px) {
+    font-size: ${({ theme }) => theme.headingS};
+  }
 `;
 
 const LightboxInfoAuthor = styled(Text)`
