@@ -7,6 +7,7 @@ import Heading from '../components/atoms/Heading';
 import Text from '../components/atoms/Text';
 import Footer from '../components/Footer/Footer';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import scrollTo from '../utils/scrollTo';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
@@ -139,7 +140,12 @@ const BlogPost = ({ data }) => {
       <ContentWrapper>
         <AuthorWrapper>
           <LightboxAuthorImg>
-            <Link to={`/specjalisci/${blog.author.toLowerCase()}#info`}>
+            <Link
+              to={`/specjalisci/${blog.author.toLowerCase()}#info`}
+              onClick={(e) =>
+                scrollTo(e, 'info', `/specjalisci/${blog.author.toLowerCase()}`)
+              }
+            >
               {blog.authorImage && (
                 <GatsbyImage image={blog.authorImage.gatsbyImageData} alt="" />
               )}

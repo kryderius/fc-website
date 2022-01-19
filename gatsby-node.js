@@ -125,7 +125,7 @@ exports.createPages = ({ actions, graphql }) => {
     // Create pages for each article.
     result.data.allDatoCmsBlog.edges.forEach(({ node }) => {
       createPage({
-        path: `/blog/${node.slug.toLowerCase()}`,
+        path: `/baza-wiedzy/${node.slug.toLowerCase()}`,
         component: path.resolve(`src/templates/BlogPost.js`),
         context: {
           slug: node.slug,

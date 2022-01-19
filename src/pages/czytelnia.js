@@ -7,6 +7,7 @@ import Heading from '../components/atoms/Heading';
 import Text from '../components/atoms/Text';
 import Footer from '../components/Footer/Footer';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import BazaWiedzy from '../assets/images/baza-wiedzy.jpg';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
@@ -98,12 +99,26 @@ const PostBoxContentTitle = styled(Text)`
   font-weight: ${({ theme }) => theme.bold};
 `;
 
+const PostBoxContentText = styled(Text)`
+  text-align: left;
+  font-size: ${({ theme }) => theme.bodyAlt};
+  font-family: ${({ theme }) => theme.fontFamilyText};
+  font-weight: ${({ theme }) => theme.light};
+  * {
+    text-align: left;
+    font-size: ${({ theme }) => theme.bodyAlt};
+    font-family: ${({ theme }) => theme.fontFamilyText};
+    font-weight: ${({ theme }) => theme.light};
+  }
+`;
+
 const BlogPage = () => {
   const blog = useStaticQuery(blogQuery);
+  const regex = /(<([^>]+)>)/gi;
   return (
     <Layout title="Baza wiedzy">
-      <SubPageHeader background="">
-        <MainHeading data-aos="fade-up">Baza wiedzy</MainHeading>
+      <SubPageHeader background={BazaWiedzy}>
+        <MainHeading data-aos="fade-up">Czytelnia</MainHeading>
         {/*
         <HeaderText data-aos="fade-up" data-aos-delay="200">
           {blog.title}
@@ -113,13 +128,20 @@ const BlogPage = () => {
       <SectionWrapper>
         <SectionContainer>
           {blog.allDatoCmsBlog.edges.map((item) => (
-            <PostBox to={`/blog/${item.node.slug}`}>
+            <PostBox to={`/baza-wiedzy/${item.node.slug}`}>
               <PostBoxImageWrapper>
                 <PostBoxImage image={item.node.thumbnail.gatsbyImageData} />
               </PostBoxImageWrapper>
               <PostBoxContentWrapper>
                 <PostBoxContentDate>{item.node.date}</PostBoxContentDate>
                 <PostBoxContentTitle>{item.node.title}</PostBoxContentTitle>
+                <PostBoxContentText
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      item.node.content.replace(regex, '').substring(0, 200) +
+                      '...',
+                  }}
+                />
               </PostBoxContentWrapper>
             </PostBox>
           ))}
@@ -140,6 +162,7 @@ export const blogQuery = graphql`
           thumbnail {
             gatsbyImageData
           }
+          content
           date(formatString: "DD/MM/YYYY")
         }
       }
