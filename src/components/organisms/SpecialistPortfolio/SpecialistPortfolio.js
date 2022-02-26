@@ -214,7 +214,7 @@ const LightboxInfoAuthor = styled(Text)`
   }
 `;
 
-const SpecialistPortfolio = ({ portfolio }) => {
+const SpecialistPortfolio = ({ portfolio, isBlogPost }) => {
   const [openImage, setOpenImage] = useState(false);
   const [activeImage, setActiveImage] = useState('');
   const [activeAuthorImg, setActiveAuthorImg] = useState('');
@@ -268,7 +268,7 @@ const SpecialistPortfolio = ({ portfolio }) => {
         <HeadingWrapper>
           <StyledHeading as="h3">
             <span className="heading--black" data-aos="title-up">
-              Portfolio
+              {isBlogPost ? 'Portfolio tego autora' : 'Portfolio'}
             </span>
           </StyledHeading>
         </HeadingWrapper>

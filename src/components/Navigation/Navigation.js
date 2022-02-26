@@ -311,13 +311,11 @@ const Navigation = () => {
                 Kim jesteśmy
               </Link>
             </NavMobileListItem>
-            {/*
             <NavMobileListItem>
-              <Link to="/blog" onClick={openHamburger}>
-                Baza wiedzy
+              <Link to="/czytelnia" onClick={openHamburger}>
+                Czytelnia
               </Link>
             </NavMobileListItem>
-            */}
             <NavMobileListItem>
               <StyledButton
                 link="/#kontakt"
@@ -350,12 +348,9 @@ const Navigation = () => {
             <NavListItem>
               <Link to="/kim-jestesmy">Kim jesteśmy</Link>
             </NavListItem>
-
-            {/*
             <NavListItem>
-              <Link to="/blog">Baza wiedzy</Link>
+              <Link to="/czytelnia">Czytelnia</Link>
             </NavListItem>
-            */}
             <StyledButton
               link="/#kontakt"
               color="yellow"

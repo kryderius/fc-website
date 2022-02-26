@@ -8,6 +8,7 @@ import Text from '../components/atoms/Text';
 import Footer from '../components/Footer/Footer';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import scrollTo from '../utils/scrollTo';
+import SpecialistPortfolio from '../components/organisms/SpecialistPortfolio/SpecialistPortfolio';
 
 const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
@@ -125,10 +126,16 @@ const PostDate = styled(Text)`
 `;
 
 const BlogPost = ({ data }) => {
-  const blog = data.datoCmsBlog;
+  const blog = data.datoCmsSecondProjectBlog;
+  const portfolio = data.allDatoCmsPortfolio;
+  const regex = /(<([^>]+)>)/gi;
 
   return (
-    <Layout title={blog.title}>
+    <Layout
+      title={blog.title}
+      description={blog.content.replace(regex, '').substring(0, 200) + '...'}
+      ogImage={blog.thumbnail.url}
+    >
       <SubPageHeader background={blog.thumbnail.url}>
         <MainHeading data-aos="fade-up">{blog.title}</MainHeading>
         {/*
@@ -141,21 +148,29 @@ const BlogPost = ({ data }) => {
         <AuthorWrapper>
           <LightboxAuthorImg>
             <Link
-              to={`/specjalisci/${blog.author.toLowerCase()}#info`}
+              to={`/specjalisci/${blog.author.slug}#info`}
               onClick={(e) =>
-                scrollTo(e, 'info', `/specjalisci/${blog.author.toLowerCase()}`)
+                scrollTo(e, 'info', `/specjalisci/${blog.author.slug}`)
               }
             >
-              {blog.authorImage && (
-                <GatsbyImage image={blog.authorImage.gatsbyImageData} alt="" />
+              {blog.author.authorimg.gatsbyImageData && (
+                <GatsbyImage
+                  image={blog.author.authorimg.gatsbyImageData}
+                  alt=""
+                />
               )}
             </Link>
           </LightboxAuthorImg>
           <AuthorTextWrapper>
             <AuthorName>
               <span className="author_before">Autor:</span>
-              <Link to={`/specjalisci/${blog.author.toLowerCase()}#info`}>
-                {blog.author}
+              <Link
+                to={`/specjalisci/${blog.author.slug}#info`}
+                onClick={(e) =>
+                  scrollTo(e, 'info', `/specjalisci/${blog.author.slug}`)
+                }
+              >
+                {blog.author.name}
               </Link>
             </AuthorName>
             <PostDate>{blog.date}</PostDate>
@@ -163,25 +178,49 @@ const BlogPost = ({ data }) => {
         </AuthorWrapper>
         <ContentContainer dangerouslySetInnerHTML={{ __html: blog.content }} />
       </ContentWrapper>
+      <SpecialistPortfolio portfolio={portfolio} isBlogPost />
       <Footer />
     </Layout>
   );
 };
 
 export const query = graphql`
-  query BlogPostTemplate($slug: String!) {
-    datoCmsBlog(slug: { eq: $slug }) {
+  query BlogPostTemplate($slug: String!, $authorName: String!) {
+    datoCmsSecondProjectBlog(slug: { eq: $slug }) {
       slug
       title
-      author
-      authorImage {
-        gatsbyImageData
+      author {
+        name
+        slug
+        authorimg {
+          gatsbyImageData
+        }
       }
       thumbnail {
         url
       }
       content
       date(formatString: "DD/MM/YYYY")
+    }
+    allDatoCmsPortfolio(filter: { authorSlug: { eq: $authorName } }) {
+      edges {
+        node {
+          id
+          title
+          slug
+          author
+          shortDesc
+          image {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          }
+          mainImage {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          }
+          authorImage {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          }
+        }
+      }
     }
   }
 `;

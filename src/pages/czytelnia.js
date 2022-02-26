@@ -13,13 +13,13 @@ const MainHeading = styled(Heading)`
   color: ${({ theme }) => theme.white};
   text-transform: uppercase;
   color: ${({ theme }) => theme.white};
-  font-size: ${({ theme }) => theme.headingS};
+  font-size: ${({ theme }) => theme.headingM};
 
   @media (min-width: 1200px) {
-    font-size: ${({ theme }) => theme.headingM};
+    font-size: ${({ theme }) => theme.headingL};
   }
   @media (min-width: 1400px) {
-    font-size: ${({ theme }) => theme.headingM};
+    font-size: ${({ theme }) => theme.headingXL};
   }
 `;
 
@@ -55,14 +55,21 @@ const SectionContainer = styled.div`
 
 const PostBox = styled(Link)`
   width: 100%;
+  height: 650px;
   text-decoration: none;
   color: ${({ theme }) => theme.black};
   border: 1px solid #d3d3d3;
   transition: box-shadow 0.2s ease-in-out;
+  position: relative;
+
+  &:last-child {
+    margin-right: auto;
+  }
 
   @media (min-width: 1200px) {
     width: unset;
     flex-basis: calc(50% - 0.75rem);
+    height: 680px;
   }
 
   &:hover {
@@ -72,12 +79,17 @@ const PostBox = styled(Link)`
 
 const PostBoxImageWrapper = styled.div`
   border-bottom: 1px solid #d3d3d3;
-  max-height: 300px;
+  height: 55%;
   overflow: hidden;
   position: relative;
 
   @media (min-width: 1200px) {
-    max-height: 450px;
+    height: 60%;
+  }
+
+  .gatsby-image-wrapper-constrained {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -112,11 +124,28 @@ const PostBoxContentText = styled(Text)`
   }
 `;
 
+const PostBoxContentAuthorImgWrapper = styled.div`
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-left: auto;
+`;
+
+const PostBoxContentAuthorImg = styled(GatsbyImage)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+`;
+
 const BlogPage = () => {
   const blog = useStaticQuery(blogQuery);
   const regex = /(<([^>]+)>)/gi;
   return (
-    <Layout title="Baza wiedzy">
+    <Layout title="Czytelnia">
       <SubPageHeader background={BazaWiedzy}>
         <MainHeading data-aos="fade-up">Czytelnia</MainHeading>
         {/*
@@ -127,10 +156,12 @@ const BlogPage = () => {
       </SubPageHeader>
       <SectionWrapper>
         <SectionContainer>
-          {blog.allDatoCmsBlog.edges.map((item) => (
-            <PostBox to={`/baza-wiedzy/${item.node.slug}`}>
+          {blog.allDatoCmsSecondProjectBlog.edges.map((item) => (
+            <PostBox to={`/czytelnia/${item.node.slug}`}>
               <PostBoxImageWrapper>
-                <PostBoxImage image={item.node.thumbnail.gatsbyImageData} />
+                {item.node.thumbnail && (
+                  <PostBoxImage image={item.node.thumbnail.gatsbyImageData} />
+                )}
               </PostBoxImageWrapper>
               <PostBoxContentWrapper>
                 <PostBoxContentDate>{item.node.date}</PostBoxContentDate>
@@ -143,6 +174,13 @@ const BlogPage = () => {
                   }}
                 />
               </PostBoxContentWrapper>
+              <PostBoxContentAuthorImgWrapper>
+                {item.node.author.authorimg.gatsbyImageData && (
+                  <PostBoxContentAuthorImg
+                    image={item.node.author.authorimg.gatsbyImageData}
+                  />
+                )}
+              </PostBoxContentAuthorImgWrapper>
             </PostBox>
           ))}
         </SectionContainer>
@@ -154,7 +192,7 @@ const BlogPage = () => {
 
 export const blogQuery = graphql`
   query blogPostsArchive {
-    allDatoCmsBlog {
+    allDatoCmsSecondProjectBlog(sort: { fields: date, order: DESC }) {
       edges {
         node {
           title
@@ -164,10 +202,34 @@ export const blogQuery = graphql`
           }
           content
           date(formatString: "DD/MM/YYYY")
+          author {
+            authorimg {
+              gatsbyImageData(width: 100)
+            }
+            name
+            slug
+          }
         }
       }
     }
   }
 `;
+
+// allDatoCmsBlog {
+//   edges {
+//     node {
+//       title
+//       slug
+//       thumbnail {
+//         gatsbyImageData
+//       }
+//       authorImage {
+//         gatsbyImageData(width: 100)
+//       }
+//       content
+//       date(formatString: "DD/MM/YYYY")
+//     }
+//   }
+// }
 
 export default BlogPage;

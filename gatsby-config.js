@@ -48,6 +48,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: `ce7a7bf5e28bdf6a76295618aee27a`,
+        instancePrefix: 'SecondProject',
+        environment: `main`,
+        previewMode: false,
+        disableLiveReload: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         start_url: `/`,

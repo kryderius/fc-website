@@ -15,7 +15,7 @@ const StyledMain = styled.main`
   transition: background-color 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 `;
 
-const Layout = ({ children, title, description, isHomePage }) => {
+const Layout = ({ children, title, description, isHomePage, ogImage }) => {
   const seo = useStaticQuery(query);
   const [canBeDisplayedCookie, setCanBeDisplayedCookie] = useState(false);
 
@@ -45,7 +45,10 @@ const Layout = ({ children, title, description, isHomePage }) => {
             description ? description : seo.datoCmsMainSeo.metaDescription
           }
         />
-        <meta property="og:image" content={seo.datoCmsMainSeo.ogImage.url} />
+        <meta
+          property="og:image"
+          content={ogImage ? ogImage : seo.datoCmsMainSeo.ogImage.url}
+        />
         <html lang="pl" />
       </Helmet>
       <ThemeProvider theme={theme}>

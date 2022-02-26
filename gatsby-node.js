@@ -112,10 +112,14 @@ exports.createPages = ({ actions, graphql }) => {
     graphql,
     `
     {
-        allDatoCmsBlog {
+      allDatoCmsSecondProjectBlog {
             edges {
                 node {
                     slug
+                    author {
+                      name
+                      slug
+                    }
                 }
             }
         }
@@ -123,12 +127,13 @@ exports.createPages = ({ actions, graphql }) => {
     `
   ).then((result) => {
     // Create pages for each article.
-    result.data.allDatoCmsBlog.edges.forEach(({ node }) => {
+    result.data.allDatoCmsSecondProjectBlog.edges.forEach(({ node }) => {
       createPage({
-        path: `/baza-wiedzy/${node.slug.toLowerCase()}`,
+        path: `/czytelnia/${node.slug.toLowerCase()}`,
         component: path.resolve(`src/templates/BlogPost.js`),
         context: {
           slug: node.slug,
+          authorName: node.author.slug,
         },
       });
     });
